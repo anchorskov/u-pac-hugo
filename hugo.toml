@@ -1,0 +1,43 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en-us"
+title = "U-PAC 1.01"
+theme = "PaperMod"
+
+# Enable site-wide features
+[params]
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowToc = true
+  TocOpen = true
+
+# Navigation Menu
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "candidates"
+    name = "Candidates"
+    url = "/candidates/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "volunteer"
+    name = "Volunteer"
+    url = "/volunteer/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "donate"
+    name = "Donate"
+    url = "/donate/"
+    weight = 4
+
+# 🚀 Force Hugo to Recognize Individual Candidate Pages
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]

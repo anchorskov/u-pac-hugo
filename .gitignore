@@ -1,0 +1,19 @@
+# Hugo build & cache files
+public/
+resources/
+.hugo_build.lock
+
+# VS Code files
+.vscode/
+
+# Hugo temporary files
+hugo_stats.json
+
+# Logs & system files
+.DS_Store
+Thumbs.db
+
+# Ignore themes if using submodules
+themes/*
+!themes/PaperMod
+!themes/ananke

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+
+<body style="background-color: #f8f9fa; color: #212529; font-family: Arial, sans-serif;">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="U-PAC 1.01 (Alt + H)">U-PAC 1.01</a>
+        </div>
+        <ul id="menu">
+            <li><a href="/" title="Home"><span>Home</span></a></li>
+            <li><a href="/candidates/" title="Candidates"><span>Candidates</span></a></li>
+            <li><a href="/volunteer/" title="Volunteer"><span>Volunteer</span></a></li>
+            <li><a href="/donate/" title="Donate"><span>Donate</span></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="main">
+    {{ block "main" . }}{{ end }}
+</main>
+
+<footer class="footer">
+    <span>© 2025 <a href="/">U-PAC 1.01</a></span> · 
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &amp;
+    <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+
+<script>
+    // Force light mode, remove dark mode overrides
+    document.body.classList.remove('dark');
+    localStorage.setItem("pref-theme", 'light');
+</script>
+
+</body>
+</html>

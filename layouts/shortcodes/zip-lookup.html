@@ -1,0 +1,20 @@
+<form id="zipForm" style="text-align:center; margin-top:20px;">
+    <input type="text" id="zipInput" placeholder="Enter ZIP Code" maxlength="5"
+        style="padding: 10px; font-size: 18px; border: 1px solid #ccc; border-radius: 5px;">
+    <button type="submit" 
+        style="padding: 10px 15px; font-size: 18px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Find Candidates
+    </button>
+</form>
+
+<script>
+    document.getElementById("zipForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var zip = document.getElementById("zipInput").value;
+        if (zip.length === 5 && !isNaN(zip)) {
+            window.location.href = "/candidates/" + zip;
+        } else {
+            alert("Please enter a valid 5-digit ZIP code.");
+        }
+    });
+</script>
