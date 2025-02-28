@@ -1,15 +1,17 @@
 ---
-title: "Find Your Candidates"
+title: "Welcome to U-PAC"
 date: 2025-02-23T00:00:00
 draft: false
 ---
 
-## Who Represents You?
+# Welcome to U-PAC
 
-Enter your ZIP code to find candidates and see how they stack up.
+### **Find Your Candidates — Participate in the Conversation — Shape Leadership**
 
-{{< zip-lookup >}}
+_U-PAC is built on integrity, accountability, transparency, and compassion._
 
-### **🔍 What U-PAC Does**
-We track **integrity, transparency, accountability, and compassion** in politics.  
-We do our best to prevent misinformation, but politicians are tricky.  
+<div class="hero-buttons">
+    <a href="/candidates/" class="btn btn-primary">Find My Candidates</a>
+    <a href="/volunteer/" class="btn btn-secondary">Become a Volunteer</a>
+    <a href="/donate/" class="btn btn-support">Support This Work</a>
+</div>
