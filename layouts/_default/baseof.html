@@ -1,140 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
-
-    <!-- Critical Inline CSS for Fast Load -->
-    <style>
-        :root {
-            --primary-color: #007bff;
-            --secondary-color: #ffffff;
-            --text-color: #111111;
-            --font-size-base: 16px;
-            --font-size-lg: 20px;
-            --font-size-xl: 36px;
-            --header-bg: #f8f9fa;
-            --footer-bg: #f8f9fa;
-        }
-
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Prevent Content From Overlapping Fixed Header */
-        main {
-            padding-top: 100px;
-        }
-
-        /* Centered Hero Section */
-        .hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 80vh;
-            width: 100%;
-            background: url('/images/hero-bg.jpg') no-repeat center center/cover;
-        }
-
-        .hero-container {
-            max-width: 900px;
-            width: 100%;
-            padding: 20px;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .hero-buttons {
-            margin-top: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 10px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: 0.3s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-support {
-            background: #ffc107;
-            color: black;
-        }
-
-        .btn:hover {
-            opacity: 0.8;
-        }
-    </style>
-
-    <!-- Load External CSS -->
-    <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" media="print" onload="this.onload=null;this.removeAttribute('media');">
-    <noscript><link rel="stylesheet" href="{{ "css/custom.css" | relURL }}"></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Site.Title }}</title>
+  
+  <!-- Preload and load critical CSS for faster rendering -->
+  <link rel="preload" href="{{ "css/form.css" | relURL }}" as="style">
+  <link rel="stylesheet" href="{{ "css/form.css" | relURL }}">
+  
+  <!-- Load main custom CSS -->
+  <link rel="preload" href="{{ "css/custom.css" | relURL }}" as="style">
+  <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
 </head>
 
 <body>
 
-    <!-- ✅ Include Header -->
-    {{ partial "header.html" . }}
+  <!-- Include Header -->
+  {{ partial "header.html" . }}
 
-    <main class="main">
-        <!-- ✅ Show Hero Section Only on the Homepage -->
-        {{ if eq .RelPermalink "/" }}
-        <section class="hero">
-            <div class="hero-container">
-                <h1 class="hero-title">Welcome to U-PAC</h1>
-                <p class="hero-subtitle">
-                    <strong>Find Your Candidates — Participate in the Conversation — Shape Leadership</strong> <br>
-                    <em>U-PAC, built on integrity, accountability, transparency, and compassion.</em>
-                </p>
-                <div class="hero-buttons">
-                    <a href="/candidates/" class="btn btn-primary">Find My Candidates</a>
-                    <a href="/volunteer/" class="btn btn-secondary">Become a Volunteer</a>
-                    <a href="/donate/" class="btn btn-support">Support This Work</a>
-                </div>
-            </div>
-        </section>
-        {{ end }}
+  <!-- Main content wrapper -->
+  <main class="main">
+    {{ block "main" . }}{{ end }}
+  </main>
 
-        {{ block "main" . }}{{ end }}
-    </main>
-
-    <!-- ✅ Include Footer -->
-    {{ partial "footer.html" . }}
-
-    <script>
-        // Force light mode, remove dark mode overrides
-        document.body.classList.remove('dark');
-        localStorage.setItem("pref-theme", 'light');
-    </script>
+  <!-- Include Footer -->
+  {{ partial "footer.html" . }}
 
 </body>
 </html>

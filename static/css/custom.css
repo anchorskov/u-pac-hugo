@@ -1,12 +1,12 @@
 /* Global Styles */
 :root {
     --primary-color: #007bff;
-    --secondary-color: #171717;
-    --text-color: #ffffff;
+    --secondary-color: #ffffff;  /* Light background */
+    --text-color: #171717;         /* Dark text */
     --font-size-base: 16px;
     --font-size-lg: 20px;
     --font-size-xl: 36px;
-    --header-bg: rgba(0, 0, 0, 0.9);
+    --header-bg: rgba(255, 255, 255, 0.9); /* Light header background */
 }
 
 /* Reset */
@@ -46,7 +46,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: var(--text-color); /* Updated to dark text */
     margin-right: 40px; /* Space between logo and menu */
 }
 
@@ -65,7 +65,7 @@ body {
 
 /* Buttons for Navigation */
 #menu a {
-    color: white;
+    color: var(--text-color); /* Updated to dark text */
     text-decoration: none;
     font-size: 18px;
     padding: 12px 20px;
@@ -106,7 +106,7 @@ body {
     justify-content: center;
     text-align: center;
     background: url('/images/hero-bg.jpg') no-repeat center center/cover;
-    color: white;
+    color: var(--text-color);  /* Use dark text */
 }
 
 .hero-container {
@@ -140,7 +140,7 @@ body {
 
 .btn-primary {
     background: var(--primary-color);
-    color: white;
+    color: white; /* White text for contrast on blue */
 }
 
 .btn-secondary {
@@ -157,17 +157,21 @@ body {
     opacity: 0.8;
 }
 
+/* Main Content Padding to Accommodate Fixed Elements */
+.main {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
 /* Centered Footer */
 .footer {
     background: var(--secondary-color);
-    color: white;
+    color: var(--text-color);
     text-align: center;
     padding: 20px 0;
     font-size: 14px;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
 }
 
 .footer a {
@@ -178,6 +182,7 @@ body {
 .footer a:hover {
     text-decoration: underline;
 }
+
 .features .container {
     padding-left: 20px;
     padding-right: 20px;
@@ -188,3 +193,22 @@ body {
 .features {
     text-align: left; /* Ensures alignment */
 }
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #007bff; /* You may adjust this if needed */
+    --secondary-color: #171717;  /* Dark background */
+    --text-color: #ffffff;       /* Light text */
+    --header-bg: rgba(23, 23, 23, 0.9); /* Dark header background */
+  }
+}
+.hero-content {
+    text-align: center;
+    font-size: 125%;
+    margin: 0 auto;
+    max-width: 900px; /* Optional: to limit the width for better readability */
+    padding: 20px;    /* Optional: to add some spacing */
+  }
+  
+  
