@@ -105,7 +105,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: url('/images/hero-bg.jpg') no-repeat center center/cover;
+    background: url('/Images/hero-bg.webp') no-repeat center center / cover;
     color: var(--text-color);  /* Use dark text */
 }
 
