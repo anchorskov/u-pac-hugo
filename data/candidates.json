@@ -1,9 +1,0 @@
-{
-    "90210": [
-        { "id": "john-doe", "name": "John Doe", "party": "Independent" },
-        { "id": "jane-smith", "name": "Jane Smith", "party": "Democrat" }
-    ],
-    "10001": [
-        { "id": "alex-johnson", "name": "Alex Johnson", "party": "Republican" }
-    ]
-}

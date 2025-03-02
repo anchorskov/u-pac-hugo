@@ -286,5 +286,59 @@ body {
     text-align: center;
     padding: 20px;
 }
-   
+.centered-list-container {
+    display: flex;
+    justify-content: center; /* Centers the list container */
+    width: 100%;
+}
+
+/* Updated list styling for candidates page */
+.spaced-list {
+    text-align: left;          /* Keep the text within each list item left aligned */
+    max-width: 800px;          /* Match the content-section width */
+    width: 100%;
+    list-style-position: outside;
+    padding-left: 20px;        /* Provides spacing from the left edge */
+    margin: 30px auto;         /* Centers the list container within its section */
+}
+
+.spaced-list li {
+    margin-bottom: 1.5em; /* Adds double spacing between bullets */
+}
+/* Candidates Page Custom Styles */
+.hero-banner-candidates {
+    background: url('/static/Images/hero-candidates.jpg') no-repeat center center/cover;
+    padding: 100px 20px;
+    text-align: center;
+    color: #fff;
+}
+.hero-banner-candidates h1 {
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+    margin: 0;
+}
+.hero-banner-candidates p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+.hero-banner-candidates .hero-buttons {
+    margin-top: 15px;
+}
+
+.content-section {
+    padding: 50px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.content-section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.content-section p {
+    text-align: center;
+    margin: 20px 0;
+}
+  
   

@@ -1,0 +1,23 @@
+{{ define "main" }}
+  <section class="candidates-overview">
+    <!-- This renders the content of content/candidates/_index.md -->
+    {{ .Content }}
+  </section>
+
+  {{ if .Pages }}
+  <section class="candidates-list">
+    <h2>Candidate Listings</h2>
+    <ul>
+      {{ range .Pages }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <!-- Display the date in a friendly format -->
+          <span class="candidate-date">{{ .Date.Format "January 2, 2006" }}</span>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ else }}
+    <p>No candidate pages have been added yet.</p>
+  {{ end }}
+{{ end }}
