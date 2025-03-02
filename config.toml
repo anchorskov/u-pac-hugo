@@ -5,9 +5,9 @@ theme = "PaperMod"   # Change to "ananke" if preferred
 
 # Site-wide parameters
 [params]
-  ShowReadingTime = true
+  ShowReadingTime = false
   ShowShareButtons = true
-  ShowToc = true
+  ShowToc = false
   TocOpen = true
 
 # Navigation Menu

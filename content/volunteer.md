@@ -1,14 +1,13 @@
 ---
 title: "Volunteer with U-PAC"
-
 draft: false
+toc: false
 ---
 
-
-## Join the Movement
-U-PAC thrives on **active participation**. Sign up today and make a difference!
-
-## Sign Up Below
+<div class="hero-content">
+  <h1>Volunteer with U-PAC</h1>
+  <p>U-PAC thrives on <strong>active participation</strong>. Sign up today and make a difference!</p>
+</div>
 
 {{< rawhtml >}}
 <div style="display: flex; justify-content: center;">
@@ -21,12 +20,12 @@ U-PAC thrives on **active participation**. Sign up today and make a difference!
 
 ---
 
-### **Why Volunteer?**
-✔ **Shape Leadership** – Help guide integrity, transparency, and accountability in politics.  
-✔ **Engage Locally** – Connect with like-minded individuals and drive change.  
-✔ **Stay Informed** – Get the latest updates and insights on our mission.
+<div class="hero-content">
+  <h2>Why Volunteer?</h2>
+  <p>✔ <strong>Shape Leadership</strong> – Help guide integrity, transparency, and accountability in politics.</p>
+  <p>✔ <strong>Engage Locally</strong> – Connect with like-minded individuals and drive change.</p>
+  <p>✔ <strong>Stay Informed</strong> – Get the latest updates and insights on our mission.</p>
 
----
-
-### **Need Help?**
-If you have any questions, feel free to **[contact us](mailto:anchorskov@gmail.com)**.
+  <h2>Need Help?</h2>
+  <p>If you have any questions, feel free to <a href="mailto:anchorskov@gmail.com">contact us</a>.</p>
+</div>
