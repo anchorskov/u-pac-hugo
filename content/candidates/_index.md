@@ -61,6 +61,25 @@ draft: false
   </div>
 </section>
 
+<!-- Submission Forms Navigation Section -->
+<section class="content-section" style="background: #eaeaea; text-align: center; padding: 50px 20px;">
+  <h2 style="margin-bottom: 30px;">Submit Your Information</h2>
+  
+  <p style="margin-bottom: 30px;">
+    <strong>For Volunteers:</strong> Choose this form if you are adding data about candidates other than yourself.
+  </p>
+  <div class="hero-buttons" style="margin-bottom: 40px;">
+    <a href="/candidates/volunteer-entry/" class="btn btn-secondary" style="margin-right: 20px; padding: 15px 30px;">Volunteer Entry Form</a>
+  </div>
+  
+  <p style="margin-bottom: 30px;">
+    <strong>For Candidates:</strong> Use this button if you are submitting personal data.
+  </p>
+  <div class="hero-buttons">
+    <a href="/candidates/candidate-submission/" class="btn btn-secondary" style="padding: 15px 30px;">Candidate Submission Form</a>
+  </div>
+</section>
+
 <!-- Final Call-to-Action -->
 <section class="content-section">
   <p style="font-size: 1.2rem; text-align: center;">
