@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+relativeURLs = true
 languageCode = "en-us"
 title = "U-PAC 1.01"
 theme = "PaperMod"   # Change to "ananke" if preferred
