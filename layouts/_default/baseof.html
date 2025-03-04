@@ -13,10 +13,9 @@
   <link rel="preload" href="{{ "css/custom.css" | relURL }}" as="style">
   <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
 </head>
-
 <body>
 
-  <!-- Include Header -->
+  <!-- Include Header Partial -->
   {{ partial "header.html" . }}
 
   <!-- Main content wrapper -->
@@ -24,8 +23,23 @@
     {{ block "main" . }}{{ end }}
   </main>
 
-  <!-- Include Footer -->
+  <!-- Include Footer Partial -->
   {{ partial "footer.html" . }}
+
+  <!-- Hamburger Menu Toggle Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select the hamburger button and the navigation menu
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('#menu');
+      // Add a click event to toggle the 'active' class on the menu
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          menu.classList.toggle('active');
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
