@@ -303,3 +303,52 @@ body {
         background: linear-gradient(to right, #2c2c2c, #1a1a1a);
     }
 }
+/* About Page Styling */
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.about-container h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.about-container h2 {
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.about-container p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-buttons {
+    margin-top: 30px;
+}
+
+.about-buttons a {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.about-btn-primary {
+    background-color: #0073e6;
+    color: #fff;
+}
+
+.about-btn-secondary {
+    background-color: #444;
+    color: #fff;
+}
