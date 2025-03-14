@@ -1,0 +1,12 @@
+name = "hugo-site-worker"         # Name for your Worker
+type = "javascript"               # Worker type (JavaScript)
+account_id = "8bfd3f60fbdcc89183e9e312fb03e86e"
+workers_dev = true                # Deploy to workers.dev subdomain for testing
+
+# KV Namespace binding: "HUDZIP" is the name you'll use in your Worker code.
+kv_namespaces = [
+  { binding = "HUDZIP", id = "your_kv_namespace_id_here", preview_id = "your_kv_namespace_preview_id_here" }
+]
+
+[build]
+upload_format = "modules"         # Use modules format (recommended)
