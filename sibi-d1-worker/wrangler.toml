@@ -1,5 +1,6 @@
 name = "sibi-d1-worker"           # Updated Worker name (optional)
 type = "javascript"               # Worker type (JavaScript)
+main = "src/index.js"
 account_id = "8bfd3f60fbdcc89183e9e312fb03e86e"
 workers_dev = true                # Deploy to workers.dev subdomain for testing
 
