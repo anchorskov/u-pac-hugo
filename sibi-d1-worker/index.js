@@ -1,0 +1,15 @@
+export default {
+    async fetch(request, env, ctx) {
+      // Read the environment variable from wrangler.toml
+      const envMessage = env.ENV_MESSAGE || "Default Message";
+      
+      // Optionally, log the message for debugging
+      console.log("Environment message:", envMessage);
+      
+      // Use the message in your response, or display it at the start
+      return new Response(`Worker says: ${envMessage}`, {
+        headers: { "Content-Type": "text/plain" }
+      });
+    }
+  };
+  
