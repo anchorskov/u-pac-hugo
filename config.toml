@@ -2,6 +2,7 @@ relativeURLs = true
 languageCode = "en-us"
 title = "U-PAC 1.01"
 theme = "PaperMod"   # Change to "ananke" if preferred
+disableKinds = ["RSS", "taxonomy", "term"]
 
 # Site-wide parameters
 [params]

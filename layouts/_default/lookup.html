@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Candidate Lookup</title>
+  <style>
+    /* Use flex layout to ensure main content occupies available space */
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    main {
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    /* Styling for the lookup form */
+    #lookupForm {
+      margin-top: 1em;
+      padding: 1em;
+      background: #fafafa;
+      border: 1px solid #aaa;
+    }
+    #lookupForm label {
+      font-size: 1em;
+      margin-right: 0.5em;
+    }
+    #lookupForm input[type="text"] {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 200px;
+      margin-right: 0.5em;
+      border: 1px solid #333;
+    }
+    #lookupForm button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      border: 1px solid #333;
+      background: #ddd;
+      cursor: pointer;
+    }
+    #lookupForm button:hover {
+      background: #ccc;
+    }
+    /* Container for results */
+    #result {
+      margin-top: 1em;
+      padding: 1em;
+      border: 1px solid #ddd;
+      background: #fff;
+    }
+    /* Hide any default footer */
+    footer {
+      display: none;
+    }
+  </style>
+  <script>
+    console.log("DEBUG: lookup.html is loaded");
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Candidate Lookup</h1>
+    <p>Enter your ZIP code below to search for your candidate's details.</p>
+    
+    <!-- Input form for ZIP code -->
+    <form id="lookupForm">
+      <label for="zipInput">Enter ZIP Code:</label>
+      <input type="text" id="zipInput" placeholder="Enter ZIP code" required>
+      <button id="goButton" type="submit">Go</button>
+    </form>
+    
+    <!-- Container to display lookup results -->
+    <div id="result"></div>
+    
+    <!-- Embed the JSON data into the page for client-side lookup -->
+    <script>
+      var upacData = {{ .Site.Data.upac_representatives | jsonify }};
+      var hudZipData = {{ .Site.Data.hudzip | jsonify }};
+      console.log("DEBUG: upacData:", upacData);
+      console.log("DEBUG: hudZipData:", hudZipData);
+    </script>
+    
+    <!-- Inline script to handle the lookup logic -->
+    <script>
+      const lookupForm = document.getElementById('lookupForm');
+      const zipInput = document.getElementById('zipInput');
+      const resultDiv = document.getElementById('result');
+
+      lookupForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent page reload
+        const zip = zipInput.value.trim();
+        if (!zip) {
+          resultDiv.innerHTML = `<p>Please enter a ZIP code.</p>`;
+          return;
+        }
+        
+        console.log("DEBUG: Submitted ZIP:", zip);
+        resultDiv.innerHTML = `<p>Looking up candidate for ZIP code: <strong>${zip}</strong></p>`;
+
+        // Look up record in hudZipData using the ZIP as key
+        const hudRecord = hudZipData[zip];
+        console.log("DEBUG: hudRecord for ZIP", zip, hudRecord);
+        if (!hudRecord) {
+          resultDiv.innerHTML += `<p>No data found for this ZIP code.</p>`;
+          return;
+        }
+        
+        // Debug: print the keys present in the hudRecord
+        console.log("DEBUG: Keys in hudRecord:", Object.keys(hudRecord));
+
+        // Build composite key using standardized field names: "state_abbreviation" and "district_id"
+        const stateAbbr = hudRecord.state_abbreviation; // Expected to be "WY" for 82604
+        const districtId = hudRecord.district_id;         // Expected to be "00" for at-large
+        const compositeKey = `${stateAbbr}-${districtId}`;
+        console.log("DEBUG: Composite Key:", compositeKey);
+
+        // Lookup candidate details in upacData using the composite key
+        const candidate = upacData[compositeKey];
+        console.log("DEBUG: Candidate lookup result:", candidate);
+        if (!candidate) {
+          resultDiv.innerHTML += `<p>Candidate data not available for composite key: ${compositeKey}</p>`;
+          return;
+        }
+        
+        // Display candidate details
+        resultDiv.innerHTML = `
+          <h2>Candidate Details:</h2>
+          <ul>
+            <li><strong>Name:</strong> ${candidate.name}</li>
+            <li><strong>Party:</strong> ${candidate.party}</li>
+            <li><strong>Website:</strong> <a href="${candidate.website}" target="_blank">${candidate.website}</a></li>
+          </ul>
+        `;
+      });
+    </script>
+  </main>
+</body>
+</html>

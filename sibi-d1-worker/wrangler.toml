@@ -1,0 +1,15 @@
+name = "sibi-d1-worker"           # Updated Worker name (optional)
+type = "javascript"               # Worker type (JavaScript)
+account_id = "8bfd3f60fbdcc89183e9e312fb03e86e"
+workers_dev = true                # Deploy to workers.dev subdomain for testing
+
+[d1_databases]
+sibidrift = { binding = "SIBIDRIFT_DB", database_id = "aeedccf4-14bb-48f8-91c0-a9023c9f153c" }
+
+kv_namespaces = [
+  { binding = "HUDZIP_INDEX", id = "bdd12d6410a0434292e902cbb6abab4b" },
+  { binding = "UPAC", id = "b5c040d80a794558a5f8ee3657c3fa1c" }
+]
+
+[build]
+upload_format = "modules"         # Use modules format (recommended)

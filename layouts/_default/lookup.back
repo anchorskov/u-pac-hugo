@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Candidate Lookup</title>
+  <style>
+    /* Use flex layout to ensure main content occupies available space */
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+      padding: 1em;
+    }
+    /* Hide the default footer if it exists */
+    footer {
+      display: none;
+    }
+    /* Styling for the lookup form */
+    #lookupForm {
+      margin-top: 1em;
+    }
+    #lookupForm label {
+      font-size: 1em;
+      margin-right: 0.5em;
+    }
+    #lookupForm input[type="text"] {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 200px;
+      margin-right: 0.5em;
+    }
+    #lookupForm button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+    }
+  </style>
+  <script>
+    console.log("DEBUG: lookup.html is loaded");
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Candidate Lookup</h1>
+    <p>Enter your ZIP code below to search for your candidate's details.</p>
+    
+    <!-- Directly include the input form -->
+    <form id="lookupForm">
+      <label for="zipInput">Enter ZIP Code:</label>
+      <input type="text" id="zipInput" placeholder="Enter ZIP code" required>
+      <button id="goButton" type="submit">Go</button>
+    </form>
+    
+    <!-- Container to display candidate details -->
+    <div id="result"></div>
+    
+    <!-- Embed the JSON data into the page for client-side lookup -->
+    <script>
+      var upacData = {{ .Site.Data.upac_representatives | jsonify }};
+      var hudZipData = {{ .Site.Data.hudzip | jsonify }};
+    </script>
+    
+    <!-- Inline script to handle the lookup logic -->
+    <script>
+      // Get references to the form and its elements
+      const lookupForm = document.getElementById('lookupForm');
+      const zipInput = document.getElementById('zipInput');
+      const resultDiv = document.getElementById('result');
+  
+      lookupForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the page from reloading
+        const zip = zipInput.value.trim();
+        if (zip) {
+          // Indicate that the lookup is in progress
+          resultDiv.innerHTML = `<p>Looking up candidate for ZIP code: <strong>${zip}</strong></p>`;
+          
+          // Find the matching entry in hudZipData
+          const hudEntry = hudZipData[zip];
+          if (!hudEntry) {
+            resultDiv.innerHTML = `<p>No data found for this ZIP code.</p>`;
+            return;
+          }
+          
+          // Build a composite key (adjust keys as per your JSON structure)
+          const stateAbbrev = hudEntry.state_abbrev; // e.g., "AL"
+          const district = (hudEntry.district === "00") ? "At-Large" : hudEntry.district;
+          const compositeKey = `${stateAbbrev}-${district}`;
+          
+          // Lookup candidate details in upacData using the composite key
+          const candidate = upacData[compositeKey];
+          if (!candidate) {
+            resultDiv.innerHTML = `<p>Candidate data not available for this area.</p>`;
+            return;
+          }
+          
+          // Display the candidate details
+          resultDiv.innerHTML = `
+            <h2>Candidate Details:</h2>
+            <p>Name: ${candidate.name}</p>
+            <p>Party: ${candidate.party}</p>
+            <p>Website: <a href="${candidate.website}" target="_blank">${candidate.website}</a></p>
+          `;
+        }
+      });
+    </script>
+  </main>
+</body>
+</html>

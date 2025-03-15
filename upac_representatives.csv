@@ -1,0 +1,442 @@
+id,name,state,district_id,party,phone,committee_assignments,website,created_at
+1,"Adams, Alma",North Carolina,12,D,(202) 225-1510,Agriculture|Education and Workforce,https://adams.house.gov/,2025-03-13 10:18:19.798471
+2,"Aderholt, Robert",Alabama,04,R,(202) 225-4876,Appropriations,https://aderholt.house.gov/,2025-03-13 10:18:19.800266
+3,"Aguilar, Pete",California,33,D,(202) 225-3201,Appropriations,https://aguilar.house.gov/,2025-03-13 10:18:19.801655
+4,"Alford, Mark",Missouri,04,R,(202) 225-2876,Appropriations|Small Business,https://alford.house.gov/,2025-03-13 10:18:19.802906
+5,"Allen, Rick",Georgia,12,R,(202) 225-2823,Education and Workforce|Energy and Commerce,https://allen.house.gov/,2025-03-13 10:18:19.804125
+6,"Amo, Gabe",Rhode Island,01,D,(202) 225-4911,"Budget|Foreign Affairs|Science, Space, and Technology",https://amo.house.gov/,2025-03-13 10:18:19.805138
+7,"Amodei, Mark",Nevada,02,R,(202) 225-6155,Appropriations|Natural Resources,https://amodei.house.gov/,2025-03-13 10:18:19.806197
+8,"Ansari, Yassamin",Arizona,03,D,(202) 225-4065,Oversight and Government Reform|Natural Resources,https://ansari.house.gov/,2025-03-13 10:18:19.80727
+9,"Arrington, Jodey",Texas,19,R,(202) 225-4005,Budget|Ways and Means,https://arrington.house.gov/,2025-03-13 10:18:19.808461
+10,"Auchincloss, Jake",Massachusetts,04,D,(202) 225-5931,Energy and Commerce,https://auchincloss.house.gov/,2025-03-13 10:18:19.809539
+11,"Babin, Brian",Texas,36,R,(202) 225-1555,"Transportation and Infrastructure|Science, Space, and Technology",https://babin.house.gov/,2025-03-13 10:18:19.810348
+12,"Bacon, Don",Nebraska,02,R,(202) 225-4155,Agriculture|Armed Services,https://bacon.house.gov/,2025-03-13 10:18:19.811501
+13,"Baird, James",Indiana,04,R,(202) 225-5037,"Agriculture|Foreign Affairs|Science, Space, and Technology",https://baird.house.gov/,2025-03-13 10:18:19.812795
+14,"Balderson, Troy",Ohio,12,R,(202) 225-5355,Energy and Commerce,https://balderson.house.gov/,2025-03-13 10:18:19.813623
+15,"Balint, Becca",Vermont,At Large,D,(202) 225-4115,Budget|Judiciary,https://balint.house.gov/,2025-03-13 10:18:19.814453
+16,"Barr, Andy",Kentucky,06,R,(202) 225-4706,Financial Services|Foreign Affairs|Select Comm on the Strategic Competition US and China,https://barr.house.gov/,2025-03-13 10:18:19.815313
+17,"Barragan, Nanette",California,44,D,(202) 225-8220,Energy and Commerce,https://barragan.house.gov/,2025-03-13 10:18:19.816623
+18,"Barrett, Tom",Michigan,07,R,(202) 225-4872,Transportation and Infrastructure|Veterans' Affairs,https://barrett.house.gov/,2025-03-13 10:18:19.81742
+19,"Baumgartner, Michael",Washington,05,R,(202) 225-2006,Education and Workforce|Foreign Affairs|Judiciary,https://baumgartner.house.gov/,2025-03-13 10:18:19.818361
+20,"Bean, Aaron",Florida,04,R,(202) 225-0123,Ways and Means,https://bean.house.gov/,2025-03-13 10:18:19.819409
+21,"Beatty, Joyce",Ohio,03,D,(202) 225-4324,Financial Services,https://beatty.house.gov/,2025-03-13 10:18:19.820302
+22,"Begich, Nicholas",Alaska,At Large,R,(202) 225-5765,"Natural Resources|Transportation and Infrastructure|Science, Space, and Technology",https://begich.house.gov/,2025-03-13 10:18:19.821149
+23,"Bell, Wesley",Missouri,01,D,(202) 225-2406,Armed Services|Oversight and Government Reform,https://bell.house.gov/,2025-03-13 10:18:19.82205
+24,"Bentz, Cliff",Oregon,02,R,(202) 225-6730,Energy and Commerce|Natural Resources,https://bentz.house.gov/,2025-03-13 10:18:19.82294
+25,"Bera, Ami",California,06,D,(202) 225-5716,Foreign Affairs|Intelligence,https://bera.house.gov/,2025-03-13 10:18:19.829737
+26,"Bergman, Jack",Michigan,01,R,(202) 225-4735,Armed Services|Budget|Veterans' Affairs,https://bergman.house.gov/,2025-03-13 10:18:19.830655
+27,"Beyer, Donald",Virginia,08,D,(202) 225-4376,Ways and Means,https://beyer.house.gov/,2025-03-13 10:18:19.831561
+28,"Bice, Stephanie",Oklahoma,05,R,(202) 225-2132,Appropriations|House Administration,https://bice.house.gov/,2025-03-13 10:18:19.832435
+29,"Biggs, Andy",Arizona,05,R,(202) 225-2635,Oversight and Government Reform|Judiciary,https://biggs.house.gov/,2025-03-13 10:18:19.833329
+30,"Biggs, Sheri",South Carolina,03,R,(202) 225-5301,"Foreign Affairs|Homeland Security|Science, Space, and Technology",https://sheribiggs.house.gov/,2025-03-13 10:18:19.834173
+31,"Bilirakis, Gus",Florida,12,R,(202) 225-5755,Energy and Commerce|Select Comm on the Strategic Competition US and China,https://bilirakis.house.gov/,2025-03-13 10:18:19.835049
+32,"Bishop, Sanford",Georgia,02,D,(202) 225-3631,Appropriations,https://bishop.house.gov/,2025-03-13 10:18:19.835905
+33,"Boebert, Lauren",Colorado,04,R,(202) 225-4761,Oversight and Government Reform|Natural Resources,https://boebert.house.gov/,2025-03-13 10:18:19.836742
+34,"Bonamici, Suzanne",Oregon,01,D,(202) 225-0855,"Education and Workforce|Science, Space, and Technology",https://bonamici.house.gov/,2025-03-13 10:18:19.837968
+35,"Bost, Mike",Illinois,12,R,(202) 225-5661,Agriculture|Transportation and Infrastructure|Veterans' Affairs,https://bost.house.gov/,2025-03-13 10:18:19.838812
+36,"Boyle, Brendan",Pennsylvania,02,D,(202) 225-6111,Budget|Ways and Means,https://boyle.house.gov/,2025-03-13 10:18:19.839625
+37,"Brecheen, Josh",Oklahoma,02,R,(202) 225-2701,Budget|Homeland Security,https://brecheen.house.gov/,2025-03-13 10:18:19.840643
+38,"Bresnahan, Robert",Pennsylvania,08,R,(202) 225-5546,Agriculture|Transportation and Infrastructure|Small Business,https://bresnahan.house.gov/,2025-03-13 10:18:19.841604
+39,"Brown, Shontel",Ohio,11,D,(202) 225-7032,Agriculture|Oversight and Government Reform|Select Comm on the Strategic Competition US and China,https://shontelbrown.house.gov/,2025-03-13 10:18:19.842562
+40,"Brownley, Julia",California,26,D,(202) 225-5811,Natural Resources|Transportation and Infrastructure|Veterans' Affairs,https://juliabrownley.house.gov/,2025-03-13 10:18:19.84359
+41,"Buchanan, Vern",Florida,16,R,(202) 225-5015,Joint Committee on Taxation|Ways and Means,https://buchanan.house.gov/,2025-03-13 10:18:19.844614
+42,"Budzinski, Nikki",Illinois,13,D,(202) 225-2371,Agriculture|Veterans' Affairs,https://budzinski.house.gov/,2025-03-13 10:18:19.845685
+43,"Burchett, Tim",Tennessee,02,R,(202) 225-5435,Foreign Affairs|Oversight and Government Reform|Transportation and Infrastructure,https://burchett.house.gov/,2025-03-13 10:18:19.84708
+44,"Burlison, Eric",Missouri,07,R,(202) 225-6536,Oversight and Government Reform|Transportation and Infrastructure,https://burlison.house.gov/,2025-03-13 10:18:19.847931
+45,"Bynum, Janelle",Oregon,05,D,(202) 225-5711,Financial Services,https://bynum.house.gov/,2025-03-13 10:18:19.848996
+46,"Calvert, Ken",California,41,R,(202) 225-1986,Appropriations,https://calvert.house.gov/,2025-03-13 10:18:19.849902
+47,"Cammack, Kat",Florida,03,R,(202) 225-5744,Agriculture|Energy and Commerce,https://cammack.house.gov/,2025-03-13 10:18:19.850791
+48,"Carbajal, Salud",California,24,D,(202) 225-3601,Armed Services|Transportation and Infrastructure,https://carbajal.house.gov/,2025-03-13 10:18:19.851623
+49,"Carey, Mike",Ohio,15,R,(202) 225-2015,Budget|House Administration|Ways and Means,https://carey.house.gov/,2025-03-13 10:18:19.852552
+50,"Carson, Andre",Indiana,07,D,(202) 225-4011,Intelligence|Transportation and Infrastructure|Select Comm on the Strategic Competition US and China,https://carson.house.gov/,2025-03-13 10:18:19.853865
+51,"Carter, Earl",Georgia,01,R,(202) 225-5831,Budget|Energy and Commerce,https://buddycarter.house.gov/,2025-03-13 10:18:19.854667
+52,"Carter, John",Texas,31,R,(202) 225-3864,Appropriations,https://carter.house.gov/,2025-03-13 10:18:19.855522
+53,"Carter, Troy",Louisiana,02,D,(202) 225-6636,Energy and Commerce,https://troycarter.house.gov/,2025-03-13 10:18:19.856362
+54,"Casar, Greg",Texas,35,D,(202) 225-5645,Education and Workforce|Oversight and Government Reform,https://casar.house.gov/,2025-03-13 10:18:19.85739
+55,"Case, Ed",Hawaii,01,D,(202) 225-2726,Appropriations,https://case.house.gov/,2025-03-13 10:18:19.858471
+56,"Casten, Sean",Illinois,06,D,(202) 225-4561,Financial Services,https://casten.house.gov/,2025-03-13 10:18:19.85956
+57,"Castor, Kathy",Florida,14,D,(202) 225-3376,Energy and Commerce|Select Comm on the Strategic Competition US and China,https://castor.house.gov/,2025-03-13 10:18:19.860572
+58,"Castro, Joaquin",Texas,20,D,(202) 225-3236,Foreign Affairs|Intelligence,https://castro.house.gov/,2025-03-13 10:18:19.861545
+59,"Cherfilus-McCormick, Sheila",Florida,20,D,(202) 225-1313,Foreign Affairs|Veterans' Affairs,https://cherfilus-mccormick.house.gov/,2025-03-13 10:18:19.86239
+60,"Chu, Judy",California,28,D,(202) 225-5464,Budget|Ways and Means,https://chu.house.gov/,2025-03-13 10:18:19.863387
+61,"Ciscomani, Juan",Arizona,06,R,(202) 225-2542,Appropriations|Veterans' Affairs,https://ciscomani.house.gov/,2025-03-13 10:18:19.86445
+62,"Cisneros, Gilbert",California,31,D,(202) 225-5256,Armed Services|Small Business,https://cisneros.house.gov/,2025-03-13 10:18:19.865422
+63,"Clark, Katherine",Massachusetts,05,D,(202) 225-2836,"",https://katherineclark.house.gov/index.cfm/home,2025-03-13 10:18:19.866241
+64,"Clarke, Yvette",New York,09,D,(202) 225-6231,Energy and Commerce,https://clarke.house.gov/,2025-03-13 10:18:19.867088
+65,"Cleaver, Emanuel",Missouri,05,D,(202) 225-4535,Financial Services,https://cleaver.house.gov/,2025-03-13 10:18:19.867919
+66,"Cline, Ben",Virginia,06,R,(202) 225-5431,Appropriations|Budget|Intelligence|Judiciary,https://cline.house.gov/,2025-03-13 10:18:19.868736
+67,"Cloud, Michael",Texas,27,R,(202) 225-7742,Appropriations|Oversight and Government Reform,https://cloud.house.gov/,2025-03-13 10:18:19.869769
+68,"Clyburn, James",South Carolina,06,D,(202) 225-3315,Appropriations,https://clyburn.house.gov/,2025-03-13 10:18:19.870633
+69,"Clyde, Andrew",Georgia,09,R,(202) 225-9893,Appropriations|Budget,https://clyde.house.gov/,2025-03-13 10:18:19.871476
+70,"Cohen, Steve",Tennessee,09,D,(202) 225-3265,Judiciary|Transportation and Infrastructure,https://cohen.house.gov/,2025-03-13 10:18:19.87233
+71,"Cole, Tom",Oklahoma,04,R,(202) 225-6165,Appropriations,https://cole.house.gov/,2025-03-13 10:18:19.873123
+72,"Collins, Mike",Georgia,10,R,(202) 225-4101,"Natural Resources|Transportation and Infrastructure|Science, Space, and Technology",https://collins.house.gov/,2025-03-13 10:18:19.874017
+73,"Comer, James",Kentucky,01,R,(202) 225-3115,Education and Workforce|Oversight and Government Reform,https://comer.house.gov/,2025-03-13 10:18:19.87491
+74,"Conaway, Herbert",New Jersey,03,D,(202) 225-4765,Small Business|Veterans' Affairs,https://conaway.house.gov/,2025-03-13 10:18:19.875786
+75,"Connolly, Gerald",Virginia,11,D,(202) 225-1492,Foreign Affairs|Oversight and Government Reform,https://connolly.house.gov/,2025-03-13 10:18:19.876634
+76,"Correa, J.",California,46,D,(202) 225-2965,Homeland Security|Judiciary,https://correa.house.gov/,2025-03-13 10:18:19.877417
+77,"Costa, Jim",California,21,D,(202) 225-3341,Agriculture|Foreign Affairs,https://costa.house.gov/,2025-03-13 10:18:19.878315
+78,"Courtney, Joe",Connecticut,02,D,(202) 225-2076,Armed Services|Education and Workforce,https://courtney.house.gov/,2025-03-13 10:18:19.879157
+79,"Craig, Angie",Minnesota,02,D,(202) 225-2271,Agriculture,https://craig.house.gov/,2025-03-13 10:18:19.880035
+80,"Crane, Elijah",Arizona,02,R,(202) 225-3361,Oversight and Government Reform|Homeland Security,https://crane.house.gov/,2025-03-13 10:18:19.88089
+81,"Crank, Jeff",Colorado,05,R,(202) 225-4422,Armed Services|Natural Resources,https://crank.house.gov/,2025-03-13 10:18:19.881687
+82,"Crawford, Eric",Arkansas,01,R,(202) 225-4076,Agriculture|Intelligence|Transportation and Infrastructure,https://crawford.house.gov/,2025-03-13 10:18:19.88251
+83,"Crenshaw, Dan",Texas,02,R,(202) 225-6565,Energy and Commerce|Intelligence,https://crenshaw.house.gov/,2025-03-13 10:18:19.88348
+84,"Crockett, Jasmine",Texas,30,D,(202) 225-8885,Oversight and Government Reform|Judiciary,https://crockett.house.gov/,2025-03-13 10:18:19.884279
+85,"Crow, Jason",Colorado,06,D,(202) 225-7882,Armed Services|Intelligence,https://crow.house.gov/,2025-03-13 10:18:19.885075
+86,"Cuellar, Henry",Texas,28,D,(202) 225-1640,Appropriations,https://cuellar.house.gov/,2025-03-13 10:18:19.885873
+87,"Davids, Sharice",Kansas,03,D,(202) 225-2865,Agriculture|Transportation and Infrastructure,https://davids.house.gov/,2025-03-13 10:18:19.886713
+88,"Davidson, Warren",Ohio,08,R,(202) 225-6205,Financial Services|Foreign Affairs,https://davidson.house.gov/,2025-03-13 10:18:19.88753
+89,"Davis, Danny",Illinois,07,D,(202) 225-5006,Ways and Means,https://davis.house.gov/,2025-03-13 10:18:19.88843
+90,"Davis, Donald",North Carolina,01,D,(202) 225-3101,Agriculture|Armed Services,https://dondavis.house.gov/,2025-03-13 10:18:19.88931
+91,"Dean, Madeleine",Pennsylvania,04,D,(202) 225-4731,Appropriations,https://dean.house.gov/,2025-03-13 10:18:19.890102
+92,"DeGette, Diana",Colorado,01,D,(202) 225-4431,Energy and Commerce,https://degette.house.gov/,2025-03-13 10:18:19.891126
+93,"De La Cruz, Monica",Texas,15,R,(202) 225-9901,Agriculture|Financial Services,https://delacruz.house.gov/,2025-03-13 10:18:19.891968
+94,"DeLauro, Rosa",Connecticut,03,D,(202) 225-3661,Appropriations,https://delauro.house.gov/,2025-03-13 10:18:19.892802
+95,"DelBene, Suzan",Washington,01,D,(202) 225-6311,Ways and Means,https://delbene.house.gov/,2025-03-13 10:18:19.893627
+96,"Deluzio, Christopher",Pennsylvania,17,D,(202) 225-2301,Armed Services|Transportation and Infrastructure,https://deluzio.house.gov/,2025-03-13 10:18:19.894557
+97,"DeSaulnier, Mark",California,10,D,(202) 225-2095,Education and Workforce|Transportation and Infrastructure|Ethics,https://desaulnier.house.gov/,2025-03-13 10:18:19.895437
+98,"DesJarlais, Scott",Tennessee,04,R,(202) 225-6831,Agriculture|Armed Services,https://desjarlais.house.gov/,2025-03-13 10:18:19.896648
+99,"Dexter, Maxine",Oregon,03,D,(202) 225-4811,Natural Resources|Veterans' Affairs,https://dexter.house.gov/,2025-03-13 10:18:19.897689
+100,"Diaz-Balart, Mario",Florida,26,R,(202) 225-4211,Appropriations,https://mariodiazbalart.house.gov/,2025-03-13 10:18:19.898554
+101,"Dingell, Debbie",Michigan,06,D,(202) 225-4071,Energy and Commerce|Natural Resources,https://debbiedingell.house.gov/,2025-03-13 10:18:19.899517
+102,"Doggett, Lloyd",Texas,37,D,(202) 225-4865,Budget|Joint Committee on Taxation|Ways and Means,https://doggett.house.gov/,2025-03-13 10:18:19.900361
+103,"Donalds, Byron",Florida,19,R,(202) 225-2536,Financial Services|Oversight and Government Reform,https://donalds.house.gov/,2025-03-13 10:18:19.901282
+104,"Downing, Troy",Montana,02,R,(202) 225-3211,Financial Services|Small Business,https://downing.house.gov/,2025-03-13 10:18:19.902072
+105,"Dunn, Neal",Florida,02,R,(202) 225-5235,Energy and Commerce|Select Comm on the Strategic Competition US and China,https://dunn.house.gov/,2025-03-13 10:18:19.902879
+106,"Edwards, Chuck",North Carolina,11,R,(202) 225-6401,Appropriations|Budget,https://edwards.house.gov/,2025-03-13 10:18:19.903645
+107,"Elfreth, Sarah",Maryland,03,D,(202) 225-4016,Armed Services|Natural Resources,https://elfreth.house.gov/,2025-03-13 10:18:19.904453
+108,"Ellzey, Jake",Texas,06,R,(202) 225-2002,Appropriations|Small Business,https://ellzey.house.gov/,2025-03-13 10:18:19.90526
+109,"Emmer, Tom",Minnesota,06,R,(202) 225-2331,Financial Services,https://emmer.house.gov/,2025-03-13 10:18:19.906282
+110,"Escobar, Veronica",Texas,16,D,(202) 225-4831,Appropriations|Budget,https://escobar.house.gov/,2025-03-13 10:18:19.907139
+111,"Espaillat, Adriano",New York,13,D,(202) 225-4365,Appropriations,https://espaillat.house.gov/,2025-03-13 10:18:19.907983
+112,"Estes, Ron",Kansas,04,R,(202) 225-6216,Budget|Ways and Means,https://estes.house.gov/,2025-03-13 10:18:19.90883
+113,"Evans, Dwight",Pennsylvania,03,D,(202) 225-4001,Ways and Means,https://evans.house.gov/,2025-03-13 10:18:19.909654
+114,"Evans, Gabe",Colorado,08,R,(202) 225-5625,Homeland Security|Energy and Commerce,https://gabeevans.house.gov/,2025-03-13 10:18:19.91047
+115,"Ezell, Mike",Mississippi,04,R,(202) 225-5772,Natural Resources|Transportation and Infrastructure,https://ezell.house.gov/,2025-03-13 10:18:19.911275
+116,"Fallon, Pat",Texas,04,R,(202) 225-6673,Armed Services|Oversight and Government Reform|Intelligence,https://fallon.house.gov/,2025-03-13 10:18:19.912114
+117,"Fedorchak, Julie",North Dakota,At Large,R,(202) 225-2611,Energy and Commerce,https://fedorchak.house.gov/,2025-03-13 10:18:19.913151
+118,"Feenstra, Randy",Iowa,04,R,(202) 225-4426,Agriculture|Ways and Means,https://feenstra.house.gov/,2025-03-13 10:18:19.914055
+119,"Fields, Cleo",Louisiana,06,D,(202) 225-3901,Financial Services,https://fields.house.gov/,2025-03-13 10:18:19.914921
+120,"Figures, Shomari",Alabama,02,D,(202) 225-4931,Agriculture|Transportation and Infrastructure,https://figures.house.gov/,2025-03-13 10:18:19.915747
+121,"Finstad, Brad",Minnesota,01,R,(202) 225-2472,Agriculture|Armed Services|Small Business,https://finstad.house.gov/,2025-03-13 10:18:19.916575
+122,"Fischbach, Michelle",Minnesota,07,R,(202) 225-2165,Rules|Ways and Means,https://fischbach.house.gov/,2025-03-13 10:18:19.917363
+123,"Fitzgerald, Scott",Wisconsin,05,R,(202) 225-5101,Financial Services|Judiciary,https://fitzgerald.house.gov/,2025-03-13 10:18:19.918255
+124,"Fitzpatrick, Brian",Pennsylvania,01,R,(202) 225-4276,Intelligence|Ways and Means,https://fitzpatrick.house.gov/,2025-03-13 10:18:19.919098
+125,"Fleischmann, Charles",Tennessee,03,R,(202) 225-3271,"Appropriations|Science, Space, and Technology",https://fleischmann.house.gov/,2025-03-13 10:18:19.919894
+126,"Fletcher, Lizzie",Texas,07,D,(202) 225-2571,Energy and Commerce,https://fletcher.house.gov/,2025-03-13 10:18:19.920688
+127,"Flood, Mike",Nebraska,01,R,(202) 225-4806,Financial Services,https://flood.house.gov/,2025-03-13 10:18:19.921526
+128,"Fong, Vince",California,20,R,(202) 225-2915,"Transportation and Infrastructure|Science, Space, and Technology",https://fong.house.gov/,2025-03-13 10:18:19.922616
+129,"Foster, Bill",Illinois,11,D,(202) 225-3515,Financial Services,https://foster.house.gov/,2025-03-13 10:18:19.923463
+130,"Foushee, Valerie",North Carolina,04,D,(202) 225-1784,"Transportation and Infrastructure|Science, Space, and Technology",https://foushee.house.gov/,2025-03-13 10:18:19.924274
+131,"Foxx, Virginia",North Carolina,05,R,(202) 225-2071,Education and Workforce|Oversight and Government Reform|Rules,https://foxx.house.gov/,2025-03-13 10:18:19.925098
+132,"Frankel, Lois",Florida,22,D,(202) 225-9890,Appropriations,https://frankel.house.gov/,2025-03-13 10:18:19.925956
+133,"Franklin, Scott",Florida,18,R,(202) 225-1252,"Appropriations|Science, Space, and Technology",https://franklin.house.gov/,2025-03-13 10:18:19.926744
+134,"Friedman, Laura",California,30,D,(202) 225-4176,"Transportation and Infrastructure|Science, Space, and Technology",https://friedman.house.gov/,2025-03-13 10:18:19.927823
+135,"Frost, Maxwell",Florida,10,D,(202) 225-2176,"Oversight and Government Reform|Science, Space, and Technology",https://frost.house.gov/,2025-03-13 10:18:19.928645
+136,"Fry, Russell",South Carolina,07,R,(202) 225-9895,Energy and Commerce|Judiciary,https://fry.house.gov/,2025-03-13 10:18:19.929519
+137,"Fulcher, Russ",Idaho,01,R,(202) 225-6611,Energy and Commerce|Natural Resources,https://fulcher.house.gov/,2025-03-13 10:18:19.930538
+138,"Gaetz, Matt- Vacancy",Florida,01,R,(202) 225-4136,"",https://clerk.house.gov/members/FL01/vacancy,2025-03-13 10:18:19.931609
+139,"Garamendi, John",California,08,D,(202) 225-1880,Armed Services|Transportation and Infrastructure,https://garamendi.house.gov/,2025-03-13 10:18:19.93242
+140,"Garbarino, Andrew",New York,02,R,(202) 225-7896,Financial Services|Homeland Security,https://garbarino.house.gov/,2025-03-13 10:18:19.933214
+141,"Garcia, Jesus",Illinois,04,D,(202) 225-8203,Judiciary|Transportation and Infrastructure,https://chuygarcia.house.gov/,2025-03-13 10:18:19.934061
+142,"Garcia, Robert",California,42,D,(202) 225-7924,Oversight and Government Reform|Transportation and Infrastructure,https://robertgarcia.house.gov/,2025-03-13 10:18:19.934895
+143,"Garcia, Sylvia",Texas,29,D,(202) 225-1688,Financial Services,https://sylviagarcia.house.gov/,2025-03-13 10:18:19.935684
+144,"Gill, Brandon",Texas,26,R,(202) 225-7772,Budget|Oversight and Government Reform|Judiciary,https://gill.house.gov/,2025-03-13 10:18:19.936514
+145,"Gillen, Laura",New York,04,D,(202) 225-5516,"Transportation and Infrastructure|Science, Space, and Technology",https://gillen.house.gov/,2025-03-13 10:18:19.937587
+146,"Gimenez, Carlos",Florida,28,R,(202) 225-2778,Armed Services|Homeland Security|Select Comm on the Strategic Competition US and China,https://gimenez.house.gov/,2025-03-13 10:18:19.938484
+147,"Golden, Jared",Maine,02,D,(202) 225-6306,Armed Services|Natural Resources,https://golden.house.gov/,2025-03-13 10:18:19.939387
+148,"Goldman, Craig",Texas,12,R,(202) 225-5071,Energy and Commerce,https://craiggoldman.house.gov/,2025-03-13 10:18:19.940262
+149,"Goldman, Daniel",New York,10,D,(202) 225-7944,Homeland Security|Judiciary,https://goldman.house.gov/,2025-03-13 10:18:19.941096
+150,"Gomez, Jimmy",California,34,D,(202) 225-6235,Intelligence|Ways and Means,https://gomez.house.gov/,2025-03-13 10:18:19.942066
+151,"Gonzales, Tony",Texas,23,R,(202) 225-4511,Appropriations|Homeland Security,https://gonzales.house.gov/,2025-03-13 10:18:19.942869
+152,"Gonzalez, Vicente",Texas,34,D,(202) 225-2531,Financial Services,https://gonzalez.house.gov/,2025-03-13 10:18:19.943649
+153,"Gooden, Lance",Texas,05,R,(202) 225-3484,Armed Services|Judiciary,https://gooden.house.gov/,2025-03-13 10:18:19.944463
+154,"Goodlander, Maggie",New Hampshire,02,D,(202) 225-5206,Armed Services|Small Business,https://goodlander.house.gov/,2025-03-13 10:18:19.945277
+155,"Gosar, Paul",Arizona,09,R,(202) 225-2315,Oversight and Government Reform|Natural Resources,https://gosar.house.gov/,2025-03-13 10:18:19.946123
+156,"Gottheimer, Josh",New Jersey,05,D,(202) 225-4465,Financial Services|Intelligence,https://gottheimer.house.gov/,2025-03-13 10:18:19.947117
+157,"Graves, Sam",Missouri,06,R,(202) 225-7041,Armed Services|Transportation and Infrastructure,https://graves.house.gov/,2025-03-13 10:18:19.947911
+158,"Gray, Adam",California,13,D,(202) 225-1947,Agriculture|Natural Resources,https://gray.house.gov/,2025-03-13 10:18:19.94883
+159,"Green, Al",Texas,09,D,(202) 225-7508,Financial Services,https://algreen.house.gov/,2025-03-13 10:18:19.949643
+160,"Green, Mark",Tennessee,07,R,(202) 225-2811,Foreign Affairs|Homeland Security,https://markgreen.house.gov/,2025-03-13 10:18:19.950484
+371,"Simpson, Michael",Idaho,02,R,(202) 225-5531,Appropriations,https://simpson.house.gov/,2025-03-13 10:18:20.133484
+161,"Greene, Marjorie",Georgia,14,R,(202) 225-5211,Oversight and Government Reform|Homeland Security,https://greene.house.gov/,2025-03-13 10:18:19.951281
+162,"Griffith, H.",Virginia,09,R,(202) 225-3861,House Administration|Energy and Commerce|Rules,https://morgangriffith.house.gov/,2025-03-13 10:18:19.952135
+163,"Grijalva, Raul",Arizona,07,D,(202) 225-2435,Education and Workforce|Natural Resources,https://grijalva.house.gov/,2025-03-13 10:18:19.9531
+164,"Grothman, Glenn",Wisconsin,06,R,(202) 225-2476,Budget|Education and Workforce|Oversight and Government Reform|Judiciary,https://grothman.house.gov/,2025-03-13 10:18:19.954016
+165,"Guest, Michael",Mississippi,03,R,(202) 225-5031,Appropriations|Homeland Security|Ethics,https://guest.house.gov/,2025-03-13 10:18:19.954852
+166,"Guthrie, Brett",Kentucky,02,R,(202) 225-3501,Energy and Commerce,https://guthrie.house.gov/,2025-03-13 10:18:19.955669
+167,"Hageman, Harriet",Wyoming,At Large,R,(202) 225-2311,Natural Resources|Judiciary,https://hageman.house.gov/,2025-03-13 10:18:19.956636
+168,"Hamadeh, Abraham",Arizona,08,R,(202) 225-4576,Armed Services|Veterans' Affairs,https://hamadeh.house.gov/,2025-03-13 10:18:19.95749
+169,"Harder, Josh",California,09,D,(202) 225-4540,Appropriations,https://harder.house.gov/,2025-03-13 10:18:19.95836
+170,"Haridopolos, Mike",Florida,08,R,(202) 225-3671,"Financial Services|Science, Space, and Technology",https://haridopolos.house.gov/,2025-03-13 10:18:19.9592
+171,"Harrigan, Pat",North Carolina,10,R,(202) 225-2576,"Armed Services|Science, Space, and Technology",https://harrigan.house.gov/,2025-03-13 10:18:19.959971
+172,"Harris, Andy",Maryland,01,R,(202) 225-5311,Appropriations,https://harris.house.gov/,2025-03-13 10:18:19.960809
+173,"Harris, Mark",North Carolina,08,R,(202) 225-1976,Agriculture|Education and Workforce|Judiciary,https://markharris.house.gov/,2025-03-13 10:18:19.961591
+174,"Harshbarger, Diana",Tennessee,01,R,(202) 225-6356,Energy and Commerce,https://harshbarger.house.gov/,2025-03-13 10:18:19.962376
+175,"Hayes, Jahana",Connecticut,05,D,(202) 225-4476,Agriculture|Education and Workforce,https://hayes.house.gov/,2025-03-13 10:18:19.963446
+176,"Hern, Kevin",Oklahoma,01,R,(202) 225-2211,Ways and Means,https://hern.house.gov/,2025-03-13 10:18:19.964446
+177,"Hernandez, Pablo",Puerto Rico Resident Commissioner,At Large,D,(202) 225-2615,Homeland Security|Natural Resources,https://hernandez.house.gov/,2025-03-13 10:18:19.965264
+178,"Higgins, Clay",Louisiana,03,R,(202) 225-2031,Armed Services|Oversight and Government Reform|Homeland Security,https://clayhiggins.house.gov/,2025-03-13 10:18:19.966105
+179,"Hill, J.",Arkansas,02,R,(202) 225-2506,Financial Services|Intelligence,https://hill.house.gov/,2025-03-13 10:18:19.966943
+180,"Himes, James",Connecticut,04,D,(202) 225-5541,Financial Services|Intelligence,https://himes.house.gov/,2025-03-13 10:18:19.967793
+181,"Hinson, Ashley",Iowa,02,R,(202) 225-2911,Appropriations|Select Comm on the Strategic Competition US and China,https://hinson.house.gov/,2025-03-13 10:18:19.968896
+182,"Horsford, Steven",Nevada,04,D,(202) 225-9894,Ways and Means,https://horsford.house.gov/,2025-03-13 10:18:19.969717
+183,"Houchin, Erin",Indiana,09,R,(202) 225-5315,Budget|Education and Workforce|Energy and Commerce|Rules,https://houchin.house.gov/,2025-03-13 10:18:19.970582
+184,"Houlahan, Chrissy",Pennsylvania,06,D,(202) 225-4315,Armed Services|Intelligence,https://houlahan.house.gov/,2025-03-13 10:18:19.971532
+185,"Hoyer, Steny",Maryland,05,D,(202) 225-4131,Appropriations,https://hoyer.house.gov/,2025-03-13 10:18:19.972312
+186,"Hoyle, Val",Oregon,04,D,(202) 225-6416,Natural Resources|Transportation and Infrastructure,https://hoyle.house.gov/,2025-03-13 10:18:19.973194
+187,"Hudson, Richard",North Carolina,09,R,(202) 225-3715,Energy and Commerce,https://hudson.house.gov/,2025-03-13 10:18:19.97407
+188,"Huffman, Jared",California,02,D,(202) 225-5161,Natural Resources|Transportation and Infrastructure,https://huffman.house.gov/,2025-03-13 10:18:19.974899
+189,"Huizenga, Bill",Michigan,04,R,(202) 225-4401,Financial Services|Foreign Affairs,https://huizenga.house.gov/,2025-03-13 10:18:19.975738
+190,"Hunt, Wesley",Texas,38,R,(202) 225-5646,Natural Resources|Judiciary,https://hunt.house.gov/,2025-03-13 10:18:19.976542
+191,"Hurd, Jeff",Colorado,03,R,(202) 225-4676,"Natural Resources|Transportation and Infrastructure|Science, Space, and Technology",https://hurd.house.gov/,2025-03-13 10:18:19.977344
+192,"Issa, Darrell",California,48,R,(202) 225-5672,"Foreign Affairs|Judiciary|Science, Space, and Technology",https://issa.house.gov/,2025-03-13 10:18:19.978152
+193,"Ivey, Glenn",Maryland,04,D,(202) 225-8699,Appropriations,https://ivey.house.gov/,2025-03-13 10:18:19.978987
+194,"Jack, Brian",Georgia,03,R,(202) 225-5901,Oversight and Government Reform|Rules|Small Business,https://jack.house.gov/,2025-03-13 10:18:19.979911
+195,"Jackson, Jonathan",Illinois,01,D,(202) 225-4372,Agriculture|Foreign Affairs,https://jonathanjackson.house.gov/,2025-03-13 10:18:19.980762
+196,"Jackson, Ronny",Texas,13,R,(202) 225-3706,Agriculture|Armed Services|Foreign Affairs|Intelligence,https://jackson.house.gov/,2025-03-13 10:18:19.981551
+197,"Jacobs, Sara",California,51,D,(202) 225-2040,Armed Services|Foreign Affairs,https://sarajacobs.house.gov/,2025-03-13 10:18:19.982371
+198,"James, John",Michigan,10,R,(202) 225-4961,Energy and Commerce,https://james.house.gov/,2025-03-13 10:18:19.983202
+199,"Jayapal, Pramila",Washington,07,D,(202) 225-3106,Budget|Foreign Affairs|Judiciary,https://jayapal.house.gov/,2025-03-13 10:18:19.984054
+200,"Jeffries, Hakeem",New York,08,D,(202) 225-5936,"",https://jeffries.house.gov/,2025-03-13 10:18:19.984836
+201,"Johnson, Dusty",South Dakota,At Large,R,(202) 225-2801,Agriculture|Transportation and Infrastructure|Select Comm on the Strategic Competition US and China,https://dustyjohnson.house.gov/,2025-03-13 10:18:19.985923
+202,"Johnson, Henry",Georgia,04,D,(202) 225-1605,Judiciary|Transportation and Infrastructure,https://hankjohnson.house.gov/,2025-03-13 10:18:19.986763
+203,"Johnson, Julie",Texas,32,D,(202) 225-2231,Foreign Affairs|House Administration|Homeland Security,https://juliejohnson.house.gov/,2025-03-13 10:18:19.987664
+204,"Johnson, Mike",Louisiana,04,R,(202) 225-2777,"",https://mikejohnson.house.gov/,2025-03-13 10:18:19.988492
+205,"Jordan, Jim",Ohio,04,R,(202) 225-2676,Oversight and Government Reform|Judiciary,https://jordan.house.gov/,2025-03-13 10:18:19.989325
+206,"Joyce, David",Ohio,14,R,(202) 225-5731,Appropriations,https://joyce.house.gov/,2025-03-13 10:18:19.990106
+207,"Joyce, John",Pennsylvania,13,R,(202) 225-2431,Energy and Commerce,https://johnjoyce.house.gov/,2025-03-13 10:18:19.990935
+208,"Kamlager-Dove, Sydney",California,37,D,(202) 225-7084,Foreign Affairs|Judiciary,https://kamlager-dove.house.gov/,2025-03-13 10:18:19.991715
+209,"Kaptur, Marcy",Ohio,09,D,(202) 225-4146,Appropriations|Budget,https://kaptur.house.gov/,2025-03-13 10:18:19.992648
+210,"Kean, Thomas",New Jersey,07,R,(202) 225-5361,Foreign Affairs|Energy and Commerce,https://kean.house.gov/,2025-03-13 10:18:19.993441
+211,"Keating, William",Massachusetts,09,D,(202) 225-3111,Armed Services|Foreign Affairs,https://keating.house.gov/,2025-03-13 10:18:19.994225
+212,"Kelly, Mike",Pennsylvania,16,R,(202) 225-5406,Ways and Means,https://kelly.house.gov/,2025-03-13 10:18:19.995026
+213,"Kelly, Robin",Illinois,02,D,(202) 225-0773,Energy and Commerce,https://robinkelly.house.gov/,2025-03-13 10:18:19.99583
+214,"Kelly, Trent",Mississippi,01,R,(202) 225-4306,Agriculture|Armed Services|Intelligence,https://trentkelly.house.gov/,2025-03-13 10:18:19.996626
+215,"Kennedy, Mike",Utah,03,R,(202) 225-7751,"Natural Resources|Transportation and Infrastructure|Science, Space, and Technology",https://mikekennedy.house.gov/,2025-03-13 10:18:19.997655
+216,"Kennedy, Timothy",New York,26,D,(202) 225-3306,Homeland Security|Veterans' Affairs,https://kennedy.house.gov/,2025-03-13 10:18:19.998524
+217,"Khanna, Ro",California,17,D,(202) 225-2631,Armed Services|Oversight and Government Reform|Select Comm on the Strategic Competition US and China,https://khanna.house.gov/,2025-03-13 10:18:19.999556
+218,"Kiggans, Jennifer",Virginia,02,R,(202) 225-4215,Armed Services|Natural Resources|Veterans' Affairs,https://kiggans.house.gov/,2025-03-13 10:18:20.000552
+219,"Kiley, Kevin",California,03,R,(202) 225-2523,Education and Workforce|Judiciary|Transportation and Infrastructure,https://kiley.house.gov/,2025-03-13 10:18:20.001715
+220,"Kim, Young",California,40,R,(202) 225-4111,Financial Services|Foreign Affairs|Select Comm on the Strategic Competition US and China,https://youngkim.house.gov/,2025-03-13 10:18:20.002501
+221,"King-Hinds, Kimberlyn",Northern Mariana Islands Delegate,At Large,R,(202) 225-2646,Transportation and Infrastructure|Small Business|Veterans' Affairs,https://king-hinds.house.gov/,2025-03-13 10:18:20.003282
+222,"Knott, Brad",North Carolina,13,R,(202) 225-4531,Homeland Security|Judiciary|Transportation and Infrastructure,https://knott.house.gov/,2025-03-13 10:18:20.004105
+223,"Krishnamoorthi, Raja",Illinois,08,D,(202) 225-3711,Oversight and Government Reform|Intelligence|Select Comm on the Strategic Competition US and China,https://krishnamoorthi.house.gov/,2025-03-13 10:18:20.004903
+224,"Kustoff, David",Tennessee,08,R,(202) 225-4714,Ways and Means,https://kustoff.house.gov/,2025-03-13 10:18:20.005738
+225,"LaHood, Darin",Illinois,16,R,(202) 225-6201,Intelligence|Ways and Means|Select Comm on the Strategic Competition US and China,https://lahood.house.gov/,2025-03-13 10:18:20.006539
+226,"LaLota, Nick",New York,01,R,(202) 225-3826,Appropriations|Small Business,https://lalota.house.gov/,2025-03-13 10:18:20.007391
+227,"LaMalfa, Doug",California,01,R,(202) 225-3076,Agriculture|Natural Resources|Transportation and Infrastructure,https://lamalfa.house.gov/,2025-03-13 10:18:20.008278
+228,"Landsman, Greg",Ohio,01,D,(202) 225-2216,Energy and Commerce,https://landsman.house.gov/,2025-03-13 10:18:20.009113
+229,"Langworthy, Nicholas",New York,23,R,(202) 225-3161,Oversight and Government Reform|Energy and Commerce|Rules,https://langworthy.house.gov/,2025-03-13 10:18:20.009926
+230,"Larsen, Rick",Washington,02,D,(202) 225-2605,Transportation and Infrastructure,https://larsen.house.gov/,2025-03-13 10:18:20.010755
+231,"Larson, John",Connecticut,01,D,(202) 225-2265,Ways and Means,https://larson.house.gov/,2025-03-13 10:18:20.011531
+232,"Latimer, George",New York,16,D,(202) 225-2464,Foreign Affairs|Small Business,https://latimer.house.gov/,2025-03-13 10:18:20.012892
+233,"Latta, Robert",Ohio,05,R,(202) 225-6405,Energy and Commerce,https://latta.house.gov/,2025-03-13 10:18:20.013706
+234,"Lawler, Michael",New York,17,R,(202) 225-6506,Financial Services|Foreign Affairs,https://lawler.house.gov/,2025-03-13 10:18:20.01465
+235,"Lee, Laurel",Florida,15,R,(202) 225-5626,House Administration|Energy and Commerce|Judiciary,https://laurellee.house.gov/,2025-03-13 10:18:20.015558
+236,"Lee, Summer",Pennsylvania,12,D,(202) 225-2135,Education and Workforce|Oversight and Government Reform,https://summerlee.house.gov/,2025-03-13 10:18:20.016487
+237,"Lee, Susie",Nevada,03,D,(202) 225-3252,Appropriations,https://susielee.house.gov/,2025-03-13 10:18:20.017289
+238,"Leger Fernandez, Teresa",New Mexico,03,D,(202) 225-6190,Natural Resources|Rules,https://fernandez.house.gov/,2025-03-13 10:18:20.018189
+239,"Letlow, Julia",Louisiana,05,R,(202) 225-8490,Appropriations|Education and Workforce,https://letlow.house.gov/,2025-03-13 10:18:20.019015
+240,"Levin, Mike",California,49,D,(202) 225-3906,Appropriations,https://levin.house.gov/,2025-03-13 10:18:20.019873
+241,"Liccardo, Sam",California,16,D,(202) 225-8104,Financial Services,https://liccardo.house.gov/,2025-03-13 10:18:20.020662
+242,"Lieu, Ted",California,36,D,(202) 225-3976,Foreign Affairs|Judiciary,https://lieu.house.gov/,2025-03-13 10:18:20.021493
+243,"Lofgren, Zoe",California,18,D,(202) 225-3072,"Judiciary|Science, Space, and Technology",https://lofgren.house.gov/,2025-03-13 10:18:20.022315
+244,"Loudermilk, Barry",Georgia,11,R,(202) 225-2931,Financial Services|House Administration,https://loudermilk.house.gov/,2025-03-13 10:18:20.023111
+245,"Lucas, Frank",Oklahoma,03,R,(202) 225-5565,Agriculture|Financial Services,https://lucas.house.gov/,2025-03-13 10:18:20.023948
+246,"Luna, Anna Paulina",Florida,13,R,(202) 225-5961,Foreign Affairs|Oversight and Government Reform,https://luna.house.gov/,2025-03-13 10:18:20.024775
+247,"Luttrell, Morgan",Texas,08,R,(202) 225-4901,Armed Services|Homeland Security|Veterans' Affairs,https://luttrell.house.gov/,2025-03-13 10:18:20.025546
+248,"Lynch, Stephen",Massachusetts,08,D,(202) 225-8273,Financial Services|Oversight and Government Reform,https://lynch.house.gov/,2025-03-13 10:18:20.026408
+249,"Mace, Nancy",South Carolina,01,R,(202) 225-3176,Armed Services|Oversight and Government Reform|Veterans' Affairs,https://mace.house.gov/,2025-03-13 10:18:20.027369
+250,"Mackenzie, Ryan",Pennsylvania,07,R,(202) 225-6411,Education and Workforce|Foreign Affairs|Homeland Security,https://mackenzie.house.gov/,2025-03-13 10:18:20.028255
+251,"Magaziner, Seth",Rhode Island,02,D,(202) 225-2735,Homeland Security|Natural Resources,https://magaziner.house.gov/,2025-03-13 10:18:20.029081
+252,"Malliotakis, Nicole",New York,11,R,(202) 225-3371,Ways and Means,https://malliotakis.house.gov/,2025-03-13 10:18:20.029991
+253,"Maloy, Celeste",Utah,02,R,(202) 225-9730,Appropriations|Natural Resources,https://maloy.house.gov/,2025-03-13 10:18:20.030882
+254,"Mann, Tracey",Kansas,01,R,(202) 225-2715,Agriculture|Transportation and Infrastructure,https://mann.house.gov/,2025-03-13 10:18:20.031727
+255,"Mannion, John",New York,22,D,(202) 225-3701,Agriculture|Education and Workforce,https://mannion.house.gov/,2025-03-13 10:18:20.032599
+256,"Massie, Thomas",Kentucky,04,R,(202) 225-3465,Judiciary|Transportation and Infrastructure,https://massie.house.gov/,2025-03-13 10:18:20.033467
+257,"Mast, Brian",Florida,21,R,(202) 225-3026,Foreign Affairs|Transportation and Infrastructure,https://mast.house.gov/,2025-03-13 10:18:20.034233
+258,"Matsui, Doris",California,07,D,(202) 225-7163,Energy and Commerce,https://matsui.house.gov/,2025-03-13 10:18:20.035008
+259,"McBath, Lucy",Georgia,06,D,(202) 225-4501,Education and Workforce|Judiciary,https://mcbath.house.gov/,2025-03-13 10:18:20.035832
+260,"McBride, Sarah",Delaware,At Large,D,(202) 225-4165,"Foreign Affairs|Science, Space, and Technology",https://mcbride.house.gov/,2025-03-13 10:18:20.036657
+261,"McCaul, Michael",Texas,10,R,(202) 225-2401,Foreign Affairs|Homeland Security,https://mccaul.house.gov/,2025-03-13 10:18:20.037494
+262,"McClain, Lisa",Michigan,09,R,(202) 225-2106,Financial Services|Education and Workforce,https://mcclain.house.gov/,2025-03-13 10:18:20.038389
+263,"McClain Delaney, April",Maryland,06,D,(202) 225-2721,"Agriculture|Science, Space, and Technology",https://mcclaindelaney.house.gov/,2025-03-13 10:18:20.039215
+264,"McClellan, Jennifer",Virginia,04,D,(202) 225-6365,Energy and Commerce,https://mcclellan.house.gov/,2025-03-13 10:18:20.040035
+265,"McClintock, Tom",California,05,R,(202) 225-2511,Budget|Natural Resources|Judiciary,https://mcclintock.house.gov/,2025-03-13 10:18:20.040854
+266,"McCollum, Betty",Minnesota,04,D,(202) 225-6631,Appropriations,https://mccollum.house.gov/,2025-03-13 10:18:20.041956
+267,"McCormick, Richard",Georgia,07,R,(202) 225-4272,"Armed Services|Science, Space, and Technology",https://mccormick.house.gov/,2025-03-13 10:18:20.042864
+268,"McDonald Rivet, Kristen",Michigan,08,D,(202) 225-3611,Agriculture|Transportation and Infrastructure,https://mcdonaldrivet.house.gov/,2025-03-13 10:18:20.043669
+269,"McDowell, Addison",North Carolina,06,R,(202) 225-3065,Budget|Natural Resources|Transportation and Infrastructure,https://mcdowell.house.gov/,2025-03-13 10:18:20.044447
+270,"McGarvey, Morgan",Kentucky,03,D,(202) 225-5401,Budget|Small Business|Veterans' Affairs,https://mcgarvey.house.gov/,2025-03-13 10:18:20.045277
+271,"McGovern, James",Massachusetts,02,D,(202) 225-6101,Agriculture|Rules,https://mcgovern.house.gov/,2025-03-13 10:18:20.046145
+272,"McGuire, John",Virginia,05,R,(202) 225-4711,Armed Services|Oversight and Government Reform,https://mcguire.house.gov/,2025-03-13 10:18:20.047251
+273,"McIver, LaMonica",New Jersey,10,D,(202) 225-3436,Homeland Security|Small Business,https://mciver.house.gov/,2025-03-13 10:18:20.048063
+274,"Meeks, Gregory",New York,05,D,(202) 225-3461,Financial Services|Foreign Affairs,https://meeks.house.gov/,2025-03-13 10:18:20.049173
+275,"Menendez, Robert",New Jersey,08,D,(202) 225-7919,Energy and Commerce,https://menendez.house.gov/,2025-03-13 10:18:20.050038
+276,"Meng, Grace",New York,06,D,(202) 225-2601,Appropriations,https://meng.house.gov/,2025-03-13 10:18:20.050862
+277,"Messmer, Mark",Indiana,08,R,(202) 225-4636,Agriculture|Armed Services|Education and Workforce,https://messmer.house.gov/,2025-03-13 10:18:20.051698
+278,"Meuser, Daniel",Pennsylvania,09,R,(202) 225-6511,Financial Services|Small Business,https://meuser.house.gov/,2025-03-13 10:18:20.052485
+279,"Mfume, Kweisi",Maryland,07,D,(202) 225-4741,Foreign Affairs|Oversight and Government Reform,https://mfume.house.gov/,2025-03-13 10:18:20.053305
+280,"Miller, Carol",West Virginia,01,R,(202) 225-3452,Ways and Means,https://miller.house.gov/,2025-03-13 10:18:20.054154
+281,"Miller, Mary",Illinois,15,R,(202) 225-5271,Agriculture|Education and Workforce|House Administration,https://marymiller.house.gov/,2025-03-13 10:18:20.054973
+282,"Miller, Max",Ohio,07,R,(202) 225-3876,"Science, Space, and Technology|Ways and Means",https://maxmiller.house.gov/,2025-03-13 10:18:20.055951
+283,"Miller-Meeks, Mariannette",Iowa,01,R,(202) 225-6576,Energy and Commerce|Veterans' Affairs,https://millermeeks.house.gov/,2025-03-13 10:18:20.05681
+284,"Mills, Cory",Florida,07,R,(202) 225-4035,Armed Services|Foreign Affairs,https://mills.house.gov/,2025-03-13 10:18:20.057683
+285,"Min, Dave",California,47,D,(202) 225-5611,Oversight and Government Reform|Natural Resources,https://min.house.gov/,2025-03-13 10:18:20.058511
+286,"Moolenaar, John",Michigan,02,R,(202) 225-3561,Appropriations|Select Comm on the Strategic Competition US and China,https://moolenaar.house.gov/,2025-03-13 10:18:20.059286
+287,"Moore, Barry",Alabama,01,R,(202) 225-2901,Agriculture|Judiciary,https://barrymoore.house.gov/,2025-03-13 10:18:20.060104
+288,"Moore, Blake",Utah,01,R,(202) 225-0453,Budget|Ways and Means,https://blakemoore.house.gov/,2025-03-13 10:18:20.060935
+289,"Moore, Gwen",Wisconsin,04,D,(202) 225-4572,Ways and Means,https://gwenmoore.house.gov/,2025-03-13 10:18:20.061736
+290,"Moore, Riley",West Virginia,02,R,(202) 225-2711,Appropriations,https://rileymoore.house.gov/,2025-03-13 10:18:20.062569
+291,"Moore, Tim",North Carolina,14,R,(202) 225-5634,Financial Services|Budget,https://timmoore.house.gov/,2025-03-13 10:18:20.06348
+292,"Moran, Nathaniel",Texas,01,R,(202) 225-3035,Ways and Means|Select Comm on the Strategic Competition US and China,https://moran.house.gov/,2025-03-13 10:18:20.064429
+293,"Morelle, Joseph",New York,25,D,(202) 225-3615,Appropriations|House Administration,https://morelle.house.gov/,2025-03-13 10:18:20.065648
+294,"Morrison, Kelly",Minnesota,03,D,(202) 225-2871,Small Business|Veterans' Affairs,https://morrison.house.gov/,2025-03-13 10:18:20.066468
+295,"Moskowitz, Jared",Florida,23,D,(202) 225-3001,Foreign Affairs|Judiciary,https://moskowitz.house.gov/,2025-03-13 10:18:20.067308
+296,"Moulton, Seth",Massachusetts,06,D,(202) 225-8020,Armed Services|Transportation and Infrastructure|Select Comm on the Strategic Competition US and China,https://moulton.house.gov/,2025-03-13 10:18:20.068145
+297,"Moylan, James",Guam Delegate,At Large,R,(202) 225-1188,Armed Services|Education and Workforce|Foreign Affairs,https://moylan.house.gov/,2025-03-13 10:18:20.068991
+298,"Mrvan, Frank",Indiana,01,D,(202) 225-2461,Appropriations,https://mrvan.house.gov/,2025-03-13 10:18:20.069808
+299,"Mullin, Kevin",California,15,D,(202) 225-3531,Energy and Commerce,https://kevinmullin.house.gov/,2025-03-13 10:18:20.070817
+300,"Murphy, Gregory",North Carolina,03,R,(202) 225-3415,House Administration|Veterans' Affairs|Ways and Means,https://murphy.house.gov/,2025-03-13 10:18:20.071706
+301,"Nadler, Jerrold",New York,12,D,(202) 225-5635,Judiciary|Transportation and Infrastructure,https://nadler.house.gov/,2025-03-13 10:18:20.07252
+302,"Neal, Richard",Massachusetts,01,D,(202) 225-5601,Joint Committee on Taxation|Ways and Means,https://neal.house.gov/,2025-03-13 10:18:20.073336
+303,"Neguse, Joe",Colorado,02,D,(202) 225-2161,Natural Resources|Judiciary|Rules,https://neguse.house.gov/,2025-03-13 10:18:20.074171
+304,"Nehls, Troy",Texas,22,R,(202) 225-5951,Judiciary|Transportation and Infrastructure,https://nehls.house.gov/,2025-03-13 10:18:20.074971
+305,"Newhouse, Dan",Washington,04,R,(202) 225-5816,Agriculture|Appropriations|Select Comm on the Strategic Competition US and China,https://newhouse.house.gov/,2025-03-13 10:18:20.075816
+306,"Norcross, Donald",New Jersey,01,D,(202) 225-6501,Armed Services|Education and Workforce,https://norcross.house.gov/,2025-03-13 10:18:20.076621
+307,"Norman, Ralph",South Carolina,05,R,(202) 225-5501,Financial Services|Budget|Rules,https://norman.house.gov/,2025-03-13 10:18:20.077491
+308,"Norton, Eleanor",District of Columbia Delegate,At Large,D,(202) 225-8050,Oversight and Government Reform|Transportation and Infrastructure,https://norton.house.gov/,2025-03-13 10:18:20.078402
+309,"Nunn, Zachary",Iowa,03,R,(202) 225-5476,Agriculture|Financial Services|Select Comm on the Strategic Competition US and China,https://nunn.house.gov/,2025-03-13 10:18:20.079167
+310,"Obernolte, Jay",California,23,R,(202) 225-5861,"Budget|Energy and Commerce|Science, Space, and Technology",https://obernolte.house.gov/,2025-03-13 10:18:20.080083
+311,"Ocasio-Cortez, Alexandria",New York,14,D,(202) 225-3965,Energy and Commerce,https://ocasio-cortez.house.gov/,2025-03-13 10:18:20.080997
+312,"Ogles, Andrew",Tennessee,05,R,(202) 225-4311,Financial Services|Homeland Security,https://ogles.house.gov/,2025-03-13 10:18:20.08195
+313,"Olszewski, Johnny",Maryland,02,D,(202) 225-3061,Foreign Affairs|Small Business,https://olszewski.house.gov/,2025-03-13 10:18:20.082832
+314,"Omar, Ilhan",Minnesota,05,D,(202) 225-4755,Budget|Education and Workforce,https://omar.house.gov/,2025-03-13 10:18:20.083663
+315,"Onder, Robert",Missouri,03,R,(202) 225-2956,Education and Workforce|Judiciary|Transportation and Infrastructure,https://onder.house.gov/,2025-03-13 10:18:20.084768
+316,"Owens, Burgess",Utah,04,R,(202) 225-3011,Education and Workforce|Transportation and Infrastructure,https://owens.house.gov/,2025-03-13 10:18:20.085791
+317,"Pallone, Frank",New Jersey,06,D,(202) 225-4671,Energy and Commerce,https://pallone.house.gov/,2025-03-13 10:18:20.086579
+318,"Palmer, Gary",Alabama,06,R,(202) 225-4921,Oversight and Government Reform|Energy and Commerce,https://palmer.house.gov/,2025-03-13 10:18:20.087442
+319,"Panetta, Jimmy",California,19,D,(202) 225-2861,Budget|Ways and Means,https://panetta.house.gov/,2025-03-13 10:18:20.088312
+320,"Pappas, Chris",New Hampshire,01,D,(202) 225-5456,Transportation and Infrastructure|Veterans' Affairs,https://pappas.house.gov/,2025-03-13 10:18:20.089123
+321,"Pelosi, Nancy",California,11,D,(202) 225-4965,"",https://pelosi.house.gov/,2025-03-13 10:18:20.089925
+322,"Perez, Marie",Washington,03,D,(202) 225-3536,Appropriations,https://gluesenkampperez.house.gov/,2025-03-13 10:18:20.090732
+323,"Perry, Scott",Pennsylvania,10,R,(202) 225-5836,Foreign Affairs|Oversight and Government Reform|Intelligence|Transportation and Infrastructure,https://perry.house.gov/,2025-03-13 10:18:20.091562
+324,"Peters, Scott",California,50,D,(202) 225-0508,Budget|Energy and Commerce,https://scottpeters.house.gov/,2025-03-13 10:18:20.092381
+325,"Pettersen, Brittany",Colorado,07,D,(202) 225-2645,Financial Services,https://pettersen.house.gov/,2025-03-13 10:18:20.093209
+326,"Pfluger, August",Texas,11,R,(202) 225-3605,Homeland Security|Energy and Commerce,https://pfluger.house.gov/,2025-03-13 10:18:20.09409
+327,"Pingree, Chellie",Maine,01,D,(202) 225-6116,Appropriations,https://pingree.house.gov/,2025-03-13 10:18:20.094916
+328,"Plaskett, Stacey",Virgin Islands Delegate,At Large,D,(202) 225-1790,Budget|Intelligence|Ways and Means,https://plaskett.house.gov/,2025-03-13 10:18:20.095717
+329,"Pocan, Mark",Wisconsin,02,D,(202) 225-2906,Appropriations,https://pocan.house.gov/,2025-03-13 10:18:20.09737
+330,"Pou, Nellie",New Jersey,09,D,(202) 225-5751,Homeland Security|Transportation and Infrastructure,https://pou.house.gov/,2025-03-13 10:18:20.098424
+331,"Pressley, Ayanna",Massachusetts,07,D,(202) 225-5111,Financial Services|Oversight and Government Reform,https://pressley.house.gov/,2025-03-13 10:18:20.099516
+332,"Quigley, Mike",Illinois,05,D,(202) 225-4061,Appropriations|Intelligence,https://quigley.house.gov/,2025-03-13 10:18:20.100325
+333,"Radewagen, Aumua Amata",American Samoa Delegate,At Large,R,(202) 225-8577,Foreign Affairs|Natural Resources|Veterans' Affairs,https://radewagen.house.gov/,2025-03-13 10:18:20.101131
+334,"Ramirez, Delia",Illinois,03,D,(202) 225-5701,Homeland Security|Veterans' Affairs,https://ramirez.house.gov/,2025-03-13 10:18:20.101944
+335,"Randall, Emily",Washington,06,D,(202) 225-5916,Oversight and Government Reform|Natural Resources,https://randall.house.gov/,2025-03-13 10:18:20.102715
+336,"Raskin, Jamie",Maryland,08,D,(202) 225-5341,Judiciary,https://raskin.house.gov/,2025-03-13 10:18:20.103505
+337,"Reschenthaler, Guy",Pennsylvania,14,R,(202) 225-2065,Appropriations,https://reschenthaler.house.gov/,2025-03-13 10:18:20.104305
+338,"Riley, Josh",New York,19,D,(202) 225-5441,"Agriculture|Science, Space, and Technology",https://riley.house.gov/,2025-03-13 10:18:20.105118
+339,"Rivas, Luz",California,29,D,(202) 225-6131,"Natural Resources|Science, Space, and Technology",https://rivas.house.gov/,2025-03-13 10:18:20.105944
+340,"Rogers, Harold",Kentucky,05,R,(202) 225-4601,Appropriations,https://halrogers.house.gov/,2025-03-13 10:18:20.106752
+341,"Rogers, Mike",Alabama,03,R,(202) 225-3261,Armed Services,https://mikerogers.house.gov/,2025-03-13 10:18:20.107698
+342,"Rose, John",Tennessee,06,R,(202) 225-4231,Agriculture|Financial Services,https://johnrose.house.gov/,2025-03-13 10:18:20.108536
+343,"Ross, Deborah",North Carolina,02,D,(202) 225-3032,"Judiciary|Science, Space, and Technology",https://ross.house.gov/,2025-03-13 10:18:20.109428
+344,"Rouzer, David",North Carolina,07,R,(202) 225-2731,"Agriculture|Transportation and Infrastructure|Science, Space, and Technology",https://rouzer.house.gov/,2025-03-13 10:18:20.110244
+345,"Roy, Chip",Texas,21,R,(202) 225-4236,Budget|Judiciary|Rules,https://roy.house.gov/,2025-03-13 10:18:20.111048
+346,"Ruiz, Raul",California,25,D,(202) 225-5330,Energy and Commerce,https://ruiz.house.gov/,2025-03-13 10:18:20.11195
+347,"Rulli, Michael A.",Ohio,06,R,(202) 225-5705,Education and Workforce|Energy and Commerce,https://rulli.house.gov/,2025-03-13 10:18:20.112981
+348,"Rutherford, John",Florida,05,R,(202) 225-2501,Appropriations,https://rutherford.house.gov/,2025-03-13 10:18:20.114127
+349,"Ryan, Patrick",New York,18,D,(202) 225-5614,Armed Services|Transportation and Infrastructure,https://patryan.house.gov/,2025-03-13 10:18:20.114935
+350,"Salazar, Maria",Florida,27,R,(202) 225-3931,Financial Services|Foreign Affairs,https://salazar.house.gov/,2025-03-13 10:18:20.115731
+351,"Salinas, Andrea",Oregon,06,D,(202) 225-5643,"Agriculture|Science, Space, and Technology",https://salinas.house.gov/,2025-03-13 10:18:20.116542
+352,"Sanchez, Linda",California,38,D,(202) 225-6676,Ways and Means,https://lindasanchez.house.gov/,2025-03-13 10:18:20.117351
+353,"Scalise, Steve",Louisiana,01,R,(202) 225-3015,"",https://scalise.house.gov/,2025-03-13 10:18:20.118183
+354,"Scanlon, Mary Gay",Pennsylvania,05,D,(202) 225-2011,Judiciary|Rules,https://scanlon.house.gov/,2025-03-13 10:18:20.118994
+355,"Schakowsky, Janice",Illinois,09,D,(202) 225-2111,Energy and Commerce,https://schakowsky.house.gov/,2025-03-13 10:18:20.119773
+356,"Schmidt, Derek",Kansas,02,R,(202) 225-6601,Armed Services|Judiciary|Small Business,https://schmidt.house.gov/,2025-03-13 10:18:20.120558
+357,"Schneider, Bradley",Illinois,10,D,(202) 225-4835,Ways and Means,https://schneider.house.gov/,2025-03-13 10:18:20.121398
+358,"Scholten, Hillary",Michigan,03,D,(202) 225-3831,Transportation and Infrastructure|Small Business,https://scholten.house.gov/,2025-03-13 10:18:20.1222
+359,"Schrier, Kim",Washington,08,D,(202) 225-7761,Energy and Commerce,https://schrier.house.gov/,2025-03-13 10:18:20.123076
+360,"Schweikert, David",Arizona,01,R,(202) 225-2190,Ways and Means,https://schweikert.house.gov/,2025-03-13 10:18:20.123895
+361,"Scott, Austin",Georgia,08,R,(202) 225-6531,Agriculture|Armed Services|Intelligence|Rules,https://austinscott.house.gov/,2025-03-13 10:18:20.124679
+362,"Scott, David",Georgia,13,D,(202) 225-2939,Agriculture|Financial Services,https://davidscott.house.gov/,2025-03-13 10:18:20.125516
+363,"Scott, Robert",Virginia,03,D,(202) 225-8351,Budget|Education and Workforce,https://bobbyscott.house.gov/,2025-03-13 10:18:20.126328
+364,"Self, Keith",Texas,03,R,(202) 225-4201,"Foreign Affairs|Science, Space, and Technology|Veterans' Affairs",https://keithself.house.gov/,2025-03-13 10:18:20.127102
+365,"Sessions, Pete",Texas,17,R,(202) 225-6105,Financial Services|Oversight and Government Reform,https://sessions.house.gov/,2025-03-13 10:18:20.128223
+366,"Sewell, Terri",Alabama,07,D,(202) 225-2665,House Administration|Ways and Means,https://sewell.house.gov/,2025-03-13 10:18:20.129104
+367,"Sherman, Brad",California,32,D,(202) 225-5911,Financial Services|Foreign Affairs,https://sherman.house.gov/,2025-03-13 10:18:20.130124
+368,"Sherrill, Mikie",New Jersey,11,D,(202) 225-5034,Armed Services|Select Comm on the Strategic Competition US and China,https://sherrill.house.gov/,2025-03-13 10:18:20.130978
+369,"Shreve, Jefferson",Indiana,06,R,(202) 225-3021,Foreign Affairs|Transportation and Infrastructure,https://shreve.house.gov/,2025-03-13 10:18:20.131828
+370,"Simon, Lateefah",California,12,D,(202) 225-2661,Oversight and Government Reform|Small Business,https://simon.house.gov/,2025-03-13 10:18:20.132706
+372,"Smith, Adam",Washington,09,D,(202) 225-8901,Armed Services,https://adamsmith.house.gov/,2025-03-13 10:18:20.134303
+373,"Smith, Adrian",Nebraska,03,R,(202) 225-6435,Joint Committee on Taxation|Ways and Means,https://adriansmith.house.gov/,2025-03-13 10:18:20.135168
+374,"Smith, Christopher",New Jersey,04,R,(202) 225-3765,Foreign Affairs,https://chrissmith.house.gov/,2025-03-13 10:18:20.135985
+375,"Smith, Jason",Missouri,08,R,(202) 225-4404,Joint Committee on Taxation|Ways and Means,https://jasonsmith.house.gov/,2025-03-13 10:18:20.136909
+376,"Smucker, Lloyd",Pennsylvania,11,R,(202) 225-2411,Budget|Ways and Means,https://smucker.house.gov/,2025-03-13 10:18:20.137697
+377,"Sorensen, Eric",Illinois,17,D,(202) 225-5905,Agriculture|Armed Services,https://sorensen.house.gov/,2025-03-13 10:18:20.13854
+378,"Soto, Darren",Florida,09,D,(202) 225-9889,Energy and Commerce|Natural Resources,https://soto.house.gov/,2025-03-13 10:18:20.139389
+379,"Spartz, Victoria",Indiana,05,R,(202) 225-2276,"",https://spartz.house.gov/,2025-03-13 10:18:20.140186
+380,"Stansbury, Melanie",New Mexico,01,D,(202) 225-6316,Oversight and Government Reform|Natural Resources,https://stansbury.house.gov/,2025-03-13 10:18:20.141001
+381,"Stanton, Greg",Arizona,04,D,(202) 225-9888,Foreign Affairs|Transportation and Infrastructure|Select Comm on the Strategic Competition US and China,https://stanton.house.gov/,2025-03-13 10:18:20.141817
+382,"Stauber, Pete",Minnesota,08,R,(202) 225-6211,Natural Resources|Transportation and Infrastructure|Small Business,https://stauber.house.gov/,2025-03-13 10:18:20.142789
+383,"Stefanik, Elise",New York,21,R,(202) 225-4611,Armed Services|Education and Workforce,https://stefanik.house.gov/,2025-03-13 10:18:20.143775
+384,"Steil, Bryan",Wisconsin,01,R,(202) 225-3031,Financial Services|House Administration,https://steil.house.gov/,2025-03-13 10:18:20.144673
+385,"Steube, W.",Florida,17,R,(202) 225-5792,Intelligence|Ways and Means,https://steube.house.gov/,2025-03-13 10:18:20.145532
+386,"Stevens, Haley",Michigan,11,D,(202) 225-8171,"Education and Workforce|Science, Space, and Technology|Select Comm on the Strategic Competition US and China",https://stevens.house.gov/,2025-03-13 10:18:20.146456
+387,"Strickland, Marilyn",Washington,10,D,(202) 225-9740,Armed Services|Transportation and Infrastructure,https://strickland.house.gov/,2025-03-13 10:18:20.147369
+388,"Strong, Dale",Alabama,05,R,(202) 225-4801,Appropriations|Homeland Security,https://strong.house.gov/,2025-03-13 10:18:20.148254
+389,"Stutzman, Marlin",Indiana,03,R,(202) 225-4436,Financial Services|Budget,https://stutzman.house.gov/,2025-03-13 10:18:20.149078
+390,"Subramanyam, Suhas",Virginia,10,D,(202) 225-5136,"Oversight and Government Reform|Science, Space, and Technology",https://subramanyam.house.gov/,2025-03-13 10:18:20.149895
+391,"Suozzi, Thomas R.",New York,03,D,(202) 225-3335,Ways and Means,https://suozzi.house.gov/,2025-03-13 10:18:20.150717
+392,"Swalwell, Eric",California,14,D,(202) 225-5065,Homeland Security|Judiciary,https://swalwell.house.gov/,2025-03-13 10:18:20.151541
+393,"Sykes, Emilia",Ohio,13,D,(202) 225-6265,"Transportation and Infrastructure|Science, Space, and Technology",https://sykes.house.gov/,2025-03-13 10:18:20.152327
+394,"Takano, Mark",California,39,D,(202) 225-2305,Education and Workforce|Veterans' Affairs,https://takano.house.gov/,2025-03-13 10:18:20.153142
+395,"Taylor, David",Ohio,02,R,(202) 225-3164,Agriculture|Transportation and Infrastructure,https://taylor.house.gov/,2025-03-13 10:18:20.153947
+396,"Tenney, Claudia",New York,24,R,(202) 225-3665,"Intelligence|Science, Space, and Technology|Ways and Means",https://tenney.house.gov/,2025-03-13 10:18:20.154757
+397,"Thanedar, Shri",Michigan,13,D,(202) 225-5802,Agriculture|Homeland Security,https://thanedar.house.gov/,2025-03-13 10:18:20.15557
+398,"Thompson, Bennie",Mississippi,02,D,(202) 225-5876,Homeland Security,https://benniethompson.house.gov/,2025-03-13 10:18:20.15652
+399,"Thompson, Glenn",Pennsylvania,15,R,(202) 225-5121,Agriculture|Education and Workforce,https://thompson.house.gov/,2025-03-13 10:18:20.15731
+400,"Thompson, Mike",California,04,D,(202) 225-3311,Ways and Means,https://mikethompson.house.gov/,2025-03-13 10:18:20.158052
+401,"Tiffany, Thomas",Wisconsin,07,R,(202) 225-3365,Natural Resources|Judiciary,https://tiffany.house.gov/,2025-03-13 10:18:20.158868
+402,"Timmons, William",South Carolina,04,R,(202) 225-6030,Financial Services|Oversight and Government Reform,https://timmons.house.gov/,2025-03-13 10:18:20.159706
+403,"Titus, Dina",Nevada,01,D,(202) 225-5965,Foreign Affairs|Transportation and Infrastructure,https://titus.house.gov/,2025-03-13 10:18:20.160547
+404,"Tlaib, Rashida",Michigan,12,D,(202) 225-5126,Financial Services|Oversight and Government Reform,https://tlaib.house.gov/,2025-03-13 10:18:20.161361
+405,"Tokuda, Jill",Hawaii,02,D,(202) 225-4906,Agriculture|Armed Services|Select Comm on the Strategic Competition US and China,https://tokuda.house.gov/,2025-03-13 10:18:20.162218
+406,"Tonko, Paul",New York,20,D,(202) 225-5076,Budget|Energy and Commerce,https://tonko.house.gov/,2025-03-13 10:18:20.163455
+407,"Torres, Norma",California,35,D,(202) 225-6161,Appropriations|House Administration,https://torres.house.gov/,2025-03-13 10:18:20.164351
+408,"Torres, Ritchie",New York,15,D,(202) 225-4361,Financial Services|Select Comm on the Strategic Competition US and China,https://ritchietorres.house.gov/,2025-03-13 10:18:20.16532
+409,"Trahan, Lori",Massachusetts,03,D,(202) 225-3411,Energy and Commerce,https://trahan.house.gov/,2025-03-13 10:18:20.166293
+410,"Tran, Derek",California,45,D,(202) 225-2415,Armed Services|Small Business,https://tran.house.gov/,2025-03-13 10:18:20.167058
+411,"Turner, Michael",Ohio,10,R,(202) 225-6465,Armed Services|Oversight and Government Reform,https://turner.house.gov/,2025-03-13 10:18:20.167823
+412,"Turner, Sylvester",Texas,18,D,(202) 225-3816,"Homeland Security|Science, Space, and Technology",https://sylvesterturner.house.gov/,2025-03-13 10:18:20.168662
+413,"Underwood, Lauren",Illinois,14,D,(202) 225-2976,Appropriations,https://underwood.house.gov/,2025-03-13 10:18:20.169448
+414,"Valadao, David",California,22,R,(202) 225-4695,Appropriations,https://valadao.house.gov/,2025-03-13 10:18:20.170371
+415,"Van Drew, Jefferson",New Jersey,02,R,(202) 225-6572,Judiciary|Transportation and Infrastructure,https://vandrew.house.gov/,2025-03-13 10:18:20.171113
+416,"Van Duyne, Beth",Texas,24,R,(202) 225-6605,Small Business|Ways and Means,https://vanduyne.house.gov/,2025-03-13 10:18:20.171946
+417,"Van Orden, Derrick",Wisconsin,03,R,(202) 225-5506,Agriculture|Armed Services|Veterans' Affairs,https://vanorden.house.gov/,2025-03-13 10:18:20.172703
+418,"Vargas, Juan",California,52,D,(202) 225-8045,Financial Services,https://vargas.house.gov/,2025-03-13 10:18:20.173473
+419,"Vasquez, Gabe",New Mexico,02,D,(202) 225-2365,Agriculture|Armed Services,https://vasquez.house.gov/,2025-03-13 10:18:20.174274
+420,"Veasey, Marc",Texas,33,D,(202) 225-9897,Energy and Commerce,https://veasey.house.gov/,2025-03-13 10:18:20.175067
+421,"Velazquez, Nydia",New York,07,D,(202) 225-2361,Financial Services|Natural Resources|Small Business,https://velazquez.house.gov/,2025-03-13 10:18:20.175971
+422,"Vindman, Eugene",Virginia,07,D,(202) 225-2815,Agriculture|Armed Services,https://vindman.house.gov/,2025-03-13 10:18:20.176816
+423,"Wagner, Ann",Missouri,02,R,(202) 225-1621,Financial Services|Intelligence,https://wagner.house.gov/,2025-03-13 10:18:20.177755
+424,"Walberg, Tim",Michigan,05,R,(202) 225-6276,Education and Workforce|Natural Resources,https://walberg.house.gov/,2025-03-13 10:18:20.178578
+425,"Waltz, Michael- Vacancy",Florida,06,O,(202) 225-2706,"",https://clerk.house.gov/members/FL06/vacancy,2025-03-13 10:18:20.179416
+426,"Wasserman Schultz, Debbie",Florida,25,D,(202) 225-7931,Appropriations,https://wassermanschultz.house.gov/,2025-03-13 10:18:20.180349
+427,"Waters, Maxine",California,43,D,(202) 225-2201,Financial Services,https://waters.house.gov/,2025-03-13 10:18:20.181187
+428,"Watson Coleman, Bonnie",New Jersey,12,D,(202) 225-5801,Appropriations|Budget,https://watsoncoleman.house.gov/,2025-03-13 10:18:20.182011
+429,"Weber, Randy",Texas,14,R,(202) 225-2831,"Energy and Commerce|Science, Space, and Technology",https://weber.house.gov/,2025-03-13 10:18:20.182935
+430,"Webster, Daniel",Florida,11,R,(202) 225-1002,"Natural Resources|Transportation and Infrastructure|Science, Space, and Technology",https://webster.house.gov/,2025-03-13 10:18:20.18378
+431,"Westerman, Bruce",Arkansas,04,R,(202) 225-3772,Natural Resources|Transportation and Infrastructure,https://westerman.house.gov/,2025-03-13 10:18:20.184818
+432,"Whitesides, George",California,27,D,(202) 225-1956,"Armed Services|Science, Space, and Technology",https://whitesides.house.gov/,2025-03-13 10:18:20.185613
+433,"Wied, Tony",Wisconsin,08,R,(202) 225-5665,Agriculture|Transportation and Infrastructure|Small Business,https://wied.house.gov/,2025-03-13 10:18:20.186412
+434,"Williams, Nikema",Georgia,05,D,(202) 225-3801,Financial Services,https://nikemawilliams.house.gov/,2025-03-13 10:18:20.187229
+435,"Williams, Roger",Texas,25,R,(202) 225-9896,Financial Services|Small Business,https://williams.house.gov/,2025-03-13 10:18:20.188002
+436,"Wilson, Frederica",Florida,24,D,(202) 225-4506,Education and Workforce|Transportation and Infrastructure,https://wilson.house.gov/,2025-03-13 10:18:20.188844
+437,"Wilson, Joe",South Carolina,02,R,(202) 225-2452,Armed Services|Education and Workforce|Foreign Affairs,https://joewilson.house.gov/,2025-03-13 10:18:20.189638
+438,"Wittman, Robert",Virginia,01,R,(202) 225-4261,Armed Services|Natural Resources|Select Comm on the Strategic Competition US and China,https://wittman.house.gov/,2025-03-13 10:18:20.190487
+439,"Womack, Steve",Arkansas,03,R,(202) 225-4301,Appropriations,https://womack.house.gov/,2025-03-13 10:18:20.191281
+440,"Yakym, Rudy",Indiana,02,R,(202) 225-3915,Ways and Means,https://yakym.house.gov/,2025-03-13 10:18:20.192058
+441,"Zinke, Ryan",Montana,01,R,(202) 225-5628,Appropriations|Foreign Affairs,https://zinke.house.gov/,2025-03-13 10:18:20.192918
