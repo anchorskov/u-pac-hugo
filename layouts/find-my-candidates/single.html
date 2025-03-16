@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <!-- Production CSP: adjust as needed -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self' https://sibi-d1-worker.upac.org;">
+  <!-- Include CSS, meta tags, etc. -->
+</head>
+<body>
+  <header>
+    <h1>{{ .Title }}</h1>
+  </header>
+
+  <main>
+    <!-- Display the content from the markdown file -->
+    <section class="content">
+      {{ .Content }}
+    </section>
+
+    <!-- Interactive form for dynamic ZIP code search -->
+    <section id="candidate-search">
+      <form id="candidateForm">
+        <label for="zipcodeInput">Enter ZIP Code:</label>
+        <input type="text" id="zipcodeInput" name="zipcodeInput" placeholder="e.g., 12345" required>
+        <button type="submit">Find My Candidates</button>
+      </form>
+
+      <div id="candidateResults"></div>
+    </section>
+  </main>
+
+  <footer>
+    <!-- Footer content if needed -->
+  </footer>
+
+  <script>
+    document.getElementById('candidateForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const zip = document.getElementById('zipcodeInput').value.trim();
+      if (!zip) {
+        alert('Please enter a ZIP code.');
+        return;
+      }
+      // Update the endpoint URL with your deployed Worker endpoint
+      const endpoint = 'https://sibi-d1-worker.upac.org/workers/dev/api/find-candidates?zip=' + encodeURIComponent(zip);
+      
+      try {
+        const response = await fetch(endpoint);
+        if (!response.ok) {
+          throw new Error(`Network error: ${response.status}`);
+        }
+        const data = await response.json();
+        let html = '';
+        if (data.error) {
+          html = '<p>Error: ' + data.error + '</p>';
+        } else if (data.length === 0) {
+          html = '<p>No candidates found for ZIP ' + zip + '</p>';
+        } else {
+          html = '<ul>';
+          data.forEach(candidate => {
+            html += '<li>' + candidate.name + ' - ' + candidate.office + ' (ZIP: ' + candidate.zip + ')</li>';
+          });
+          html += '</ul>';
+        }
+        document.getElementById('candidateResults').innerHTML = html;
+      } catch (error) {
+        console.error('Fetch error:', error);
+        document.getElementById('candidateResults').innerHTML = '<p>Error retrieving candidates.</p>';
+      }
+    });
+  </script>
+</body>
+</html>
