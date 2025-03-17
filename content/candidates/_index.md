@@ -26,6 +26,14 @@ draft: false
       <div class="submission-label">Candidates</div>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEoa1xE-8dRw7fUTArlWjwZWE8GFWOIu2E8m5vxg1c5r_tWQ/viewform?usp=header" class="btn btn-primary">Submit Your Profile</a>
     </div>
+    <!-- NEW: Submission item for Find My Candidates in vertical layout -->
+    <div class="submission-item-vertical" style="margin-top: 20px;">
+      <div class="submission-content">
+        <p>Search for candidate information by entering your ZIP code.</p>
+      </div>
+      <div class="submission-label">Find Candidates</div>
+      <a href="/find-my-candidates" class="btn btn-primary">Find My Candidates</a>
+    </div>
   </div>
 </section>
 
