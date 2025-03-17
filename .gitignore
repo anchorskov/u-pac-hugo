@@ -8,6 +8,7 @@ resources/
 
 # Hugo temporary files
 hugo_stats.json
+node_modules/
 
 # Logs & system files
 .DS_Store
