@@ -27,11 +27,11 @@ export default {
              ON s.name = r.state
                 AND (
                   (
-                    SUBSTRING(z.cd FROM 3 FOR 2) = '00'
+                    SUBSTR(z.cd, 3, 2) = '00'
                     AND r.district_id = 'At Large'
                   )
                   OR (
-                    SUBSTRING(z.cd FROM 3 FOR 2) = r.district_id
+                    SUBSTR(z.cd, 3, 2) = r.district_id
                   )
                 )
            WHERE z.zipcode = ?`
