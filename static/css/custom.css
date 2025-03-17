@@ -290,19 +290,6 @@ body {
     text-align: center;
 }
 
-/* Dark Mode (optional adjustments) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary-color: #007bff;
-        --secondary-color: #171717;
-        --text-color: #ffffff;
-        --header-bg: rgba(23, 23, 23, 0.9);
-    }
-    /* Dark mode header gradient */
-    .header {
-        background: linear-gradient(to right, #2c2c2c, #1a1a1a);
-    }
-}
 /* About Page Styling */
 .about-container {
     max-width: 800px;
@@ -351,4 +338,22 @@ body {
 .about-btn-secondary {
     background-color: #444;
     color: #fff;
+}
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #007bff;
+        --secondary-color: #171717;
+        --text-color: #ffffff;
+        --header-bg: rgba(23, 23, 23, 0.9);
+    }
+    body {
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+    }
+    .header {
+        background: linear-gradient(to right, #2c2c2c, #1a1a1a);
+    }
+    /* You can add additional dark mode overrides here as needed */
 }
