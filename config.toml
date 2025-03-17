@@ -1,8 +1,10 @@
 relativeURLs = true
 languageCode = "en-us"
 title = "U-PAC 1.01"
-theme = "PaperMod"   # Change to "ananke" if preferred
+theme = "PaperMod"
 disableKinds = ["RSS", "taxonomy", "term"]
+
+buildFuture = true  # <-- Add this here at the top level
 
 # Site-wide parameters
 [params]
