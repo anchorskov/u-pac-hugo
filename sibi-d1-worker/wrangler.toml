@@ -16,6 +16,7 @@ database_id = "aeedccf4-14bb-48f8-91c0-a9023c9f153c"
 
 [vars]
 ENV_MESSAGE = "Loaded on Cloudflare"
+ENV = "development"
 
 [build]
 # (Any additional build configuration here)

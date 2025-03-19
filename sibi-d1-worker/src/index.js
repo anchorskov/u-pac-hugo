@@ -19,75 +19,83 @@ export default {
       const zip = url.searchParams.get("zip");
       if (!zip) {
         return new Response(JSON.stringify({ error: "Zip code is required" }), {
-          headers: {
-            "content-type": "application/json",
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-            "Content-Security-Policy": "default-src 'self';",
-            "Access-Control-Allow-Origin": "*",
-          },
+          headers: { "content-type": "application/json", "Access-Control-Allow-Origin": "*" },
           status: 400,
         });
       }
-      
+
       try {
-        // Revised query to return only the representative record matching the zip code.
-        // It joins the tables and checks:
-        //   - If z.cd is '00', then r.district_id must be 'At Large'
-        //   - Otherwise, r.district_id must equal z.cd
-        const { results } = await env.SIBIDRIFT_DB.prepare(
-          `SELECT r.*
-           FROM hud_zip_crosswalk AS z
-           JOIN upac_states AS s ON z.state_fips_code = s.fips_state_code
-           JOIN upac_representatives AS r ON s.name = r.state
-             AND (
-                  (z.cd = '00' AND r.district_id = 'At Large')
-                  OR (z.cd <> '00' AND r.district_id = z.cd)
-             )
-           WHERE z.zipcode = ?`
+        /** 🔹 STEP 1: Get State & District from ZIP **/
+        const zipQuery = await env.SIBIDRIFT_DB.prepare(
+          `SELECT state_fips_code, cd FROM hud_zip_crosswalk WHERE zipcode = ?`
         ).bind(zip).all();
-        
-        console.log(`Query for ZIP ${zip} returned ${results.length} record(s).`);
+
+        if (zipQuery.results.length === 0) {
+          console.log(`ZIP ${zip} not found.`);
+          return new Response(JSON.stringify({ message: "ZIP code not found in database." }), {
+            headers: { "content-type": "application/json", "Access-Control-Allow-Origin": "*" },
+            status: 404,
+          });
+        }
+
+        const stateFips = zipQuery.results[0].state_fips_code;
+        const fullCd = zipQuery.results[0].cd;
+        const district = fullCd.substring(2); // Extract district (last two digits)
+
+        console.log(`ZIP ${zip} maps to State FIPS ${stateFips} and District ${district}`);
+
+        /** 🔹 STEP 2: Get State Name from FIPS **/
+        const stateQuery = await env.SIBIDRIFT_DB.prepare(
+          `SELECT name FROM upac_states WHERE fips_state_code = ?`
+        ).bind(stateFips).all();
+
+        if (stateQuery.results.length === 0) {
+          console.log(`State FIPS ${stateFips} not found.`);
+          return new Response(JSON.stringify({ message: "State not found." }), {
+            headers: { "content-type": "application/json", "Access-Control-Allow-Origin": "*" },
+            status: 404,
+          });
+        }
+
+        const stateName = stateQuery.results[0].name;
+
+        /** 🔹 STEP 3: Fetch At Large Representative **/
+        const atLargeQuery = await env.SIBIDRIFT_DB.prepare(
+          `SELECT * FROM upac_representatives WHERE state = ? AND district_id = 'At Large'`
+        ).bind(stateName).all();
+
+        /** 🔹 STEP 4: Fetch District Representative(s) **/
+        const districtQuery = await env.SIBIDRIFT_DB.prepare(
+          `SELECT * FROM upac_representatives WHERE state = ? AND district_id = ?`
+        ).bind(stateName, district).all();
+
+        /** 🔹 STEP 5: Merge Results **/
+        const results = [...atLargeQuery.results, ...districtQuery.results];
+
+        console.log(`Final Result: ${results.length} record(s) for ZIP ${zip}`);
 
         if (results.length === 0) {
           return new Response(JSON.stringify({ message: "No candidates found for the provided ZIP code." }), {
-            headers: {
-              "content-type": "application/json",
-              "Cache-Control": "no-cache, no-store, must-revalidate",
-              "Content-Security-Policy": "default-src 'self';",
-              "Access-Control-Allow-Origin": "*",
-            },
+            headers: { "content-type": "application/json", "Access-Control-Allow-Origin": "*" },
             status: 200,
           });
         }
-        
+
         return new Response(JSON.stringify(results), {
-          headers: {
-            "content-type": "application/json",
-            "Cache-Control": "public, max-age=60",
-            "Content-Security-Policy": "default-src 'self';",
-            "Access-Control-Allow-Origin": "*",
-          },
+          headers: { "content-type": "application/json", "Access-Control-Allow-Origin": "*" },
         });
       } catch (error) {
         console.error("Error querying D1 database:", error);
         return new Response(JSON.stringify({ error: error.message }), {
-          headers: {
-            "content-type": "application/json",
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-            "Content-Security-Policy": "default-src 'self';",
-            "Access-Control-Allow-Origin": "*",
-          },
+          headers: { "content-type": "application/json", "Access-Control-Allow-Origin": "*" },
           status: 500,
         });
       }
     }
-    
+
     // Default response for other routes
     return new Response("Hello from Cloudflare Worker", {
-      headers: {
-        "Content-Security-Policy": "default-src 'self';",
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers: { "Access-Control-Allow-Origin": "*" },
     });
   },
 };

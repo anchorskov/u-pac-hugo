@@ -170,3 +170,21 @@ dist
 
 .dev.vars
 .wrangler/
+
+# python virtual environment
+
+venv/
+
+# Compiled python files
+
+__pycache__/
+*.pyc
+
+# Local SQLite Databases
+
+*.db
+
+# Hugo Build Output 
+
+public/
+
