@@ -8,7 +8,8 @@ document.getElementById('candidateForm').addEventListener('submit', async functi
   }
 
   // Automatically detect local vs. production
-  const isLocal = window.location.hostname === "localhost";
+  const hostname = window.location.hostname;
+  const isLocal = (hostname === "localhost" || hostname === "127.0.0.1");
   const endpoint = isLocal 
     ? "http://localhost:8787/api/find-candidates?zip=" 
     : "https://sibi-d1-worker.upac.org.workers.dev/api/find-candidates?zip=";

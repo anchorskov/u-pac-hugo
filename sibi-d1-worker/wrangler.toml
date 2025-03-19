@@ -4,11 +4,6 @@ account_id = "8bfd3f60fbdcc89183e9e312fb03e86e"
 workers_dev = true
 compatibility_date = "2025-03-13"
 
-kv_namespaces = [
-  { binding = "HUDZIP_INDEX", id = "bdd12d6410a0434292e902cbb6abab4b" },
-  { binding = "UPAC", id = "b5c040d80a794558a5f8ee3657c3fa1c" }
-]
-
 [[d1_databases]]
 binding = "SIBIDRIFT_DB"
 database_name = "sibidrift"
