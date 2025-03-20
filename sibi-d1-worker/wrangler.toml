@@ -9,11 +9,6 @@ binding = "SIBIDRIFT_DB"
 database_name = "sibidrift.db"
 database_id = "aeedccf4-14bb-48f8-91c0-a9023c9f153c"
 
-# [miniflare]
-# d1_databases = [
-#   { binding = "SIBIDRIFT_DB", path = "/home/anchor/projects/u-pac/u-pac-hugo/sibi-d1-worker/sibidrift.db" }
-# ]
-
 [vars]
 ENV_MESSAGE = "Loaded on Cloudflare"
 ENV = "development"
