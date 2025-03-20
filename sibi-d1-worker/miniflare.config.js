@@ -1,11 +1,23 @@
 // miniflare.config.js
 module.exports = {
+  // Points to your main Worker script
   scriptPath: "src/index.js",
-  // Inject bindings into your Worker for local simulation
+
+  // Tells Miniflare which local D1 databases to bind
+  d1Databases: [
+    {
+      binding: "SIBIDRIFT_DB",  // Must match the binding in wrangler.toml
+      path: "/home/anchor/projects/u-pac/u-pac-hugo/sibi-d1-worker/sibidrift.db",
+    },
+  ],
+
+  // Inject environment variables for local simulation
   bindings: {
-    // Simulate your ENV_MESSAGE variable
-    ENV_MESSAGE: "Loaded on Miniflare"
-    // The dummy SIBIDRIFT_DB binding has been removed so that real D1 queries
-    // can use the local .db file or the remote database, as configured in wrangler.toml.
+    ENV_MESSAGE: "Loaded on Miniflare",
+    // Add any other local-only variables you need here
   },
+
+  // (Optional) Set local port or host if you want to override defaults
+  // port: 8787,
+  // host: "127.0.0.1",
 };
