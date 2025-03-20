@@ -12,7 +12,7 @@ document.getElementById('candidateForm').addEventListener('submit', async functi
   const isLocal = (hostname === "localhost" || hostname === "127.0.0.1");
   const endpoint = isLocal 
     ? "http://localhost:8787/api/find-candidates?zip=" 
-    : "https://sibi-d1-worker.upac.org.workers.dev/api/find-candidates?zip=";
+    : "https://sibi-d1-worker.anchorskov.workers.dev/api/find-candidates?zip=";
 
   try {
     console.log("Fetching from:", endpoint + encodeURIComponent(zip));
