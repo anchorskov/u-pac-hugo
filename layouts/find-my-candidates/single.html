@@ -5,6 +5,7 @@
   <title>{{ .Title }}</title>
   <!-- CSP updated to include a nonce. 'strict-dynamic' requires the nonce for scripts to load -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-abc123' 'strict-dynamic'; connect-src *;">
+  <link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
   <header>
@@ -17,19 +18,148 @@
     </section>
 
     <section id="candidate-search">
-      <form id="candidateForm">
-        <label for="zipcodeInput">Enter ZIP Code:</label>
-        <input type="text" id="zipcodeInput" name="zipcodeInput" placeholder="e.g., 12345" required>
-        <button type="submit">Find My Candidates</button>
+      <form id="candidateForm" class="zip-form">
+        <label for="zipcodeInput" class="zip-label">Enter ZIP Code:</label>
+        <input type="text" id="zipcodeInput" name="zipcodeInput" placeholder="e.g., 12345" required class="zip-input">
+        <button type="submit" class="zip-button">Find My Candidates</button>
       </form>
+      <section id="geolocationSection" class="geolocation-section">
+        <button id="geolocateBtn" class="btn btn-secondary">Use My Device Location</button>
+      </section>
+    </section>
 
+    <!-- Results section -->
+    <section id="candidateResultsSection">
+      <h2 id="houseHeader" class="hidden">House of Representatives</h2>
+      <p id="incumbentLine" class="hidden">Incumbent</p>
       <div id="candidateResults"></div>
     </section>
+    
   </main>
 
   <footer></footer>
 
-  <!-- Script tag now includes the nonce attribute -->
-  <script nonce="abc123" src="/js/find-my-candidates.js"></script>
+  <!-- Inline script: Dynamic endpoint detection and candidate rendering -->
+  <script nonce="abc123">
+    document.addEventListener("DOMContentLoaded", function() {
+      // Determine the API base endpoint dynamically.
+      const hostname = window.location.hostname;
+      const port = window.location.port;
+      const isLocal = (hostname === "localhost" || hostname === "127.0.0.1");
+      const apiBase = (isLocal && port === "1313") 
+        ? "http://localhost:8787/api/find-candidates" 
+        : "/api/find-candidates";
+      
+      console.log("API Base endpoint:", apiBase);
+      
+      // Helper: Compute age from birthday string (YYYY-MM-DD)
+      function computeAge(birthdayStr) {
+        if (!birthdayStr) return "";
+        const birthDate = new Date(birthdayStr);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+        }
+        return age;
+      }
+      
+      // Helper: Get candidate's position from their terms (assumes last term is current)
+      function getCandidatePosition(candidate) {
+        if (Array.isArray(candidate.terms) && candidate.terms.length > 0) {
+          const currentTerm = candidate.terms[candidate.terms.length - 1];
+          if (currentTerm && currentTerm.type) {
+            return currentTerm.type; // "sen" or "rep"
+          }
+        }
+        return "N/A";
+      }
+      
+      // Helper: Render candidate data into HTML.
+      // The header displays the candidate’s position (full title) BEFORE the name,
+      // with the age shown on the same line.
+      // The candidate header is centered, while any candidate details are indented.
+      function renderCandidates(candidates) {
+        const candidateResults = document.getElementById("candidateResults");
+        candidateResults.innerHTML = "";
+        if (!Array.isArray(candidates) || candidates.length === 0) {
+          candidateResults.innerHTML = "<p>No candidates found for this location.</p>";
+          return;
+        }
+        candidates.forEach(candidate => {
+          const name = candidate.name && candidate.name.official_full ? candidate.name.official_full : "Name not available";
+          const birthday = candidate.bio && candidate.bio.birthday ? candidate.bio.birthday : null;
+          const age = birthday ? computeAge(birthday) : "N/A";
+          const position = getCandidatePosition(candidate);
+          const positionDisplay = (position === "sen") 
+            ? "Senator" 
+            : (position === "rep" ? "Representative" : position);
+          
+          candidateResults.innerHTML += `
+            <div class="candidate-item">
+              <div class="candidate-header-container">
+                <h3 class="candidate-header">${positionDisplay} ${name} <span class="candidate-age">(Age: ${age})</span></h3>
+              </div>
+              <div class="candidate-details">
+                <!-- Additional candidate details can be added here -->
+              </div>
+            </div>
+          `;
+        });
+      }
+      
+      // Function to fetch candidate data based on URL.
+      async function fetchCandidates(url) {
+        const candidateResults = document.getElementById("candidateResults");
+        candidateResults.innerHTML = "<p>Loading candidate data...</p>";
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          console.log("Raw candidate data:", data);
+          if (data.message) {
+            candidateResults.innerHTML = `<p>${data.message}</p>`;
+            return;
+          }
+          renderCandidates(data);
+        } catch (error) {
+          console.error("Error fetching candidate data:", error);
+          candidateResults.innerHTML = "<p>Error loading candidate data. Please try again later.</p>";
+        }
+      }
+      
+      // Handle ZIP form submission.
+      document.getElementById("candidateForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const zip = document.getElementById("zipcodeInput").value.trim();
+        if (!zip) {
+          alert("Please enter a valid ZIP code.");
+          return;
+        }
+        const fullUrl = `${apiBase}?zip=${encodeURIComponent(zip)}`;
+        console.log("Fetching candidates from:", fullUrl);
+        fetchCandidates(fullUrl);
+      });
+      
+      // Handle geolocation button click.
+      const geolocateBtn = document.getElementById("geolocateBtn");
+      geolocateBtn.addEventListener("click", function() {
+        if (!navigator.geolocation) {
+          alert("Geolocation is not supported by your browser.");
+          return;
+        }
+        document.getElementById("candidateResults").innerHTML = "<p>Fetching your location...</p>";
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const { latitude, longitude } = position.coords;
+          const fullUrl = `${apiBase}?lat=${encodeURIComponent(latitude)}&lon=${encodeURIComponent(longitude)}`;
+          console.log("Fetching candidates from:", fullUrl);
+          fetchCandidates(fullUrl);
+        }, (error) => {
+          console.error("Geolocation error:", error);
+          document.getElementById("candidateResults").innerHTML = "<p>Error obtaining geolocation. Please try again.</p>";
+        });
+      });
+    });
+  </script>
 </body>
 </html>

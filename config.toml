@@ -50,3 +50,9 @@ buildFuture = true  # <-- Add this here at the top level
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[server]
+  disableFastRender = true
+
+  [server.proxy]
+    "/api/" = "http://localhost:8787"

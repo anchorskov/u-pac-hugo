@@ -1,9 +1,14 @@
+import { fetchGeography } from "./modules/geocoder.js";
+import { getStateName } from "./modules/stateMapping.js";
+import { filterLegislators } from "./modules/legislatorFilter.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
     // Handle CORS preflight requests
     if (request.method === "OPTIONS") {
+      console.log("OPTIONS preflight received");
       return new Response(null, {
         status: 204,
         headers: {
@@ -15,7 +20,7 @@ export default {
       });
     }
 
-    // Test endpoint to verify local DB connection and count records
+    // Test endpoint to verify DB connection (using hud_zip_crosswalk/upac_states)
     if (url.pathname === "/api/test-db") {
       try {
         const countQuery = await env.SIBIDRIFT_DB.prepare(
@@ -30,137 +35,160 @@ export default {
         });
       } catch (error) {
         console.error("Error running count query:", error);
-        return new Response(JSON.stringify({ error: error.message }), {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          status: 500,
-        });
+        return new Response(
+          JSON.stringify({ error: error.message }),
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+            status: 500,
+          }
+        );
       }
     }
 
+    // /api/find-candidates endpoint
     if (url.pathname === "/api/find-candidates") {
-      const zip = url.searchParams.get("zip");
-      if (!zip) {
+      let stateName, district;
+
+      // Geolocation branch: if lat & lon are provided
+      if (url.searchParams.has("lat") && url.searchParams.has("lon")) {
+        const lat = url.searchParams.get("lat");
+        const lon = url.searchParams.get("lon");
+        console.log("Geolocation request received:", { lat, lon });
+        try {
+          const geoData = await fetchGeography(lat, lon);
+          console.log("Geocoder returned:", geoData);
+          const { stateFips, district: geoDistrict } = geoData;
+          district = geoDistrict;
+          stateName = await getStateName(stateFips, env.SIBIDRIFT_DB);
+          console.log("Mapped stateFips", stateFips, "to stateName:", stateName);
+        } catch (error) {
+          console.error("Error in geolocation branch:", error);
+          return new Response(
+            JSON.stringify({ error: error.message }),
+            {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 500,
+            }
+          );
+        }
+      } else if (url.searchParams.has("zip")) {
+        // ZIP branch: using ZIP lookup
+        const zip = url.searchParams.get("zip");
+        console.log("ZIP lookup request received with zip:", zip);
+        if (!zip) {
+          console.error("ZIP code missing");
+          return new Response(
+            JSON.stringify({ error: "Zip code is required" }),
+            {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 400,
+            }
+          );
+        }
+        try {
+          const zipQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT state_fips_code, cd FROM hud_zip_crosswalk WHERE zipcode = ?`
+          ).bind(zip).all();
+          console.log("ZIP query results:", zipQuery.results);
+          if (zipQuery.results.length === 0) {
+            throw new Error("ZIP code not found in database.");
+          }
+          const stateFips = zipQuery.results[0].state_fips_code;
+          const fullCd = zipQuery.results[0].cd;
+          district = fullCd.substring(2); // Extract district (last two digits)
+          console.log(`For ZIP ${zip}, extracted stateFips: ${stateFips} and district: ${district}`);
+          stateName = await getStateName(stateFips, env.SIBIDRIFT_DB);
+          console.log("Mapped stateFips", stateFips, "to stateName:", stateName);
+        } catch (error) {
+          console.error("Error in ZIP branch:", error);
+          return new Response(
+            JSON.stringify({ error: error.message }),
+            {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 500,
+            }
+          );
+        }
+      } else {
+        console.error("No location parameter provided");
         return new Response(
-          JSON.stringify({ error: "Zip code is required" }),
+          JSON.stringify({ error: "No location parameter provided" }),
           {
-            headers: {
-              "content-type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
+            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
             status: 400,
           }
         );
       }
 
+      // Retrieve legislator data from KV JSON and filter it using the legislatorFilter module.
       try {
-        /** 🔹 STEP 1: Get State & District from ZIP **/
-        const zipQuery = await env.SIBIDRIFT_DB.prepare(
-          `SELECT state_fips_code, cd FROM hud_zip_crosswalk WHERE zipcode = ?`
-        )
-          .bind(zip)
-          .all();
-
-        if (zipQuery.results.length === 0) {
-          console.log(`ZIP ${zip} not found.`);
-          return new Response(
-            JSON.stringify({ message: "ZIP code not found in database." }),
-            {
-              headers: {
-                "content-type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-              },
-              status: 404,
-            }
-          );
+        const rawLegislators = await env.LEGISLATORS_KV.get("legislators_current");
+        if (!rawLegislators) {
+          throw new Error("Legislators data not found in KV.");
         }
-
-        const stateFips = zipQuery.results[0].state_fips_code;
-        const fullCd = zipQuery.results[0].cd;
-        const district = fullCd.substring(2); // Extract district (last two digits)
-
-        console.log(
-          `ZIP ${zip} maps to State FIPS ${stateFips} and District ${district}`
-        );
-
-        /** 🔹 STEP 2: Get State Name from FIPS **/
-        const stateQuery = await env.SIBIDRIFT_DB.prepare(
-          `SELECT name FROM upac_states WHERE fips_state_code = ?`
-        )
-          .bind(stateFips)
-          .all();
-
-        if (stateQuery.results.length === 0) {
-          console.log(`State FIPS ${stateFips} not found.`);
+        // Await the asynchronous filterLegislators call and pass the DB connection.
+        const filtered = await filterLegislators(stateName, district, rawLegislators, env.SIBIDRIFT_DB);
+        console.log(`Filtered legislators for state: ${stateName}, district: ${district} => ${filtered.length} record(s)`);
+        if (filtered.length === 0) {
+          console.error("No candidates found for this location.");
           return new Response(
-            JSON.stringify({ message: "State not found." }),
+            JSON.stringify({ message: "No candidates found for this location." }),
             {
-              headers: {
-                "content-type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-              },
-              status: 404,
-            }
-          );
-        }
-
-        const stateName = stateQuery.results[0].name;
-
-        /** 🔹 STEP 3: Fetch At Large Representative **/
-        const atLargeQuery = await env.SIBIDRIFT_DB.prepare(
-          `SELECT * FROM upac_representatives WHERE state = ? AND district_id = 'At Large'`
-        )
-          .bind(stateName)
-          .all();
-
-        /** 🔹 STEP 4: Fetch District Representative(s) **/
-        const districtQuery = await env.SIBIDRIFT_DB.prepare(
-          `SELECT * FROM upac_representatives WHERE state = ? AND district_id = ?`
-        )
-          .bind(stateName, district)
-          .all();
-
-        /** 🔹 STEP 5: Merge Results **/
-        const results = [...atLargeQuery.results, ...districtQuery.results];
-
-        console.log(`Final Result: ${results.length} record(s) for ZIP ${zip}`);
-
-        if (results.length === 0) {
-          return new Response(
-            JSON.stringify({
-              message: "No candidates found for the provided ZIP code.",
-            }),
-            {
-              headers: {
-                "content-type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-              },
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
               status: 200,
             }
           );
         }
-
-        return new Response(JSON.stringify(results), {
-          headers: {
-            "content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
+        return new Response(JSON.stringify(filtered), {
+          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
         });
       } catch (error) {
-        console.error("Error querying D1 database:", error);
-        return new Response(JSON.stringify({ error: error.message }), {
-          headers: {
-            "content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          status: 500,
-        });
+        console.error("Error filtering legislators:", error);
+        return new Response(
+          JSON.stringify({ error: error.message }),
+          {
+            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+            status: 500,
+          }
+        );
       }
     }
 
-    // Default response for other routes
+    // /api/legislators endpoint: Return raw KV JSON data.
+    if (url.pathname === "/api/legislators") {
+      console.log("Legislators KV request received");
+      try {
+        const rawJson = await env.LEGISLATORS_KV.get("legislators_current");
+        if (!rawJson) {
+          console.error("No legislators data found in KV");
+          return new Response(
+            JSON.stringify({ error: "No data found" }),
+            {
+              status: 404,
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+            }
+          );
+        }
+        console.log("Legislators KV data retrieved successfully");
+        return new Response(rawJson, {
+          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+        });
+      } catch (error) {
+        console.error("Error fetching legislators from KV:", error);
+        return new Response(
+          JSON.stringify({ error: error.message }),
+          {
+            status: 500,
+            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+          }
+        );
+      }
+    }
+
+    console.log("Default route hit. Returning greeting message.");
     return new Response("Hello from Cloudflare Worker", {
       headers: { "Access-Control-Allow-Origin": "*" },
     });

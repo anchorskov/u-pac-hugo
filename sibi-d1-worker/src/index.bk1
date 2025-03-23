@@ -1,0 +1,290 @@
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // Handle CORS preflight requests
+    if (request.method === "OPTIONS") {
+      console.log("OPTIONS preflight request received");
+      return new Response(null, {
+        status: 204,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Max-Age": "86400",
+        },
+      });
+    }
+
+    // Test endpoint to verify local DB connection and count records
+    if (url.pathname === "/api/test-db") {
+      try {
+        const countQuery = await env.SIBIDRIFT_DB.prepare(
+          "SELECT COUNT(*) AS total FROM hud_zip_crosswalk;"
+        ).all();
+        console.log("hud_zip_crosswalk count:", countQuery.results[0].total);
+
+        return new Response(JSON.stringify(countQuery.results[0]), {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
+      } catch (error) {
+        console.error("Error running count query:", error);
+        return new Response(JSON.stringify({ error: error.message }), {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          status: 500,
+        });
+      }
+    }
+
+    // Find candidates by ZIP or by geolocation
+    if (url.pathname === "/api/find-candidates") {
+      // If latitude and longitude are provided, use geolocation branch
+      if (url.searchParams.has("lat") && url.searchParams.has("lon")) {
+        const lat = url.searchParams.get("lat");
+        const lon = url.searchParams.get("lon");
+        console.log("Geolocation request received with lat:", lat, "lon:", lon);
+
+        // Call Census Geocoder to get geographic data
+        const censusUrl = `https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x=${lon}&y=${lat}&benchmark=2020&vintage=2020&format=json`;
+        console.log("Fetching Census data from URL:", censusUrl);
+        try {
+          const censusResponse = await fetch(censusUrl);
+          console.log("Census response status:", censusResponse.status);
+          if (!censusResponse.ok) {
+            console.error("Census Geocoder returned error status:", censusResponse.status);
+            return new Response(JSON.stringify({ error: "Error calling Census Geocoder" }), {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 500,
+            });
+          }
+          const censusData = await censusResponse.json();
+          console.log("Census data received:", JSON.stringify(censusData.result.geographies, null, 2));
+          const blocks = censusData?.result?.geographies?.["Census Blocks"];
+          if (!blocks || blocks.length === 0) {
+            console.error("No Census Blocks found in Census data");
+            return new Response(JSON.stringify({ message: "No Census Block info found for these coordinates." }), {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 404,
+            });
+          }
+          const block = blocks[0];
+          console.log("Using Census Block:", JSON.stringify(block, null, 2));
+          const stateFips = block.STATE;
+          console.log("Extracted state FIPS from block:", stateFips);
+          // Assume the congressional district is available in block.CD (adjust as needed)
+          const district = block.CD;
+          console.log("Extracted district from block:", district);
+
+          // Query for state name using stateFips
+          console.log("Querying upac_states with stateFips:", stateFips);
+          const stateQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT name FROM upac_states WHERE fips_state_code = ?`
+          )
+            .bind(stateFips)
+            .all();
+          console.log("State query results:", stateQuery.results);
+          if (stateQuery.results.length === 0) {
+            console.error("State not found for FIPS:", stateFips);
+            return new Response(JSON.stringify({ message: "State not found." }), {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 404,
+            });
+          }
+          const stateName = stateQuery.results[0].name;
+          console.log("Mapped stateFips", stateFips, "to stateName:", stateName);
+
+          // Fetch At Large Representative
+          console.log("Querying upac_representatives for At Large representatives with state:", stateName);
+          const atLargeQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT * FROM upac_representatives WHERE state = ? AND district_id = 'At Large'`
+          )
+            .bind(stateName)
+            .all();
+          console.log("At Large query results:", atLargeQuery.results);
+
+          // Fetch District Representative(s)
+          console.log("Querying upac_representatives for district representatives with state:", stateName, "and district:", district);
+          const districtQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT * FROM upac_representatives WHERE state = ? AND district_id = ?`
+          )
+            .bind(stateName, district)
+            .all();
+          console.log("District query results:", districtQuery.results);
+
+          const results = [...atLargeQuery.results, ...districtQuery.results];
+          console.log(`Final Result: ${results.length} record(s) for coordinates lat: ${lat}, lon: ${lon}`);
+
+          if (results.length === 0) {
+            console.error("No candidates found for these coordinates.");
+            return new Response(JSON.stringify({ message: "No candidates found for these coordinates." }), {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 200,
+            });
+          }
+
+          return new Response(JSON.stringify(results), {
+            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+          });
+        } catch (error) {
+          console.error("Error processing geolocation lookup:", error);
+          return new Response(JSON.stringify({ error: error.message }), {
+            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+            status: 500,
+          });
+        }
+      } else {
+        // ZIP-based lookup branch
+        const zip = url.searchParams.get("zip");
+        console.log("ZIP lookup request received with zip:", zip);
+        if (!zip) {
+          console.error("ZIP code is missing in request");
+          return new Response(JSON.stringify({ error: "Zip code is required" }), {
+            headers: {
+              "content-type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+            status: 400,
+          });
+        }
+
+        try {
+          console.log("Querying hud_zip_crosswalk for zip:", zip);
+          const zipQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT state_fips_code, cd FROM hud_zip_crosswalk WHERE zipcode = ?`
+          )
+            .bind(zip)
+            .all();
+          console.log("ZIP query results:", zipQuery.results);
+          if (zipQuery.results.length === 0) {
+            console.error("No records found for ZIP:", zip);
+            return new Response(JSON.stringify({ message: "ZIP code not found in database." }), {
+              headers: {
+                "content-type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+              },
+              status: 404,
+            });
+          }
+
+          const stateFips = zipQuery.results[0].state_fips_code;
+          const fullCd = zipQuery.results[0].cd;
+          const district = fullCd.substring(2); // Extract district (last two digits)
+          console.log(`For ZIP ${zip}, extracted state FIPS: ${stateFips} and district: ${district}`);
+
+          console.log("Querying upac_states with stateFips:", stateFips);
+          const stateQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT name FROM upac_states WHERE fips_state_code = ?`
+          )
+            .bind(stateFips)
+            .all();
+          console.log("State query results:", stateQuery.results);
+          if (stateQuery.results.length === 0) {
+            console.error("State not found for FIPS:", stateFips);
+            return new Response(JSON.stringify({ message: "State not found." }), {
+              headers: {
+                "content-type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+              },
+              status: 404,
+            });
+          }
+
+          const stateName = stateQuery.results[0].name;
+          console.log("Mapped stateFips", stateFips, "to stateName:", stateName);
+
+          console.log("Querying upac_representatives for At Large representatives with state:", stateName);
+          const atLargeQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT * FROM upac_representatives WHERE state = ? AND district_id = 'At Large'`
+          )
+            .bind(stateName)
+            .all();
+          console.log("At Large query results:", atLargeQuery.results);
+
+          console.log("Querying upac_representatives for district representatives with state:", stateName, "and district:", district);
+          const districtQuery = await env.SIBIDRIFT_DB.prepare(
+            `SELECT * FROM upac_representatives WHERE state = ? AND district_id = ?`
+          )
+            .bind(stateName, district)
+            .all();
+          console.log("District query results:", districtQuery.results);
+
+          const results = [...atLargeQuery.results, ...districtQuery.results];
+          console.log(`Final Result: ${results.length} record(s) for ZIP ${zip}`);
+
+          if (results.length === 0) {
+            console.error("No candidates found for ZIP:", zip);
+            return new Response(JSON.stringify({ message: "No candidates found for the provided ZIP code." }), {
+              headers: {
+                "content-type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+              },
+              status: 200,
+            });
+          }
+
+          return new Response(JSON.stringify(results), {
+            headers: {
+              "content-type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          });
+        } catch (error) {
+          console.error("Error querying D1 database:", error);
+          return new Response(JSON.stringify({ error: error.message }), {
+            headers: {
+              "content-type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+            status: 500,
+          });
+        }
+      }
+    }
+
+    // NEW: Legislators data from KV
+    if (url.pathname === "/api/legislators") {
+      console.log("Legislators KV request received");
+      try {
+        const rawJson = await env.LEGISLATORS_KV.get("legislators_current");
+        if (!rawJson) {
+          console.error("No data found in KV for legislators_current");
+          return new Response(JSON.stringify({ error: "No data found" }), {
+            status: 404,
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          });
+        }
+        console.log("Legislators KV data retrieved successfully");
+        return new Response(rawJson, {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
+      } catch (error) {
+        console.error("Error fetching legislators from KV:", error);
+        return new Response(JSON.stringify({ error: error.message }), {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
+      }
+    }
+
+    // Default response for other routes
+    console.log("Default route hit. Returning greeting message.");
+    return new Response("Hello from Cloudflare Worker", {
+      headers: { "Access-Control-Allow-Origin": "*" },
+    });
+  },
+};
