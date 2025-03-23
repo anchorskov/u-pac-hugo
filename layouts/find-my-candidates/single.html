@@ -31,6 +31,7 @@
     <!-- Results section -->
     <section id="candidateResultsSection">
       <h2 id="houseHeader" class="hidden">House of Representatives</h2>
+      <!-- Incumbent line initially hidden -->
       <p id="incumbentLine" class="hidden">Incumbent</p>
       <div id="candidateResults"></div>
     </section>
@@ -39,20 +40,18 @@
 
   <footer></footer>
 
-  <!-- Inline script: Dynamic endpoint detection and candidate rendering -->
+  <!-- Inline script: dynamic endpoint detection, candidate rendering, and form reset -->
   <script nonce="abc123">
     document.addEventListener("DOMContentLoaded", function() {
-      // Determine the API base endpoint dynamically.
       const hostname = window.location.hostname;
       const port = window.location.port;
       const isLocal = (hostname === "localhost" || hostname === "127.0.0.1");
-      const apiBase = (isLocal && port === "1313") 
-        ? "http://localhost:8787/api/find-candidates" 
+      const apiBase = (isLocal && port === "1313")
+        ? "http://localhost:8787/api/find-candidates"
         : "/api/find-candidates";
       
       console.log("API Base endpoint:", apiBase);
-      
-      // Helper: Compute age from birthday string (YYYY-MM-DD)
+
       function computeAge(birthdayStr) {
         if (!birthdayStr) return "";
         const birthDate = new Date(birthdayStr);
@@ -64,8 +63,7 @@
         }
         return age;
       }
-      
-      // Helper: Get candidate's position from their terms (assumes last term is current)
+
       function getCandidatePosition(candidate) {
         if (Array.isArray(candidate.terms) && candidate.terms.length > 0) {
           const currentTerm = candidate.terms[candidate.terms.length - 1];
@@ -75,11 +73,7 @@
         }
         return "N/A";
       }
-      
-      // Helper: Render candidate data into HTML.
-      // The header displays the candidate’s position (full title) BEFORE the name,
-      // with the age shown on the same line.
-      // The candidate header is centered, while any candidate details are indented.
+
       function renderCandidates(candidates) {
         const candidateResults = document.getElementById("candidateResults");
         candidateResults.innerHTML = "";
@@ -102,14 +96,13 @@
                 <h3 class="candidate-header">${positionDisplay} ${name} <span class="candidate-age">(Age: ${age})</span></h3>
               </div>
               <div class="candidate-details">
-                <!-- Additional candidate details can be added here -->
+                <!-- Additional details can be added here -->
               </div>
             </div>
           `;
         });
       }
-      
-      // Function to fetch candidate data based on URL.
+
       async function fetchCandidates(url) {
         const candidateResults = document.getElementById("candidateResults");
         candidateResults.innerHTML = "<p>Loading candidate data...</p>";
@@ -127,20 +120,23 @@
           candidateResults.innerHTML = "<p>Error loading candidate data. Please try again later.</p>";
         }
       }
-      
+
       // Handle ZIP form submission.
       document.getElementById("candidateForm").addEventListener("submit", function(e) {
         e.preventDefault();
+        // Capture the ZIP code value before resetting the form.
         const zip = document.getElementById("zipcodeInput").value.trim();
         if (!zip) {
           alert("Please enter a valid ZIP code.");
           return;
         }
+        // Reset the form so no previous input remains.
+        document.getElementById("candidateForm").reset();
         const fullUrl = `${apiBase}?zip=${encodeURIComponent(zip)}`;
         console.log("Fetching candidates from:", fullUrl);
         fetchCandidates(fullUrl);
       });
-      
+
       // Handle geolocation button click.
       const geolocateBtn = document.getElementById("geolocateBtn");
       geolocateBtn.addEventListener("click", function() {

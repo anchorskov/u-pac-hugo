@@ -50,3 +50,4 @@ buildFuture = true  # <-- Add this here at the top level
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
