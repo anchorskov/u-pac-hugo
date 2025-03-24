@@ -71,7 +71,17 @@ document.addEventListener("DOMContentLoaded", () => {
       fetchCandidates(`${apiBase}/find-candidates?zip=${encodeURIComponent(zip)}`);
     });
   
-    document.getElementById("geolocateBtn").addEventListener("click", () => {
+    const geolocateBtn = document.getElementById("geolocateBtn");
+  
+    // Dynamically update the tooltip based on device type.
+    if (navigator.userAgentData?.mobile || /Mobi|Android/i.test(navigator.userAgent)) {
+      geolocateBtn.title = "Most accurate for mobile users. Returning results for your current location setting.";
+    } else {
+      geolocateBtn.title = "Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.";
+    }
+  
+    // Enhanced geolocation click event with reverse geocoding & confirmation prompt.
+    geolocateBtn.addEventListener("click", () => {
       if (!navigator.geolocation) {
         alert("Geolocation is not supported by your browser.");
         return;
@@ -79,7 +89,33 @@ document.addEventListener("DOMContentLoaded", () => {
   
       navigator.geolocation.getCurrentPosition(
         pos => {
-          fetchCandidates(`${apiBase}/find-candidates?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`);
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+  
+          // Reverse geocode using Nominatim
+          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Failed to fetch location data");
+              }
+              return response.json();
+            })
+            .then(data => {
+              const address = data.address;
+              const city = address.city || address.town || address.village || "your area";
+              const state = address.state || "";
+              const confirmMessage = `Your device has set your current location near ${city}, ${state}. Continue?`;
+              if (confirm(confirmMessage)) {
+                // Proceed with candidate lookup using geolocation.
+                fetchCandidates(`${apiBase}/find-candidates?lat=${lat}&lon=${lon}`);
+              } else {
+                alert("Please enter your ZIP code or full address for more accurate results.");
+              }
+            })
+            .catch(error => {
+              console.error("Error fetching location details:", error);
+              alert("Unable to determine location details. Please enter your ZIP code.");
+            });
         },
         () => {
           alert("Error obtaining geolocation. Please try again.");
