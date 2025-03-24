@@ -359,76 +359,77 @@ body {
 }
 .hidden {
     display: none;
-  }
-  #incumbentLine {
+}
+#incumbentLine {
     font-style: italic;    /* italic text */
     font-weight: bold;     /* bold text */
     font-size: 1.1em;       /* 10% larger than normal */
-  }
- 
- /* Header title centered */
+}
+
+/* Header title centered */
 header h1 {
     text-align: center;
-  }
-  
-  /* Main content left indent (one tab ≈ 2em) */
-  main {
+}
+
+/* Main content left indent (one tab ≈ 2em) */
+main {
     padding-left: 2em;
-  }
-  
-  /* Candidate display styles */
-  .candidate-item {
+}
+
+/* Candidate display styles */
+.candidate-item {
     margin-bottom: 1em;
     width: 100%;
-  }
-  
-  /* Candidate header container: left align candidate info */
-  .candidate-header-container {
+}
+
+/* Candidate header container: left align candidate info */
+.candidate-header-container {
     text-align: left;
-  }
-  
-  /* Candidate header styling */
-  .candidate-header {
+}
+
+/* Candidate header styling */
+.candidate-header {
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
-  }
-  
-  /* Candidate age styling */
-  .candidate-age {
+}
+
+/* Candidate age styling */
+.candidate-age {
     font-weight: normal;
     font-size: 0.9em;
     margin-left: 0.5em;
-  }
-  
-  /* Candidate details: indent additional 2em (for a total of 4em from page edge, if main already provides 2em) */
-  .candidate-details {
+}
+
+/* Candidate details: indent additional 2em (for a total of 4em from page edge, if main already provides 2em) */
+.candidate-details {
     padding-left: 2em;
     margin-top: 0.5em;
-  }
-  
-  /* ZIP form spacing */
-  .zip-form {
+}
+
+/* ZIP form spacing */
+.zip-form {
     margin-bottom: 1em;
-  }
-  
-  .zip-form .zip-label,
-  .zip-form .zip-input,
-  .zip-form .zip-button {
+}
+
+.zip-form .zip-label,
+.zip-form .zip-input,
+.zip-form .zip-button {
     margin-right: 0.5em;
-  }
-  
-  /* Geolocation section spacing */
-  .geolocation-section {
+}
+
+/* Geolocation section spacing */
+.geolocation-section {
     margin-top: 1.5em;
-  }
-  
-  /* Candidate results: add extra indent so candidate data appears two tabs from the page edge */
-  #candidateResults {
+}
+
+/* Candidate results: add extra indent so candidate data appears two tabs from the page edge */
+#candidateResults {
     margin-top: 2em;
     padding-left: 2em;
-  }
-  /* Improved button and input styling for mobile */
+}
+
+/* Improved button and input styling for mobile */
 .location-container,
 .address-container {
   display: flex;
@@ -451,7 +452,7 @@ header h1 {
   box-sizing: border-box;
 }
 
-/* Optional: Add media query for smaller screens */
+/* Optional: Existing media query for smaller screens */
 @media (max-width: 600px) {
   .location-container,
   .address-container {
@@ -466,3 +467,34 @@ header h1 {
   }
 }
 
+/* --- New Responsive Adjustments for a Professional Mobile Look --- */
+@media (max-width: 600px) {
+  :root {
+    --font-size-base: 18px;  /* Increase base font size */
+    --font-size-lg: 22px;    /* Increase large text size */
+    --font-size-xl: 40px;    /* Increase extra-large text size */
+  }
+
+  body {
+    font-size: var(--font-size-base);
+    line-height: 1.5;  /* Improve readability */
+  }
+
+  .header {
+    padding: 10px 15px;
+  }
+
+  main {
+    padding: 1em;
+  }
+
+  #candidateResults {
+    padding-left: 1em;
+    margin-top: 1.5em;
+  }
+
+  .btn, .zip-button, #geolocateBtn {
+    padding: 16px 24px;
+    font-size: 1.1rem;
+  }
+}
