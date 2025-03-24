@@ -1,15 +1,8 @@
 import { fetchGeography } from "./modules/geocoder.js";
 import { getStateName } from "./modules/stateMapping.js";
 import { filterLegislators } from "./modules/legislatorFilter.js";
-
-// Utility function at the top-level for clarity
-function formatCongressionalDistrict(fullCd) {
-  if (!fullCd || fullCd.length !== 4) {
-    throw new Error(`Invalid congressional district code: ${fullCd}`);
-  }
-  const districtCode = fullCd.substring(2);
-  return districtCode === '00' ? 0 : parseInt(districtCode, 10);
-}
+import { lookupZip } from "./modules/zipLookup.js";
+import { fetchDistrictByAddress } from "./modules/addressLookup.js"; // New module added
 
 export default {
   async fetch(request, env) {
@@ -29,7 +22,7 @@ export default {
       });
     }
 
-    // Test endpoint to verify DB connection (hud_zip_crosswalk)
+    // Endpoint to verify DB connection
     if (url.pathname === "/api/test-db") {
       try {
         const countQuery = await env.SIBIDRIFT_DB.prepare(
@@ -79,7 +72,7 @@ export default {
           });
         }
 
-      // ZIP code lookup branch (corrected logic)
+      // ZIP code lookup branch (using zipLookup.js module)
       } else if (url.searchParams.has("zip")) {
         const zip = url.searchParams.get("zip");
         console.log("ZIP lookup request with zip:", zip);
@@ -93,35 +86,25 @@ export default {
         }
 
         try {
-          const zipQuery = await env.SIBIDRIFT_DB.prepare(
-            `SELECT state_fips_code, cd FROM hud_zip_crosswalk WHERE zipcode = ?`
-          ).bind(zip).all();
-          console.log("ZIP query results:", zipQuery.results);
-
-          if (zipQuery.results.length === 0) {
-            throw new Error("ZIP code not found in database.");
-          }
-
-          // Robust filtering by state_fips_code
-          const zipQueryResults = zipQuery.results;
-          const targetStateFips = zipQueryResults[0].state_fips_code;
-
-          const matchingEntry = zipQueryResults.find(entry => 
-            entry.cd.startsWith(targetStateFips)
-          );
-
-          if (!matchingEntry) {
-            throw new Error("Matching state and district not found for this ZIP.");
-          }
-
-          const stateFips = matchingEntry.state_fips_code;
-          const fullCd = matchingEntry.cd;
-
-          district = formatCongressionalDistrict(fullCd);
-          console.log(`For ZIP ${zip}, extracted stateFips: ${stateFips} and district: ${district}`);
-
+          const { stateFips, districts, multiDistrict } = await lookupZip(zip, env.SIBIDRIFT_DB);
           stateName = await getStateName(stateFips, env.SIBIDRIFT_DB);
-          console.log("Mapped stateFips", stateFips, "to stateName:", stateName);
+
+          if (multiDistrict) {
+            console.warn(`Multi-district ZIP detected: ${zip} in state ${stateName}`, districts);
+            return new Response(JSON.stringify({
+              multi_district: true,
+              state: stateName,
+              districts,
+              message: "This ZIP code covers multiple congressional districts. Please provide your full address or use geolocation.",
+            }), {
+              headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+              status: 200,
+            });
+          }
+
+          district = districts[0]; // single district scenario
+          console.log(`For ZIP ${zip}, extracted stateFips: ${stateFips}, district: ${district}`);
+
         } catch (error) {
           console.error("Error in ZIP branch:", error);
           return new Response(JSON.stringify({ error: error.message }), {
@@ -138,7 +121,7 @@ export default {
         });
       }
 
-      // Retrieve legislator data from KV and filter it using the legislatorFilter module
+      // Retrieve legislator data from KV and filter it
       try {
         const rawLegislators = await env.LEGISLATORS_KV.get("legislators_current");
         if (!rawLegislators) {
@@ -151,10 +134,11 @@ export default {
           rawLegislators,
           env.SIBIDRIFT_DB
         );
+
         console.log(`Filtered legislators for ${stateName}, district ${district}:`, filtered.length, "record(s)");
 
         if (filtered.length === 0) {
-          console.error("No candidates found for location.");
+          console.warn("No candidates found for this location.");
           return new Response(JSON.stringify({ message: "No candidates found for this location." }), {
             headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
             status: 200,
@@ -174,24 +158,38 @@ export default {
       }
     }
 
-    // /api/legislators endpoint (return raw KV JSON data)
-    if (url.pathname === "/api/legislators") {
-      console.log("Legislators KV request received");
-      try {
-        const rawJson = await env.LEGISLATORS_KV.get("legislators_current");
-        if (!rawJson) {
-          console.error("No legislators data found in KV");
-          return new Response(JSON.stringify({ error: "No data found" }), {
-            status: 404,
-            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
-          });
-        }
-        console.log("Legislators KV data retrieved successfully");
-        return new Response(rawJson, {
+    // New endpoint: /api/find-candidates-by-address (address-based lookup)
+    if (url.pathname === "/api/find-candidates-by-address") {
+      const street = url.searchParams.get("street");
+      const city = url.searchParams.get("city");
+      const state = url.searchParams.get("state");
+      const zip = url.searchParams.get("zip");
+
+      if (!street || !city || !state || !zip) {
+        return new Response(JSON.stringify({ error: "Full address (street, city, state, zip) required." }), {
+          status: 400,
           headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
         });
+      }
+
+      try {
+        const { stateFips, district } = await fetchDistrictByAddress(street, city, state, zip);
+        const stateName = await getStateName(stateFips, env.SIBIDRIFT_DB);
+        const rawLegislators = await env.LEGISLATORS_KV.get("legislators_current");
+
+        const filtered = await filterLegislators(
+          stateName,
+          parseInt(district, 10),
+          rawLegislators,
+          env.SIBIDRIFT_DB
+        );
+
+        return new Response(JSON.stringify(filtered), {
+          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+        });
+
       } catch (error) {
-        console.error("Error fetching legislators from KV:", error);
+        console.error("Error fetching candidates by address:", error);
         return new Response(JSON.stringify({ error: error.message }), {
           status: 500,
           headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
@@ -199,7 +197,7 @@ export default {
       }
     }
 
-    // Default route (explicitly included)
+    // Default route
     console.log("Default route hit. Returning greeting message.");
     return new Response("Hello from Cloudflare Worker", {
       headers: { "Access-Control-Allow-Origin": "*" },
