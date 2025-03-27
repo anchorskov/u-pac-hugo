@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const apiBase = (location.hostname === "localhost" && location.port === "1313")
-    ? "http://localhost:8787/api"
-    : "/api";
+  const apiBase =
+    (location.hostname === "localhost" && location.port === "1313")
+      ? "http://localhost:8787/api"
+      : "/api";
 
   async function fetchCandidates(url) {
     const results = document.getElementById("candidateResults");
@@ -11,21 +12,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch(url);
       const data = await response.json();
 
-      // Check for multi-district scenario
-      if (data.multi_district === true) {
+      // If response includes header info, display header and then candidates.
+      if (data.header && data.candidates) {
+        results.innerHTML = `
+          <div class="results-header">
+            <h2>${data.header.state}</h2>
+            <h3>${data.header.cd}</h3>
+          </div>
+        `;
+        renderCandidates(data.candidates);
+      } else if (data.multi_district === true) {
         results.innerHTML = "";
         showCustomModal(data.message, data.zip);
-        return;
-      }
-
-      if (data.message) {
+      } else if (data.message) {
         results.innerHTML = `<p>${data.message}</p>`;
-        return;
+      } else {
+        const candidates = Array.isArray(data) ? data : (data.candidates || []);
+        renderCandidates(candidates);
       }
-
-      const candidates = Array.isArray(data) ? data : (data.candidates || []);
-      renderCandidates(candidates);
-
     } catch (error) {
       console.error("Fetch Error:", error);
       results.innerHTML = "<p>Error loading candidate data. Please try again.</p>";
@@ -44,9 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
     candidates.forEach(candidate => {
       const name = candidate.name?.official_full || "Name not available";
       const positionType = candidate.terms?.slice(-1)[0]?.type;
-      const position = positionType === "sen"
-        ? "Senator"
-        : positionType === "rep"
+      const position =
+        positionType === "sen"
+          ? "Senator"
+          : positionType === "rep"
           ? "Representative"
           : "Candidate";
 
@@ -73,13 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const dataList = document.getElementById("zipSuggestions");
   const candidateForm = document.getElementById("candidateForm");
 
-  // When the user focuses on the ZIP input, reset the entire form
-  // and ensure the address entry section is hidden.
+  // When the user focuses on the ZIP input, reset the entire form,
+  // clear autocomplete suggestions, candidate results, and hide the address form.
   zipcodeInput.addEventListener("focus", () => {
     candidateForm.reset();
     dataList.innerHTML = "";
     document.getElementById("candidateResults").innerHTML = "";
-    // Hide the address form for multi-district entry by re-adding the 'hidden' class.
     document.getElementById("addressFormContainer").classList.add("hidden");
   });
 
@@ -111,14 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const geolocateBtn = document.getElementById("geolocateBtn");
 
-  // Dynamically update tooltip based on device type
+  // Dynamically update tooltip based on device type.
   if (navigator.userAgentData?.mobile || /Mobi|Android/i.test(navigator.userAgent)) {
     geolocateBtn.title = "Most accurate for mobile users. Returning results for your current location setting.";
   } else {
     geolocateBtn.title = "Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.";
   }
 
-  // Geolocation click event with reverse geocoding & confirmation
+  // Geolocation click event with reverse geocoding & confirmation.
   geolocateBtn.addEventListener("click", () => {
     if (!navigator.geolocation) {
       alert("Geolocation is not supported by your browser.");
@@ -159,12 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-  document.getElementById('addressForm').addEventListener('submit', (e) => {
+  document.getElementById("addressForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    const street = document.getElementById('streetInput').value.trim();
-    const city = document.getElementById('cityInput').value.trim();
-    const state = document.getElementById('stateInput').value.trim();
-    const zip = document.getElementById('zipAddressInput').value.trim();
+    const street = document.getElementById("streetInput").value.trim();
+    const city = document.getElementById("cityInput").value.trim();
+    const state = document.getElementById("stateInput").value.trim();
+    const zip = document.getElementById("zipAddressInput").value.trim();
 
     if (!street || !city || !state || !zip) {
       alert("Please fill in all address fields.");

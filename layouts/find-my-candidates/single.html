@@ -22,7 +22,6 @@
       <!-- ZIP Code form -->
       <form id="candidateForm" class="zip-form" style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
         <label for="zipcodeInput" class="zip-label" style="margin: 0;">Enter ZIP Code:</label>
-
         <input 
           type="text" 
           id="zipcodeInput" 
@@ -36,7 +35,6 @@
           style="margin: 0;"
         />
         <datalist id="zipSuggestions"></datalist>
-
         <button type="submit" class="zip-button" style="margin: 0;">Find Candidates</button>
       </form>
 
@@ -64,8 +62,9 @@
 
     <!-- Results section -->
     <section id="candidateResultsSection">
-      <h2 id="houseHeader" class="hidden">House of Representatives</h2>
-      <p id="incumbentLine" class="hidden">Incumbent</p>
+      <!-- New container for header info -->
+      <div id="candidateHeader"></div>
+      <!-- Candidate list container -->
       <div id="candidateResults"></div>
     </section>
     
