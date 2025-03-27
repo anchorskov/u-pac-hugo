@@ -22,6 +22,48 @@ export default {
       });
     }
 
+    // New endpoint: /api/zip-autocomplete (ZIP suggestions for autocomplete)
+    if (url.pathname === "/api/zip-autocomplete") {
+      const query = url.searchParams.get("query");
+      if (!query) {
+        return new Response(JSON.stringify([]), {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
+      }
+
+      const sql = `
+        SELECT DISTINCT zipcode 
+        FROM hud_zip_crosswalk 
+        WHERE zipcode LIKE ? 
+        ORDER BY zipcode 
+        LIMIT 10
+      `;
+      const prefix = query + '%';
+
+      try {
+        const results = await env.SIBIDRIFT_DB.prepare(sql).bind(prefix).all();
+        const suggestions = results.results.map(row => row.zipcode);
+        return new Response(JSON.stringify(suggestions), {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
+      } catch (error) {
+        console.error("Autocomplete error:", error);
+        return new Response(JSON.stringify({ error: error.message }), {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          },
+        });
+      }
+    }
+
     // Endpoint to verify DB connection
     if (url.pathname === "/api/test-db") {
       try {
@@ -72,7 +114,7 @@ export default {
           });
         }
 
-      // ZIP code lookup branch (using zipLookup.js module)
+      // ZIP code lookup branch
       } else if (url.searchParams.has("zip")) {
         const zip = url.searchParams.get("zip");
         console.log("ZIP lookup request with zip:", zip);
@@ -102,7 +144,7 @@ export default {
             });
           }
 
-          district = districts[0]; // single district scenario
+          district = districts[0];
           console.log(`For ZIP ${zip}, extracted stateFips: ${stateFips}, district: ${district}`);
 
         } catch (error) {
@@ -124,9 +166,7 @@ export default {
       // Retrieve legislator data from KV and filter it
       try {
         const rawLegislators = await env.LEGISLATORS_KV.get("legislators_current");
-        if (!rawLegislators) {
-          throw new Error("Legislators data not found in KV.");
-        }
+        if (!rawLegislators) throw new Error("Legislators data not found in KV.");
 
         const filtered = await filterLegislators(
           stateName,
@@ -158,7 +198,7 @@ export default {
       }
     }
 
-    // New endpoint: /api/find-candidates-by-address (address-based lookup)
+    // /api/find-candidates-by-address endpoint (address-based lookup)
     if (url.pathname === "/api/find-candidates-by-address") {
       const street = url.searchParams.get("street");
       const city = url.searchParams.get("city");

@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ .Title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-abc123' 'strict-dynamic'; connect-src *;">
   <link rel="stylesheet" href="/css/custom.css">
   <link rel="stylesheet" href="/css/find-candidates.css">
 </head>
-<body>
+<body class="find-my-candidates-page">
   <header>
     <h1>{{ .Title }}</h1>
   </header>
@@ -18,14 +19,33 @@
     </section>
 
     <section id="candidate-search">
-      <form id="candidateForm" class="zip-form">
-        <label for="zipcodeInput" class="zip-label">Enter ZIP Code:</label>
-        <input type="text" id="zipcodeInput" name="zipcodeInput" placeholder="e.g., 12345" required class="zip-input">
-        <button type="submit" class="zip-button">Find My Candidates</button>
+      <!-- ZIP Code form -->
+      <form id="candidateForm" class="zip-form" style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
+        <label for="zipcodeInput" class="zip-label" style="margin: 0;">Enter ZIP Code:</label>
+
+        <input 
+          type="text" 
+          id="zipcodeInput" 
+          name="zipcodeInput" 
+          placeholder="e.g., 12345" 
+          required 
+          class="zip-input" 
+          list="zipSuggestions"
+          autocomplete="off"
+          maxlength="5"
+          style="margin: 0;"
+        />
+        <datalist id="zipSuggestions"></datalist>
+
+        <button type="submit" class="zip-button" style="margin: 0;">Find Candidates</button>
       </form>
 
-      <section id="geolocationSection" class="geolocation-section">
-        <button id="geolocateBtn" class="btn btn-secondary" title="Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.">
+      <!-- Geolocation button -->
+      <section id="geolocationSection" class="geolocation-section" style="margin-top: 1em; text-align: center;">
+        <button 
+          id="geolocateBtn" 
+          class="btn btn-secondary"
+          title="Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.">
           Use My Device Location
         </button>
       </section>
@@ -53,6 +73,7 @@
 
   <footer></footer>
 
+  <!-- Scripts -->
   <script nonce="abc123" src="/js/modal.js"></script>
   <script nonce="abc123" src="/js/find-candidates.js"></script>
 </body>
