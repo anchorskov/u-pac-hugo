@@ -12,6 +12,7 @@
     "wrangler": "^4.2.0"
   },
   "dependencies": {
-    "globby": "^14.1.0"
+    "globby": "^14.1.0",
+    "mkdirp": "^3.0.1"
   }
 }

@@ -1,0 +1,82 @@
+🧾 Inline CSS Refactor Log
+
+🔧 layouts/find-my-candidates/single.html:63
+→ style="display: none;"
+→ replaced with class="extracted-style-0"
+
+🔧 layouts/shortcodes/zip-lookup.html:1
+→ style="text-align:center; margin-top:20px;"
+→ replaced with class="extracted-style-1"
+
+🔧 layouts/shortcodes/zip-lookup.html:3
+→ style="padding: 10px; font-size: 18px; border: 1px solid #ccc; border-radius: 5px;"
+→ replaced with class="extracted-style-2"
+
+🔧 layouts/shortcodes/zip-lookup.html:5
+→ style="padding: 10px 15px; font-size: 18px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;"
+→ replaced with class="extracted-style-3"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:5
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-4"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:18
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-5"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:19
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-6"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:25
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-7"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:54
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-8"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:236
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-9"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:242
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-10"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:243
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-11"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:245
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-12"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:290
+→ style="display:inline"
+→ replaced with class="extracted-style-13"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:291
+→ style="display:inline;opacity:1"
+→ replaced with class="extracted-style-14"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:314
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-15"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:317
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-16"
+
+🔧 themes/PaperMod/layouts/partials/svg.html:603
+→ style="font-variation-settings:normal"
+→ replaced with class="extracted-style-17"
+
+🔧 themes/ananke/layouts/partials/page-header.html:6
+→ style="background-image: url('
+→ replaced with class="extracted-style-18"
+
+🔧 themes/ananke/layouts/partials/site-header.html:5
+→ style="background-image: url('
+→ replaced with class="extracted-style-19"
+
