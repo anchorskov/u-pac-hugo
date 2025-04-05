@@ -1,59 +1,112 @@
+/* Hide elements with the "hidden" class */
 .hidden { 
-    display: none; 
+  display: none; 
+}
+
+/* Spacing below the geolocation button */
+#geolocationSection {
+  margin-bottom: 40px;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+  /* Increase font size and adjust padding for form elements */
+  .zip-input,
+  .zip-button,
+  #geolocateBtn,
+  #addressForm input,
+  #addressForm button {
+    font-size: 150%;
+    padding: 16px;
   }
-  
-  /* Spacing below geolocation button */
-  #geolocationSection {
-    margin-bottom: 40px;
+
+  /* Stack forms vertically with spacing */
+  .zip-form,
+  .address-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
-  
-  /* Responsive adjustments for small screens */
-  @media (max-width: 600px) {
-    /* Adjust font size and padding for form elements on small screens */
-    .zip-input,
-    .zip-button,
-    #geolocateBtn,
-    #addressForm input,
-    #addressForm button {
-      font-size: 150%;   /* Reduced from 200% for a more refined look */
-      padding: 16px;     /* Slightly less padding for better proportion */
-    }
-  
-    /* Stack forms vertically with comfortable spacing */
-    .zip-form,
-    .address-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+}
+
+/* Modal Styles */
+#customDialogBackdrop {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  z-index: 1000;
+}
+
+#customDialog {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+#customDialog button {
+  flex: 1;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Candidate display cards */
+.candidate-item {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.candidate-item h3 {
+  margin-top: 0;
+}
+
+.candidate-item a {
+  color: #0066cc;
+}
+
+/* Fade-in animation for candidate cards */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Modal CSS */
-  #customDialogBackdrop {
-    position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  #customDialog {
-    background: white; 
-    padding: 20px; 
-    border-radius: 8px;
-    max-width: 400px; 
-    width: 90%; 
-    text-align: center;
-  }
-  
-  #customDialog button {
-    flex: 1;
-    padding: 10px;
-    margin: 5px;
-  }
-  
+}
+
+/* District list (used in modal?) */
+.district-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.district-list li {
+  padding: 4px 0;
+  font-weight: bold;
+}
+
+/* Optional: accessibility polish */
+#customDialog:focus {
+  outline: 2px solid #0066cc;
+}
+.location-notice {
+  background: #f3f3f3;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 4px solid #00aaff;
+  font-size: 0.95em;
+}

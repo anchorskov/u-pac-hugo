@@ -1,107 +1,174 @@
+// ✅ find-candidates.js (Enhanced with Geolocation City Context & Stability)
 document.addEventListener("DOMContentLoaded", () => {
-  const apiBase =
-    (location.hostname === "localhost" && location.port === "1313")
-      ? "http://localhost:8787/api"
-      : "/api";
+  const apiBase = (location.hostname === "localhost" && location.port === "1313")
+    ? "http://localhost:8787/api"
+    : "/api";
 
-  async function fetchCandidates(url) {
+  // 🌐 Reverse Geocode
+  async function fetchCityFromCoords(lat, lon) {
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+      const data = await res.json();
+      return data.address?.city || data.address?.town || data.address?.village || data.address?.state || "your location";
+    } catch (e) {
+      console.warn("⚠️ Reverse geocode failed:", e);
+      return "your location";
+    }
+  }
+
+  // 🔄 Clear results
+  function resetCandidateDisplay() {
+    document.getElementById("candidateHeader").innerHTML = "";
+    document.getElementById("candidateResults").innerHTML = "";
+    document.getElementById("addressFormContainer")?.classList.add("hidden");
+  }
+
+  // 🎂 Calculate age
+  function calculateAge(birthdateStr) {
+    const birthDate = new Date(birthdateStr);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+    return age;
+  }
+
+  // 🔁 Handle multiple districts
+  function handleMultiDistrict(data) {
+    resetCandidateDisplay();
+    const geoLabel = data.device_location_button || "Use My Device Location";
+    const addressLabel = data.enter_address_button || "Enter My Address";
+    showCustomModal(data.message, geoLabel, addressLabel);
+  }
+
+  // 📡 Main fetch
+  async function fetchCandidates(url, originCity = null) {
+    resetCandidateDisplay();
     const results = document.getElementById("candidateResults");
+    const headerEl = document.getElementById("candidateHeader");
+
     results.innerHTML = "<p>Loading candidate data...</p>";
 
     try {
       const response = await fetch(url);
       const data = await response.json();
+      console.log("📦 API response:", data);
 
-      // If response includes header info, display header and then candidates.
-      if (data.header && data.candidates) {
-        results.innerHTML = `
-          <div class="results-header">
-            <h2>${data.header.state}</h2>
-            <h3>${data.header.cd}</h3>
-          </div>
-        `;
-        renderCandidates(data.candidates);
-      } else if (data.multi_district === true) {
-        results.innerHTML = "";
-        showCustomModal(data.message, data.zip);
-      } else if (data.message) {
-        results.innerHTML = `<p>${data.message}</p>`;
-      } else {
-        const candidates = Array.isArray(data) ? data : (data.candidates || []);
-        renderCandidates(candidates);
+      if (data.multi_district === true) {
+        handleMultiDistrict(data);
+        return;
       }
+
+      if (data.message) {
+        results.innerHTML = `<p>${data.message}</p>`;
+        return;
+      }
+
+      // 🧭 Show location if available
+      if (originCity) {
+        const locationP = document.createElement("p");
+        locationP.className = "detected-location";
+        locationP.innerHTML = `📍 Based on your current location: <strong>${originCity}</strong>`;
+        headerEl.appendChild(locationP);
+      }
+
+      renderCandidates(data);
     } catch (error) {
-      console.error("Fetch Error:", error);
+      console.error("❌ Fetch Error:", error);
       results.innerHTML = "<p>Error loading candidate data. Please try again.</p>";
     }
   }
 
-  function renderCandidates(candidates) {
+  // 🧱 Render candidates
+  function renderCandidates(data) {
     const results = document.getElementById("candidateResults");
-    results.innerHTML = "";
+    const headerEl = document.getElementById("candidateHeader");
 
-    if (!Array.isArray(candidates) || candidates.length === 0) {
-      results.innerHTML = "<p>No candidates found for this location.</p>";
+    let cdLabel = data.header?.cd;
+    if (/0(th)? congressional district|at[-\s]?large/i.test(cdLabel?.trim())) {
+      cdLabel = "At-large Congressional District";
+    }
+
+    const title = document.createElement("h2");
+    title.textContent = `${data.header?.state} – ${cdLabel}`;
+    headerEl.appendChild(title);
+
+    if (!Array.isArray(data.candidates) || data.candidates.length === 0) {
+      results.innerHTML = "<p>No candidates found.</p>";
       return;
     }
 
-    candidates.forEach(candidate => {
-      const name = candidate.name?.official_full || "Name not available";
-      const positionType = candidate.terms?.slice(-1)[0]?.type;
-      const position =
-        positionType === "sen"
-          ? "Senator"
-          : positionType === "rep"
-          ? "Representative"
-          : "Candidate";
+    const rolesPresent = data.candidates.map(c => c.terms?.at(-1)?.type);
+    const hasRep = rolesPresent.includes("rep");
+    const numSenators = rolesPresent.filter(r => r === "sen").length;
 
-      results.innerHTML += `
-        <div class="candidate-item">
-          <h3>${position} ${name}</h3>
-        </div>
-      `;
+    data.candidates.forEach(candidate => {
+      const card = renderCandidateCard(candidate);
+      results.appendChild(card);
     });
+
+    if (!hasRep) {
+      const repVacant = document.createElement("div");
+      repVacant.className = "candidate-item";
+      repVacant.innerHTML = `<h3>Representative</h3><p><em>Seat currently vacant.</em></p>`;
+      results.appendChild(repVacant);
+    }
+
+    if (numSenators < 2) {
+      const missing = 2 - numSenators;
+      for (let i = 0; i < missing; i++) {
+        const senVacant = document.createElement("div");
+        senVacant.className = "candidate-item";
+        senVacant.innerHTML = `<h3>Senator</h3><p><em>Seat currently vacant.</em></p>`;
+        results.appendChild(senVacant);
+      }
+    }
   }
 
+  // 🧩 Render single card
+  function renderCandidateCard(candidate) {
+    const latestTerm = candidate.terms?.[candidate.terms.length - 1];
+    const role = latestTerm?.type === "sen" ? "Senator" : latestTerm?.type === "rep" ? "Representative" : "Public Servant";
+    const div = document.createElement("div");
+    div.className = "candidate-item";
+
+    const fullName = candidate.name?.official_full || "Unnamed Candidate";
+    const birthday = candidate.bio?.birthday;
+    const age = birthday ? calculateAge(birthday) : null;
+    const website = latestTerm?.url || null;
+    const phone = latestTerm?.phone || null;
+    const address = latestTerm?.address || null;
+
+    div.innerHTML = `
+      <h3>${role} ${fullName}</h3>
+      ${age ? `<p>Age: ${age}</p>` : ""}
+      ${address ? `<p><strong>Office:</strong> ${address}</p>` : ""}
+      ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
+      ${website ? `<p><a href="${website}" target="_blank" rel="noopener">Official Website</a></p>` : ""}
+    `;
+
+    return div;
+  }
+
+  // 🔍 ZIP Form
   document.getElementById("candidateForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const zip = document.getElementById("zipcodeInput").value.trim();
-    if (!zip) {
-      alert("Please enter a ZIP code.");
-      return;
-    }
+    if (!zip) return alert("Please enter a ZIP code.");
     fetchCandidates(`${apiBase}/find-candidates?zip=${encodeURIComponent(zip)}`);
   });
 
-  // ZIP Autocomplete Setup
+  // 🔠 ZIP Autocomplete
   const zipcodeInput = document.getElementById("zipcodeInput");
   const dataList = document.getElementById("zipSuggestions");
-  const candidateForm = document.getElementById("candidateForm");
-
-  // When the user focuses on the ZIP input, reset the entire form,
-  // clear autocomplete suggestions, candidate results, and hide the address form.
-  zipcodeInput.addEventListener("focus", () => {
-    candidateForm.reset();
-    dataList.innerHTML = "";
-    document.getElementById("candidateResults").innerHTML = "";
-    document.getElementById("addressFormContainer").classList.add("hidden");
-  });
 
   zipcodeInput.addEventListener("input", async () => {
     const query = zipcodeInput.value.trim();
-
-    if (query.length < 2) {
-      dataList.innerHTML = "";
-      return;
-    }
-
+    if (query.length < 2) return dataList.innerHTML = "";
     try {
       const response = await fetch(`${apiBase}/zip-autocomplete?query=${encodeURIComponent(query)}`);
-      if (!response.ok) throw new Error("Failed to fetch zip suggestions");
-
       const suggestions = await response.json();
-      dataList.innerHTML = ""; // Clear old suggestions
-
+      dataList.innerHTML = "";
       suggestions.forEach(zip => {
         const option = document.createElement("option");
         option.value = zip;
@@ -113,67 +180,58 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  zipcodeInput.addEventListener("focus", resetCandidateDisplay);
+
+  // 📍 Geolocation logic
   const geolocateBtn = document.getElementById("geolocateBtn");
 
-  // Dynamically update tooltip based on device type.
-  if (navigator.userAgentData?.mobile || /Mobi|Android/i.test(navigator.userAgent)) {
-    geolocateBtn.title = "Most accurate for mobile users. Returning results for your current location setting.";
-  } else {
-    geolocateBtn.title = "Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.";
+geolocateBtn.addEventListener("click", () => {
+  if (!navigator.geolocation) {
+    alert("Geolocation is not supported by your browser.");
+    return;
   }
 
-  // Geolocation click event with reverse geocoding & confirmation.
-  geolocateBtn.addEventListener("click", () => {
-    if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser.");
-      return;
-    }
+  // Show temp status while waiting
+  const results = document.getElementById("candidateResults");
+  results.innerHTML = `<p>📡 Attempting to detect your location…</p>`;
 
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
+  const geoTimeout = setTimeout(() => {
+    results.innerHTML = "<p>⚠️ Location request timed out. Please try again or use address input.</p>";
+  }, 10000); // 10 seconds timeout
 
-        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error("Failed to fetch location data");
-            }
-            return response.json();
-          })
-          .then(data => {
-            const address = data.address;
-            const city = address.city || address.town || address.village || "your area";
-            const state = address.state || "";
-            const confirmMessage = `Your device has set your current location near ${city}, ${state}. Continue?`;
-            if (confirm(confirmMessage)) {
-              fetchCandidates(`${apiBase}/find-candidates?lat=${lat}&lon=${lon}`);
-            } else {
-              alert("Please enter your ZIP code or full address for more accurate results.");
-            }
-          })
-          .catch(error => {
-            console.error("Error fetching location details:", error);
-            alert("Unable to determine location details. Please enter your ZIP code.");
-          });
-      },
-      () => {
-        alert("Error obtaining geolocation. Please try again.");
+  navigator.geolocation.getCurrentPosition(
+    async (pos) => {
+      clearTimeout(geoTimeout);
+      const { latitude: lat, longitude: lon } = pos.coords;
+
+      results.innerHTML = `<p>🔍 Reverse geocoding your position…</p>`;
+      const city = await fetchCityFromCoords(lat, lon);
+
+      const proceed = confirm(`📍 We detected you're near ${city}. View candidates for this location?`);
+      if (proceed) {
+        fetchCandidates(`${apiBase}/find-candidates?lat=${lat}&lon=${lon}`, city);
+      } else {
+        results.innerHTML = ""; // Reset if user cancels
       }
-    );
-  });
+    },
+    (err) => {
+      clearTimeout(geoTimeout);
+      results.innerHTML = "<p>❌ Could not retrieve location. Please try again or use address input.</p>";
+      console.warn("Geolocation error:", err);
+    },
+    { timeout: 10000 } // Also enforce browser-level timeout
+  );
+});
 
+
+  // 📬 Full address form
   document.getElementById("addressForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const street = document.getElementById("streetInput").value.trim();
     const city = document.getElementById("cityInput").value.trim();
     const state = document.getElementById("stateInput").value.trim();
     const zip = document.getElementById("zipAddressInput").value.trim();
-
-    if (!street || !city || !state || !zip) {
-      alert("Please fill in all address fields.");
-      return;
-    }
+    if (!street || !city || !state || !zip) return alert("Fill in all address fields.");
 
     fetchCandidates(`${apiBase}/find-candidates-by-address?street=${encodeURIComponent(street)}&city=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}&zip=${encodeURIComponent(zip)}`);
   });

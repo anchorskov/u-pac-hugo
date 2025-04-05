@@ -1,8 +1,11 @@
 name = "sibi-d1-worker"
 main = "src/index.js"
-account_id = "8bfd3f60fbdcc89183e9e312fb03e86e"
-workers_dev = true
 compatibility_date = "2025-03-10"
+workers_dev = true
+account_id = "8bfd3f60fbdcc89183e9e312fb03e86e"
+
+[vars]
+ENV = "production"  # or just remove entirely if unused
 
 [[kv_namespaces]]
 binding = "LEGISLATORS_KV"
@@ -13,18 +16,13 @@ binding = "SIBIDRIFT_DB"
 database_name = "sibidrift.db"
 database_id = "aeedccf4-14bb-48f8-91c0-a9023c9f153c"
 
-[vars]
-ENV_MESSAGE = "Loaded on Cloudflare"
-ENV = "development"
-
-[build]
-# (Any additional build configuration here)
-
 [env.production]
 workers_dev = false
 route = "https://u-pac.org/api/*"
 
-# Duplicate bindings so they’re available in production:
+[env.production.vars]
+ENV = "production"
+
 [[env.production.kv_namespaces]]
 binding = "LEGISLATORS_KV"
 id = "bed00144de4b44c0bb6e06218fc8cf80"
@@ -33,7 +31,3 @@ id = "bed00144de4b44c0bb6e06218fc8cf80"
 binding = "SIBIDRIFT_DB"
 database_name = "sibidrift.db"
 database_id = "aeedccf4-14bb-48f8-91c0-a9023c9f153c"
-
-[env.production.vars]
-ENV_MESSAGE = "Loaded on Cloudflare"
-ENV = "production"

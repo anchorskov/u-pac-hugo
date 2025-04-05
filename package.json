@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "U-PAC Hugo project with local dev scripts",
   "scripts": {
-       "dev:hugo": "hugo server --disableFastRender",
-       "dev:worker:local": "cd sibi-d1-worker && npx wrangler dev --local --log-level debug",
-       "dev:worker:remote": "cd sibi-d1-worker && npx wrangler dev --remote --log-level debug"
+    "dev:hugo": "hugo server --disableFastRender",
+    "dev:worker:local": "cd sibi-d1-worker && npx wrangler dev --local --log-level debug",
+    "dev:worker:remote": "cd sibi-d1-worker && npx wrangler dev --remote --log-level debug"
   },
   "devDependencies": {
     "miniflare": "^0.0.0-f7c347a67",

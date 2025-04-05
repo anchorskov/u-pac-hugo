@@ -32,7 +32,7 @@ export async function lookupZip(zip, db) {
 // Helper function remains correct
 function formatCongressionalDistrict(fullCd) {
   if (!fullCd || fullCd.length !== 4 || !/^\d{4}$/.test(fullCd)) {
-      throw new Error(`Invalid congressional district code: "${fullCd}"`);
+    throw new Error(`Invalid congressional district code: "${fullCd}"`);
   }
   const districtCode = fullCd.substring(2);
   return districtCode === '00' ? 0 : parseInt(districtCode, 10);

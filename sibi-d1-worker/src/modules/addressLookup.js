@@ -1,6 +1,10 @@
 // addressLookup.js (robust version based on logs)
 export async function fetchDistrictByAddress(street, city, state, zip) {
-  const endpoint = `https://geocoding.geo.census.gov/geocoder/geographies/address?street=${encodeURIComponent(street)}&city=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}&zip=${encodeURIComponent(zip)}&benchmark=Public_AR_Current&vintage=Current_Current&format=json`;
+  const endpoint = `https://geocoding.geo.census.gov/geocoder/geographies/address?street=${encodeURIComponent(
+    street
+  )}&city=${encodeURIComponent(city)}&state=${encodeURIComponent(
+    state
+  )}&zip=${encodeURIComponent(zip)}&benchmark=Public_AR_Current&vintage=Current_Current&format=json`;
 
   const response = await fetch(endpoint);
   if (!response.ok) {

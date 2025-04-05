@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <title>{{ .Title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-abc123' 'strict-dynamic'; connect-src *;">
+
+  <!-- ✅ Updated CSP to allow secure assets (fonts, images, APIs) -->
+  <meta http-equiv="Content-Security-Policy" 
+        content="
+          default-src 'self'; 
+          script-src 'self' 'nonce-abc123' 'strict-dynamic'; 
+          connect-src *; 
+          img-src 'self' https: data:;
+          font-src 'self' https://fonts.gstatic.com;
+        ">
+
   <link rel="stylesheet" href="/css/custom.css">
   <link rel="stylesheet" href="/css/find-candidates.css">
 </head>
 <body class="find-my-candidates-page">
+
   <header>
     <h1>{{ .Title }}</h1>
   </header>
@@ -19,27 +30,26 @@
     </section>
 
     <section id="candidate-search">
-      <!-- ZIP Code form -->
-      <form id="candidateForm" class="zip-form" style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
-        <label for="zipcodeInput" class="zip-label" style="margin: 0;">Enter ZIP Code:</label>
+      <!-- ZIP Code Form -->
+      <form id="candidateForm" class="zip-form">
+        <label for="zipcodeInput" class="zip-label">Enter ZIP Code:</label>
         <input 
           type="text" 
           id="zipcodeInput" 
           name="zipcodeInput" 
-          placeholder="e.g., 12345" 
+          placeholder="e.g., 90210" 
           required 
           class="zip-input" 
           list="zipSuggestions"
           autocomplete="off"
           maxlength="5"
-          style="margin: 0;"
         />
         <datalist id="zipSuggestions"></datalist>
-        <button type="submit" class="zip-button" style="margin: 0;">Find Candidates</button>
+        <button type="submit" class="zip-button">Find Candidates</button>
       </form>
 
-      <!-- Geolocation button -->
-      <section id="geolocationSection" class="geolocation-section" style="margin-top: 1em; text-align: center;">
+      <!-- Geolocation Button -->
+      <section id="geolocationSection" class="geolocation-section">
         <button 
           id="geolocateBtn" 
           class="btn btn-secondary"
@@ -48,23 +58,24 @@
         </button>
       </section>
 
-      <!-- Address Form: Initially Hidden -->
+      <!-- Location Info (injected by JS) -->
+      <div id="locationInfo" class="location-info" style="display: none;"></div>
+
+      <!-- Address Form (Initially Hidden) -->
       <section id="addressFormContainer" class="hidden">
         <form id="addressForm" class="address-form">
           <input type="text" id="streetInput" placeholder="Street Address" required>
           <input type="text" id="cityInput" placeholder="City" required>
           <input type="text" id="stateInput" placeholder="State (e.g., WY)" required maxlength="2">
           <input type="text" id="zipAddressInput" placeholder="ZIP Code" required maxlength="5">
-          <button type="submit">Search by Address</button>
+          <button type="submit">Enter My Address</button>
         </form>
       </section>
     </section>
 
-    <!-- Results section -->
+    <!-- Results Section -->
     <section id="candidateResultsSection">
-      <!-- New container for header info -->
       <div id="candidateHeader"></div>
-      <!-- Candidate list container -->
       <div id="candidateResults"></div>
     </section>
     
