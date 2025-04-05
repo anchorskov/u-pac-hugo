@@ -10,6 +10,7 @@ ENV = "production"  # or just remove entirely if unused
 [[kv_namespaces]]
 binding = "LEGISLATORS_KV"
 id = "bed00144de4b44c0bb6e06218fc8cf80"
+preview_id = "795ed60709c94285a32831d3f913efb7"
 
 [[d1_databases]]
 binding = "SIBIDRIFT_DB"
@@ -26,6 +27,7 @@ ENV = "production"
 [[env.production.kv_namespaces]]
 binding = "LEGISLATORS_KV"
 id = "bed00144de4b44c0bb6e06218fc8cf80"
+preview_id = "795ed60709c94285a32831d3f913efb7"
 
 [[env.production.d1_databases]]
 binding = "SIBIDRIFT_DB"
