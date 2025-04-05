@@ -10,5 +10,8 @@
   "devDependencies": {
     "miniflare": "^0.0.0-f7c347a67",
     "wrangler": "^4.2.0"
+  },
+  "dependencies": {
+    "globby": "^14.1.0"
   }
 }
