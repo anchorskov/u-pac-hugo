@@ -23,9 +23,11 @@
   border-radius: 3px;
   text-decoration: none;
 }
+
 .pagination li.disabled {
   display: none;
 }
+
 .pagination li.active a,
 .pagination li.active a:link,
 .pagination li.active a:active,

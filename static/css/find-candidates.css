@@ -10,7 +10,18 @@ body {
 
 /* Ensure candidate cards are readable */
 .candidate-item {
-  color: #171717;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 0 auto 20px auto;         /* Center card */
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s ease forwards;
+  max-width: 95vw;                  /* Constrain width */
+  box-sizing: border-box;          /* Include padding in width */
+  width: 100%;
 }
 
 /* Dark mode compatibility */
@@ -29,27 +40,6 @@ body {
 /* Spacing below the geolocation button */
 #geolocationSection {
   margin-bottom: 40px;
-}
-
-/* Responsive adjustments for small screens */
-@media (max-width: 600px) {
-  /* Increase font size and adjust padding for form elements */
-  .zip-input,
-  .zip-button,
-  #geolocateBtn,
-  #addressForm input,
-  #addressForm button {
-    font-size: 150%;
-    padding: 16px;
-  }
-
-  /* Stack forms vertically with spacing */
-  .zip-form,
-  .address-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
 }
 
 /* Modal Styles */
@@ -132,4 +122,7 @@ body {
   margin-bottom: 10px;
   border-left: 4px solid #00aaff;
   font-size: 0.95em;
+}
+.zip-top-spacer {
+  margin-top: 30px;
 }

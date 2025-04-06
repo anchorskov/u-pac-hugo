@@ -1,14 +1,19 @@
 {
   "name": "u-pac-hugo",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "U-PAC Hugo project with local dev scripts",
   "scripts": {
     "dev:hugo": "hugo server --disableFastRender",
     "dev:worker:local": "cd sibi-d1-worker && npx wrangler dev --local --log-level debug",
-    "dev:worker:remote": "cd sibi-d1-worker && npx wrangler dev --remote --log-level debug"
+    "dev:worker:remote": "cd sibi-d1-worker && npx wrangler dev --remote --log-level debug",
+    "lint:css": "stylelint '**/*.css'"
   },
   "devDependencies": {
     "miniflare": "^0.0.0-f7c347a67",
+    "stylelint": "^15.11.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-config-standard": "^34.0.0",
     "wrangler": "^4.7.2"
   },
   "dependencies": {

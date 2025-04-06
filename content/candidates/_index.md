@@ -4,7 +4,7 @@ date: 2025-03-02T00:00:00
 draft: false
 ---
 
-**Under construction ver. 1.01**
+**Under construction ver. 1.02**
 
 <!-- Submission Forms Navigation Section relocated to the top -->
 <section class="content-section" style="background: #eaeaea; text-align: center; padding: 50px 20px;">

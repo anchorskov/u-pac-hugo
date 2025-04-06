@@ -1,45 +1,47 @@
+<!-- layouts/_default/baseof.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ .Site.Title }}</title>
-  
-  <!-- Preload and load critical CSS for faster rendering -->
-  <link rel="preload" href="{{ "css/form.css" | relURL }}" as="style">
-  <link rel="stylesheet" href="{{ "css/form.css" | relURL }}">
-  
-  <!-- Load main custom CSS -->
-  <link rel="preload" href="{{ "css/custom.css" | relURL }}" as="style">
-  <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
-</head>
-<body>
 
-  <!-- Include Header Partial -->
+  <!-- ✅ Updated CSP to allow secure assets -->
+  <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      script-src 'self' 'nonce-abc123' 'strict-dynamic';
+      style-src 'self' 'nonce-abc123';
+      connect-src *;
+      img-src 'self' https: data:;
+      font-src 'self' https://fonts.gstatic.com;
+    ">
+
+  <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/find-candidates.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/mobile-overrides.css" | relURL }}">
+</head>
+<body class="{{ .Type }}-page">
   {{ partial "header.html" . }}
 
-  <!-- Main content wrapper -->
   <main class="main">
     {{ block "main" . }}{{ end }}
   </main>
 
-  <!-- Include Footer Partial -->
   {{ partial "footer.html" . }}
 
-  <!-- Hamburger Menu Toggle Script -->
+  <!-- Hamburger Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Select the hamburger button and the navigation menu
+    document.addEventListener('DOMContentLoaded', function () {
       const menuToggle = document.querySelector('.menu-toggle');
       const menu = document.querySelector('#menu');
-      // Add a click event to toggle the 'active' class on the menu
-      if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-          menu.classList.toggle('active');
-        });
+      if (menuToggle && menu) {
+        menuToggle.addEventListener('click', () => menu.classList.toggle('active'));
       }
     });
   </script>
 
+  <!-- Page-specific scripts -->
+  {{ block "scripts" . }}{{ end }}
 </body>
 </html>

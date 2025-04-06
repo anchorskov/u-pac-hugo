@@ -3,8 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: calc(var(--nav-width) + var(--gap) * 2);
-    margin-inline-start: auto;
-    margin-inline-end: auto;
+    margin-inline: auto;
     line-height: var(--header-height);
 }
 
@@ -67,7 +66,7 @@ body:not(.dark) #sun {
 
 #menu .active {
     font-weight: 500;
-    border-bottom: 2px solid currentColor;
+    border-bottom: 2px solid currentcolor;
 }
 
 .lang-switch li,

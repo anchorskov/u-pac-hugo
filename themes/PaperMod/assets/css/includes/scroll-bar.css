@@ -32,20 +32,20 @@
 
 .post-content :not(table) ::-webkit-scrollbar-thumb {
     border: 2px solid var(--code-block-bg);
-    background: rgb(113, 113, 117);
+    background: rgb(113 113 117);
 }
 
 .post-content :not(table) ::-webkit-scrollbar-thumb:hover {
-    background: rgb(163, 163, 165);
+    background: rgb(163 163 165);
 }
 
 .gist table::-webkit-scrollbar-thumb {
-    border: 2px solid rgb(255, 255, 255);
-    background: rgb(173, 173, 173);
+    border: 2px solid rgb(255 255 255);
+    background: rgb(173 173 173);
 }
 
 .gist table::-webkit-scrollbar-thumb:hover {
-    background: rgb(112, 112, 112);
+    background: rgb(112 112 112);
 }
 
 .post-content table::-webkit-scrollbar-thumb {
@@ -53,8 +53,7 @@
 }
 
 /* from zmedia */
-@media screen and (min-width: 768px) {
-
+@media screen and (width >= 768px) {
     /* reset */
     ::-webkit-scrollbar {
         width: 19px;

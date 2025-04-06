@@ -1,0 +1,175 @@
+/* 📱 Mobile Overrides and Responsive Adjustments */
+
+@media (max-width: 768px) {
+    /* Prevent side scroll and unify layout */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden;
+    }
+  
+    :root {
+      --font-size-base: 18px;
+      --font-size-lg: 22px;
+      --font-size-xl: 40px;
+    }
+  
+    body {
+      font-size: var(--font-size-base);
+      line-height: 1.5;
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+  
+    /* Header Layout & Hamburger Fix */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background-color: #ffffff !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav {
+      display: flex !important;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .logo {
+      order: 1;
+      text-align: center;
+      width: 100%;
+    }
+  
+    .menu-toggle {
+      order: 0;
+      display: flex !important;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      margin-left: 0 !important;     
+      margin-right: auto !important; 
+    }
+  
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--text-color);
+      border-radius: 2px;
+    }
+  
+    .menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .menu.active {
+      display: flex;
+    }
+  
+    .menu li {
+      width: 100%;
+      text-align: left;
+    }
+  
+    .menu a {
+      display: block;
+      padding: 12px 20px;
+      width: 100%;
+      color: #000 !important;
+      text-decoration: none;
+    }
+  
+    main {
+      padding: 1em !important;
+    }
+  
+    #candidateResults {
+      padding-left: 1em;
+      margin-top: 1.5em;
+    }
+  
+    /* Input & Button Flex Cleanup */
+    .btn,
+    .zip-button,
+    #geolocateBtn,
+    .zip-input,
+    #addressForm input,
+    #addressForm button {
+      padding: 16px;
+      font-size: 1.1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+    .zip-form,
+    .address-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .hero {
+      height: auto;
+      flex-direction: column;
+      padding: 40px 15px;
+      text-align: center;
+    }
+  
+    .hero h1 {
+      font-size: 2rem;
+    }
+  
+    .hero p {
+      font-size: 1.2rem;
+    }
+  
+    .hero-buttons {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+  
+  /* 🌙 Dark Mode Support */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #171717;
+      --text-color: #ffffff;
+      --header-bg: rgba(23, 23, 23, 0.9);
+    }
+  
+    body {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+    }
+  
+    .header {
+      background: linear-gradient(to right, #2c2c2c, #1a1a1a);
+    }
+  
+    .menu a,
+    .logo a {
+      color: #fff !important;
+    }
+  
+    .candidate-item {
+      background-color: #2c2c2c;
+      color: #ffffff;
+      max-width: 100%;
+      border: 2px dashed red !important;
+    background: rgba(255, 255, 255, 0.8);  
+    }
+    .zip-top-spacer {
+        margin-top: 20px;
+    }
+  }
+  

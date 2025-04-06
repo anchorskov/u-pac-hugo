@@ -1,91 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ .Title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ define "main" }}
+  <div style="margin-top: 80px;"></div>
 
-  <!-- ✅ Updated CSP to allow secure assets (fonts, images, APIs) -->
-  <meta http-equiv="Content-Security-Policy"
-      content="
-        default-src 'self';
-        script-src 'self' 'nonce-abc123' 'strict-dynamic';
-        style-src 'self' 'nonce-abc123';
-        connect-src *;
-        img-src 'self' https: data:;
-        font-src 'self' https://fonts.gstatic.com;
-      ">
+  <section class="content">
+    {{ .Content }}
+  </section>
 
-  <link rel="stylesheet" href="/css/custom.css">
-  <link rel="stylesheet" href="/css/find-candidates.css">
-</head>
-<body class="find-my-candidates-page">
+  <section id="candidate-search">
+    <form id="candidateForm" class="zip-form">
+      <label for="zipcodeInput" class="zip-label">Enter ZIP Code:</label>
+      <input 
+        type="text" 
+        id="zipcodeInput" 
+        name="zipcodeInput" 
+        placeholder="e.g., 90210" 
+        required 
+        class="zip-input" 
+        list="zipSuggestions"
+        autocomplete="off"
+        maxlength="5"
+      />
+      <datalist id="zipSuggestions"></datalist>
+      <button type="submit" class="zip-button">Find Candidates</button>
+    </form>
 
-  <header>
-    <h1>{{ .Title }}</h1>
-  </header>
-
-  <main>
-    <section class="content">
-      {{ .Content }}
+    <section id="geolocationSection" class="geolocation-section">
+      <button 
+        id="geolocateBtn" 
+        class="btn btn-secondary"
+        title="Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.">
+        Use My Device Location
+      </button>
     </section>
 
-    <section id="candidate-search">
-      <!-- ZIP Code Form -->
-      <form id="candidateForm" class="zip-form">
-        <label for="zipcodeInput" class="zip-label">Enter ZIP Code:</label>
-        <input 
-          type="text" 
-          id="zipcodeInput" 
-          name="zipcodeInput" 
-          placeholder="e.g., 90210" 
-          required 
-          class="zip-input" 
-          list="zipSuggestions"
-          autocomplete="off"
-          maxlength="5"
-        />
-        <datalist id="zipSuggestions"></datalist>
-        <button type="submit" class="zip-button">Find Candidates</button>
+    <div id="locationInfo" class="location-info extracted-style-0"></div>
+
+    <section id="addressFormContainer" class="hidden">
+      <form id="addressForm" class="address-form">
+        <input type="text" id="streetInput" placeholder="Street Address" required>
+        <input type="text" id="cityInput" placeholder="City" required>
+        <input type="text" id="stateInput" placeholder="State (e.g., WY)" required maxlength="2">
+        <input type="text" id="zipAddressInput" placeholder="ZIP Code" required maxlength="5">
+        <button type="submit">Enter My Address</button>
       </form>
-
-      <!-- Geolocation Button -->
-      <section id="geolocationSection" class="geolocation-section">
-        <button 
-          id="geolocateBtn" 
-          class="btn btn-secondary"
-          title="Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.">
-          Use My Device Location
-        </button>
-      </section>
-
-      <!-- Location Info (injected by JS) -->
-      <div id="locationInfo" class="location-info" class="extracted-style-0"></div>
-
-      <!-- Address Form (Initially Hidden) -->
-      <section id="addressFormContainer" class="hidden">
-        <form id="addressForm" class="address-form">
-          <input type="text" id="streetInput" placeholder="Street Address" required>
-          <input type="text" id="cityInput" placeholder="City" required>
-          <input type="text" id="stateInput" placeholder="State (e.g., WY)" required maxlength="2">
-          <input type="text" id="zipAddressInput" placeholder="ZIP Code" required maxlength="5">
-          <button type="submit">Enter My Address</button>
-        </form>
-      </section>
     </section>
+  </section>
 
-    <!-- Results Section -->
-    <section id="candidateResultsSection">
-      <div id="candidateHeader"></div>
-      <div id="candidateResults"></div>
-    </section>
-    
-  </main>
+  <section id="candidateResultsSection">
+    <div id="candidateHeader"></div>
+    <div id="candidateResults"></div>
+  </section>
+{{ end }}
 
-  <footer></footer>
-
-  <!-- Scripts -->
+{{ define "scripts" }}
   <script nonce="abc123" src="/js/modal.js"></script>
   <script nonce="abc123" src="/js/find-candidates.js"></script>
-</body>
-</html>
+{{ end }}

@@ -1,6 +1,6 @@
 relativeURLs = true
 languageCode = "en-us"
-title = "U-PAC 1.01"
+title = "U-PAC 1.02"
 theme = "PaperMod"
 disableKinds = ["RSS", "taxonomy", "term"]
 

@@ -1,0 +1,4 @@
+# .stylelintignore
+public/**
+themes/**
+dist/**

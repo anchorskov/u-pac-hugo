@@ -33,3 +33,9 @@ Always use --remote to write to production
 Prefer automation and logs to avoid mistakes
 
 Git commit after every update
+
+Run Wrangler 4.7.2 KV Upload for Local (Preview)
+
+wrangler kv key put legislators_current \
+  --namespace-id=795ed60709c94285a32831d3f913efb7 \
+  --path=./legislators_compact.json
