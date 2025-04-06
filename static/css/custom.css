@@ -498,3 +498,36 @@ main {
     font-size: 1.1rem;
   }
 }
+@media (max-width: 600px) {
+    body {
+      background-color: #ffffff !important; /* Ensure white bg */
+      color: #000000 !important;            /* Ensure black text */
+    }
+  
+    .header,
+    .menu,
+    .nav,
+    .main,
+    .footer {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+  
+    .logo a,
+    .menu a {
+      color: #000000 !important;
+    }
+  
+    a:link,
+    a:visited {
+      color: #0066cc;
+    }
+  
+    .hero,
+    .hero h1,
+    .hero p {
+      color: #000000 !important;
+      text-shadow: none !important;
+    }
+  }
+  
