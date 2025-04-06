@@ -2,6 +2,29 @@
 .hidden { 
   display: none; 
 }
+/* Fix text color on mobile */
+body {
+  color: #171717;
+  background-color: #ffffff;
+}
+
+/* Ensure candidate cards are readable */
+.candidate-item {
+  color: #171717;
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ffffff;
+    background-color: #171717;
+  }
+
+  .candidate-item {
+    background-color: #2c2c2c;
+    color: #ffffff;
+  }
+}
 
 /* Spacing below the geolocation button */
 #geolocationSection {
