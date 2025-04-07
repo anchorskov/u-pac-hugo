@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <h3>${role} ${fullName}</h3>
       ${age ? `<p>Age: ${age}</p>` : ""}
       ${address ? `<p><strong>Office:</strong> ${address}</p>` : ""}
-      ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
+      ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone.replace(/[^0-9]/g, '')}" class="gv-tel-link">${phone}</a></p>` : ""}
       ${website ? `<p><a href="${website}" target="_blank" rel="noopener">Official Website</a></p>` : ""}
     `;
 
