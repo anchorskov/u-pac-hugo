@@ -131,24 +131,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const role = latestTerm?.type === "sen" ? "Senator" : latestTerm?.type === "rep" ? "Representative" : "Public Servant";
     const div = document.createElement("div");
     div.className = "candidate-item";
-
+  
     const fullName = candidate.name?.official_full || "Unnamed Candidate";
     const birthday = candidate.bio?.birthday;
     const age = birthday ? calculateAge(birthday) : null;
     const website = latestTerm?.url || null;
-    const phone = latestTerm?.phone || null;
     const address = latestTerm?.address || null;
-
+  
     div.innerHTML = `
       <h3>${role} ${fullName}</h3>
       ${age ? `<p>Age: ${age}</p>` : ""}
       ${address ? `<p><strong>Office:</strong> ${address}</p>` : ""}
-      ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone.replace(/[^0-9]/g, '')}" class="gv-tel-link">${phone}</a></p>` : ""}
       ${website ? `<p><a href="${website}" target="_blank" rel="noopener">Official Website</a></p>` : ""}
     `;
-
+  
     return div;
   }
+  
 
   // 🔍 ZIP Form
   document.getElementById("candidateForm").addEventListener("submit", (e) => {
@@ -180,49 +179,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  zipcodeInput.addEventListener("focus", resetCandidateDisplay);
+  // Always clear ZIP input when focused
+  zipcodeInput.addEventListener("focus", () => {
+    zipcodeInput.value = "";
+    resetCandidateDisplay();
+  });
 
   // 📍 Geolocation logic
   const geolocateBtn = document.getElementById("geolocateBtn");
+  geolocateBtn.addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser.");
+      return;
+    }
 
-geolocateBtn.addEventListener("click", () => {
-  if (!navigator.geolocation) {
-    alert("Geolocation is not supported by your browser.");
-    return;
-  }
+    const results = document.getElementById("candidateResults");
+    results.innerHTML = `<p>📡 Attempting to detect your location…</p>`;
 
-  // Show temp status while waiting
-  const results = document.getElementById("candidateResults");
-  results.innerHTML = `<p>📡 Attempting to detect your location…</p>`;
+    const geoTimeout = setTimeout(() => {
+      results.innerHTML = "<p>⚠️ Location request timed out. Please try again or use address input.</p>";
+    }, 10000);
 
-  const geoTimeout = setTimeout(() => {
-    results.innerHTML = "<p>⚠️ Location request timed out. Please try again or use address input.</p>";
-  }, 10000); // 10 seconds timeout
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        clearTimeout(geoTimeout);
+        const { latitude: lat, longitude: lon } = pos.coords;
 
-  navigator.geolocation.getCurrentPosition(
-    async (pos) => {
-      clearTimeout(geoTimeout);
-      const { latitude: lat, longitude: lon } = pos.coords;
+        results.innerHTML = `<p>🔍 Reverse geocoding your position…</p>`;
+        const city = await fetchCityFromCoords(lat, lon);
 
-      results.innerHTML = `<p>🔍 Reverse geocoding your position…</p>`;
-      const city = await fetchCityFromCoords(lat, lon);
-
-      const proceed = confirm(`📍 We detected you're near ${city}. View candidates for this location?`);
-      if (proceed) {
-        fetchCandidates(`${apiBase}/find-candidates?lat=${lat}&lon=${lon}`, city);
-      } else {
-        results.innerHTML = ""; // Reset if user cancels
-      }
-    },
-    (err) => {
-      clearTimeout(geoTimeout);
-      results.innerHTML = "<p>❌ Could not retrieve location. Please try again or use address input.</p>";
-      console.warn("Geolocation error:", err);
-    },
-    { timeout: 10000 } // Also enforce browser-level timeout
-  );
-});
-
+        const proceed = confirm(`📍 We detected you're near ${city}. View candidates for this location?`);
+        if (proceed) {
+          fetchCandidates(`${apiBase}/find-candidates?lat=${lat}&lon=${lon}`, city);
+        } else {
+          results.innerHTML = "";
+        }
+      },
+      (err) => {
+        clearTimeout(geoTimeout);
+        results.innerHTML = "<p>❌ Could not retrieve location. Please try again or use address input.</p>";
+        console.warn("Geolocation error:", err);
+      },
+      { timeout: 10000 }
+    );
+  });
 
   // 📬 Full address form
   document.getElementById("addressForm").addEventListener("submit", (e) => {
@@ -235,4 +235,19 @@ geolocateBtn.addEventListener("click", () => {
 
     fetchCandidates(`${apiBase}/find-candidates-by-address?street=${encodeURIComponent(street)}&city=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}&zip=${encodeURIComponent(zip)}`);
   });
+
+  // 🍔 Hamburger toggle logic
+  function toggleMenu() {
+    const menu = document.getElementById("main-menu");
+    if (menu) {
+      menu.classList.toggle("visible");
+      menu.classList.toggle("hidden");
+    }
+  }
+
+  // 🔗 Attach the hamburger button click
+  const menuToggleBtn = document.getElementById("menuToggle");
+  if (menuToggleBtn) {
+    menuToggleBtn.addEventListener("click", toggleMenu);
+  }
 });

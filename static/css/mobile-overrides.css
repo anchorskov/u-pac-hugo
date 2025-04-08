@@ -1,6 +1,27 @@
 /* 📱 Mobile Overrides and Responsive Adjustments */
 
 @media (max-width: 768px) {
+    body {
+        font-size: 75%;
+      }
+    
+      header {
+        position: relative;
+        z-index: 1000;
+        background-color: #222;
+        padding-top: 1rem;
+      }
+    
+      nav.menu {
+        position: relative;
+        z-index: 999;
+        margin-top: 0;
+      }
+    
+      .main {
+        padding-top: 2rem;
+      }
+    
     /* Prevent side scroll and unify layout */
     html, body {
       margin: 0 !important;
@@ -89,7 +110,8 @@
     }
   
     main {
-      padding: 1em !important;
+        padding-top: 4rem !important;
+      }
     }
   
     #candidateResults {

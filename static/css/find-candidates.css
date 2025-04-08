@@ -1,45 +1,63 @@
-/* Hide elements with the "hidden" class */
-.hidden { 
-  display: none; 
+/* Global Box-Sizing Reset */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
-/* Fix text color on mobile */
+
+html {
+  box-sizing: border-box;
+}
+
 body {
   color: #171717;
   background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Ensure candidate cards are readable */
+/* Hide helper */
+.hidden { 
+  display: none; 
+}
+
+/* Candidate display cards (dynamic width) */
 .candidate-item {
-  border: 1px solid #ccc;
+  display: inline-block;
+  max-width: 90%;
   padding: 16px;
-  margin: 0 auto 20px auto;         /* Center card */
+  margin: 0 auto 20px auto;
+  border: 1px solid #ccc;
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.4s ease forwards;
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.4s ease forwards;
-  max-width: 95vw;                  /* Constrain width */
-  box-sizing: border-box;          /* Include padding in width */
-  width: 100%;
+  overflow: hidden;
+  vertical-align: top;
+  text-align: left;
 }
 
-/* Dark mode compatibility */
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ffffff;
-    background-color: #171717;
-  }
-
-  .candidate-item {
-    background-color: #2c2c2c;
-    color: #ffffff;
-  }
+.candidate-item h3 {
+  margin-top: 0;
 }
 
-/* Spacing below the geolocation button */
-#geolocationSection {
-  margin-bottom: 40px;
+.candidate-item a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.candidate-item a:hover {
+  text-decoration: underline;
+}
+
+/* Focus for accessibility */
+.candidate-item a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
 }
 
 /* Modal Styles */
@@ -71,36 +89,29 @@ body {
   margin: 5px;
 }
 
-/* Candidate display cards */
-.candidate-item {
-  border: 1px solid #ccc;
-  padding: 16px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.4s ease forwards;
+/* Dialog accessibility */
+#customDialog:focus {
+  outline: 2px solid #0066cc;
 }
 
-.candidate-item h3 {
-  margin-top: 0;
+/* Spacing */
+#geolocationSection {
+  margin-bottom: 40px;
 }
 
-.candidate-item a {
-  color: #0066cc;
+.zip-top-spacer {
+  margin-top: 30px;
 }
 
-/* Fade-in animation for candidate cards */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.location-notice {
+  background: #f3f3f3;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 4px solid #00aaff;
+  font-size: 0.95em;
 }
 
-/* District list (used in modal?) */
+/* District list */
 .district-list {
   list-style: none;
   padding: 0;
@@ -112,17 +123,23 @@ body {
   font-weight: bold;
 }
 
-/* Optional: accessibility polish */
-#customDialog:focus {
-  outline: 2px solid #0066cc;
+/* Fade-in animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.location-notice {
-  background: #f3f3f3;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-left: 4px solid #00aaff;
-  font-size: 0.95em;
-}
-.zip-top-spacer {
-  margin-top: 30px;
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ffffff;
+    background-color: #171717;
+  }
+
+  .candidate-item {
+    background-color: #2c2c2c;
+    color: #ffffff;
+  }
 }
