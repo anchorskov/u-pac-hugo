@@ -1,23 +1,21 @@
 {{ define "main" }}
-  <section class="candidates-overview">
-    <!-- This renders the content of content/candidates/_index.md -->
-    {{ .Content }}
+  <section class="candidates-overview px-4 py-6">
+    {{ .Content | safeHTML }} <!-- ✅ unescapes raw HTML from content files -->
   </section>
 
   {{ if .Pages }}
-  <section class="candidates-list">
-    <h2>Candidate Listings</h2>
-    <ul>
-      {{ range .Pages }}
-        <li>
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          <!-- Display the date in a friendly format -->
-          <span class="candidate-date">{{ .Date.Format "January 2, 2006" }}</span>
-        </li>
-      {{ end }}
-    </ul>
-  </section>
+    <section class="candidates-list px-4 py-4">
+      <h2 class="text-xl font-semibold mb-4">Candidate Listings</h2>
+      <ul class="space-y-3">
+        {{ range .Pages }}
+          <li class="border-b border-gray-200 pb-2">
+            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline font-medium">{{ .Title }}</a>
+            <span class="candidate-date text-sm text-gray-500 ml-2">{{ .Date.Format "January 2, 2006" }}</span>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
   {{ else }}
-    <p>No candidate pages have been added yet.</p>
+    <p class="px-4 text-gray-600">No candidate pages have been added yet.</p>
   {{ end }}
 {{ end }}

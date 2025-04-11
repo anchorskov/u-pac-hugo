@@ -1,0 +1,121 @@
+/* ==========================
+   U-PAC Utility Button Styles
+   File: static/css/buttons.css
+   ========================== */
+
+/* Layout + Sizing */
+.inline-block { display: inline-block; }
+.block { display: block; }
+.text-center { text-align: center; }
+
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+
+.rounded { border-radius: 0.375rem; }
+.rounded-md { border-radius: 0.5rem; }
+.rounded-lg { border-radius: 0.75rem; }
+
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+
+.w-auto { width: auto; }
+.w-full { width: 100%; }
+.nowrap { white-space: nowrap; }
+
+/* Color Themes */
+.bg-blue { background-color: #2563eb; }
+.bg-blue:hover { background-color: #1d4ed8; }
+
+.bg-green { background-color: #28a745; }
+.bg-green:hover { background-color: #218838; }
+
+.bg-yellow { background-color: #ffc107; }
+.bg-yellow:hover { background-color: #e0a800; }
+
+.bg-gray { background-color: #6c757d; }
+.bg-gray:hover { background-color: #5a6268; }
+
+.bg-white { background-color: #ffffff; }
+.bg-light { background-color: #f8f9fa; }
+
+.text-white { color: #ffffff; }
+.text-black { color: #000000; }
+.text-gray { color: #6c757d; }
+
+/* Borders */
+.border-none { border: none; }
+.shadow { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+
+/* Cursor + Interaction */
+.cursor-pointer { cursor: pointer; }
+.transition { transition: background-color 0.3s ease; }
+
+/* ==========================
+   Component-Level Utilities
+   ========================== */
+
+/* Primary Button Component */
+.btn-primary {
+    @apply inline-block px-4 py-2 text-white bg-blue rounded-md transition cursor-pointer;
+  }
+  
+  /* Hover State for Primary Button */
+  .btn-primary:hover {
+    background-color: #1d4ed8;
+  }
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }  
+
+ /* Base button structure (shared by all hero buttons) */
+ .hero-button-primary,
+ .hero-button-secondary,
+ .hero-button-support {
+   display: inline-block;
+   padding: 0.5rem 1rem;
+   border-radius: 0.5rem;
+   font-weight: 600;
+   font-size: 1rem;
+   text-decoration: none;
+   transition: background-color 0.3s ease;
+   white-space: nowrap;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+ 
+/* Primary (Blue) */
+.hero-button-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+.hero-button-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Secondary (Green) */
+.hero-button-secondary {
+  background-color: #28a745;
+  color: #ffffff;
+}
+.hero-button-secondary:hover {
+  background-color: #218838;
+}
+
+/* Support (Yellow) */
+.hero-button-support {
+  background-color: #ffc107;
+  color: #000000;
+}
+.hero-button-support:hover {
+  background-color: #e0a800;
+}
+
+  

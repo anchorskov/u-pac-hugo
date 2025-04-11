@@ -1,0 +1,56 @@
+/* 🔧 Page-specific styles for donate */
+/* 🎯 Page-Specific Styles: Support / Donate */
+
+.support-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  .support-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .text-container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .content-section {
+    margin-top: 2.5rem;
+    padding: 2rem 1rem;
+  }
+  
+  .content-section:nth-of-type(even) {
+    background-color: #eaeaea;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .btn-donate {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ffc107;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-donate:hover {
+    background-color: #e0a800;
+  }
+  

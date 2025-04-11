@@ -2,16 +2,24 @@
 
 <header class="header">
   <nav class="nav">
-    <!-- Update the button to use an ID for JavaScript interaction -->
-    <button id="menuToggle" class="menu-toggle" aria-label="Toggle Menu">
+    <!-- ☑️ Mobile Toggle -->
+    <button id="menuToggle"
+      class="menu-toggle inline-block p-2 rounded bg-gray text-white hover:bg-gray-700 transition"
+      aria-label="Toggle Menu"
+      aria-controls="menu"
+      aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
+
+    <!-- ☑️ Logo -->
     <div class="logo">
       <a href="/" accesskey="h" title="U-PAC (Alt + H)">U-PAC</a>
     </div>
-    <ul id="menu" class="menu hidden">
+
+    <!-- ☑️ Menu Links -->
+    <ul id="menu" class="menu menu-collapsed" aria-hidden="true">
       <li><a href="/">Home</a></li>
       <li><a href="/about/">About</a></li>
       <li><a href="/candidates/">Candidates</a></li>
@@ -19,4 +27,7 @@
       <li><a href="/donate/">Support This Work</a></li>
     </ul>
   </nav>
+
+  <!-- ✅ CSP-safe external script include -->
+  {{ partial "utils/secure-script.html" (dict "src" "/js/menu-toggle.js" "context" .) }}
 </header>

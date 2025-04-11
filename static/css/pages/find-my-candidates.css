@@ -1,0 +1,116 @@
+/* 🔧 Page-specific styles for find-my-candidates */
+/* 🎯 Page-specific styles for Find My Candidates */
+
+#candidate-search {
+    margin-top: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .zip-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .zip-label {
+    font-weight: bold;
+  }
+  
+  .zip-input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 200px;
+  }
+  
+  #geolocationSection {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  
+  #geolocateBtn {
+    background-color: #28a745;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #geolocateBtn:hover {
+    background-color: #218838;
+  }
+  
+  #locationInfo {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  #addressFormContainer {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  #addressForm input {
+    padding: 0.6rem;
+    margin: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #addressForm button {
+    background-color: #6c757d;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #addressForm button:hover {
+    background-color: #5a6268;
+  }
+  
+  #candidateResultsSection {
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+  
+  .candidate-item {
+    max-width: 90%;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  .candidate-item h3 {
+    margin-top: 0;
+  }
+  
+  .candidate-item a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  .candidate-item a:hover {
+    text-decoration: underline;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

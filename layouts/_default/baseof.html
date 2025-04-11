@@ -1,25 +1,54 @@
-<!-- layouts/_default/baseof.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {{ partial "utils/nonce.html" . }}
+  {{ $nonce := .Scratch.Get "nonce" }}
   <meta charset="UTF-8">
   <title>{{ .Title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ Updated CSP to allow secure assets -->
+  <!-- ✅ Content Security Policy with dynamic nonce -->
   <meta http-equiv="Content-Security-Policy"
     content="
       default-src 'self';
-      script-src 'self' 'nonce-abc123' 'strict-dynamic';
-      style-src 'self' 'nonce-abc123';
-      connect-src *;
+      script-src 'self' 'nonce-{{ $nonce }}' 'strict-dynamic';
+      style-src 'self' 'nonce-{{ $nonce }}';
       img-src 'self' https: data:;
+      connect-src *;
       font-src 'self' https://fonts.gstatic.com;
     ">
 
+  <!-- ✅ Global Styles -->
   <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
-  <link rel="stylesheet" href="{{ "css/find-candidates.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/buttons.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/header.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/mobile-overrides.css" | relURL }}">
+
+  <!-- ✅ Page-specific CSS -->
+  {{ if eq .Type "home" }}
+    <link rel="stylesheet" href="{{ "css/pages/home.css" | relURL }}">
+  {{ else if eq .Type "about" }}
+    <link rel="stylesheet" href="{{ "css/pages/about.css" | relURL }}">
+  {{ else if eq .Type "candidates" }}
+    <link rel="stylesheet" href="{{ "css/pages/candidates.css" | relURL }}">
+    {{ if eq .Layout "list" }}
+      <link rel="stylesheet" href="{{ "css/pages/candidates-list.css" | relURL }}">
+    {{ end }}
+  {{ else if eq .Type "volunteer" }}
+    <link rel="stylesheet" href="{{ "css/pages/volunteer.css" | relURL }}">
+  {{ else if eq .Type "donate" }}
+    <link rel="stylesheet" href="{{ "css/pages/donate.css" | relURL }}">
+  {{ else if eq .Type "contact" }}
+    <link rel="stylesheet" href="{{ "css/pages/contact.css" | relURL }}">
+  {{ else if eq .Type "find-my-candidates" }}
+    <link rel="stylesheet" href="{{ "css/pages/find-my-candidates.css" | relURL }}">
+  {{ else if eq .Type "lookup" }}
+    <link rel="stylesheet" href="{{ "css/pages/lookup.css" | relURL }}">
+  {{ end }}
+  {{ if eq .Type "tags" }}
+    <link rel="stylesheet" href="{{ "css/pages/tags.css" | relURL }}">
+  {{ end }}
+
 </head>
 <body class="{{ .Type }}-page">
   {{ partial "header.html" . }}
@@ -30,18 +59,11 @@
 
   {{ partial "footer.html" . }}
 
-  <!-- Hamburger Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const menu = document.querySelector('#menu');
-      if (menuToggle && menu) {
-        menuToggle.addEventListener('click', () => menu.classList.toggle('active'));
-      }
-    });
-  </script>
+  <!-- ✅ Global JS with dynamic nonce -->
+  <script nonce="{{ $nonce }}" src="/js/menu-toggle.js"></script>
+  <script nonce="{{ $nonce }}" src="/js/about-buttons.js"></script>
 
-  <!-- Page-specific scripts -->
+  <!-- ✅ Page-specific script block -->
   {{ block "scripts" . }}{{ end }}
 </body>
 </html>

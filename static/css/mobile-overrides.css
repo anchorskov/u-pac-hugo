@@ -1,48 +1,35 @@
 /* 📱 Mobile Overrides and Responsive Adjustments */
-
 @media (max-width: 768px) {
-    body {
-        font-size: 75%;
-      }
-    
-      header {
-        position: relative;
-        z-index: 1000;
-        background-color: #222;
-        padding-top: 1rem;
-      }
-    
-      nav.menu {
-        position: relative;
-        z-index: 999;
-        margin-top: 0;
-      }
-    
-      .main {
-        padding-top: 2rem;
-      }
-    
-    /* Prevent side scroll and unify layout */
-    html, body {
-      margin: 0 !important;
-      padding: 0 !important;
-      overflow-x: hidden;
-    }
-  
     :root {
       --font-size-base: 18px;
       --font-size-lg: 22px;
       --font-size-xl: 40px;
     }
   
+    html,
     body {
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden;
       font-size: var(--font-size-base);
       line-height: 1.5;
       background-color: #ffffff !important;
       color: #000000 !important;
     }
   
-    /* Header Layout & Hamburger Fix */
+    header {
+      position: relative;
+      z-index: 1000;
+      background-color: #222;
+      padding-top: 1rem;
+    }
+  
+    nav.menu {
+      position: relative;
+      z-index: 999;
+      margin-top: 0;
+    }
+  
     .header {
       display: flex;
       justify-content: space-between;
@@ -74,8 +61,8 @@
       background: transparent;
       border: none;
       cursor: pointer;
-      margin-left: 0 !important;     
-      margin-right: auto !important; 
+      margin-left: 0 !important;
+      margin-right: auto !important;
     }
   
     .menu-toggle span {
@@ -89,7 +76,14 @@
     .menu {
       display: none;
       flex-direction: column;
-      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
     }
   
     .menu.active {
@@ -107,11 +101,15 @@
       width: 100%;
       color: #000 !important;
       text-decoration: none;
+      border-bottom: 1px solid #eee;
+    }
+  
+    .menu a:hover {
+      background-color: #f0f0f0;
     }
   
     main {
-        padding-top: 4rem !important;
-      }
+      padding-top: 4rem !important;
     }
   
     #candidateResults {
@@ -158,6 +156,10 @@
       flex-direction: column;
       gap: 12px;
     }
+  
+    .zip-top-spacer {
+      margin-top: 20px;
+    }
   }
   
   /* 🌙 Dark Mode Support */
@@ -188,10 +190,7 @@
       color: #ffffff;
       max-width: 100%;
       border: 2px dashed red !important;
-    background: rgba(255, 255, 255, 0.8);  
-    }
-    .zip-top-spacer {
-        margin-top: 20px;
+      background: rgba(255, 255, 255, 0.8);
     }
   }
   

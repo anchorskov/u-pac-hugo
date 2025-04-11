@@ -1,0 +1,33 @@
+/* 📄 contact.css — Page styles for Contact U-PAC */
+
+.contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  .contact-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #444;
+  }
+  
+  .contact-methods {
+    text-align: left;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .contact-methods a {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+  

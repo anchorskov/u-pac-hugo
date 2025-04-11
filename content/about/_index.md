@@ -22,7 +22,7 @@ title: "About U-PAC"
   </section>
 
   <!-- Where We’re Going -->
-  <section class="content-section" style="background: #eaeaea;">
+<section class="content-section light-section">
     <h2>Where We’re Going</h2>
     <div class="text-container">
       <p>The <strong>vision is clear</strong>: U-PAC will become a <strong>national force for truth, transparency, and accountability</strong>.</p>
@@ -43,12 +43,8 @@ title: "About U-PAC"
       <p>The path ahead is long, and <strong>resources are essential</strong>.</p>
     </div>
     <div class="hero-buttons">
-      <button class="btn-donate" onclick="window.location.href='https://gofund.me/7868febf'">
-        Support U-PAC Financially
-      </button>
-      <button class="btn-donate" onclick="window.location.href='/volunteer/'">
-        Join the Movement
-      </button>
+      <button class="btn-donate support-donate">Support U-PAC Financially</button>
+      <button class="btn-donate support-volunteer">Join the Movement</button>
     </div>
   </section>
 </div>

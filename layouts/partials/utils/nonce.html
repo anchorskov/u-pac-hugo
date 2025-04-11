@@ -1,0 +1,3 @@
+{{/* layouts/partials/utils/nonce.html */}}
+{{ $nonce := now.UnixNano | printf "nonce-%d" }}
+{{ .Scratch.Set "nonce" $nonce }}

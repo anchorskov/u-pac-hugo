@@ -6,47 +6,49 @@ draft: false
 
 **Under construction ver. 1.02**
 
-<!-- Submission Forms Navigation Section relocated to the top -->
-<section class="content-section" style="background: #eaeaea; text-align: center; padding: 50px 20px;">
+<!-- ✅ Submission Forms Navigation -->
+<section class="content-section light-gray text-center padded-xl">
   <h2>Submit Your Information</h2>
   <div class="submission-buttons">
-    <!-- Submission item for Volunteers in vertical layout -->
+    <!-- Volunteer Entry -->
     <div class="submission-item-vertical">
       <div class="submission-content">
         <p>Use this form if you are submitting information about a candidate on their behalf.</p>
       </div>
       <div class="submission-label">Volunteers</div>
-      <a href="/candidates/volunteer-entry/" class="btn btn-secondary">Contribute Candidate Data</a>
+      <a href="/candidates/volunteer-entry/" class="hero-button-secondary">Contribute Candidate Data</a>
     </div>
-    <!-- Submission item for Candidates in vertical layout -->
-    <div class="submission-item-vertical" style="margin-top: 20px;">
+
+    <!-- Candidate Self Entry -->
+    <div class="submission-item-vertical mt-5">
       <div class="submission-content">
         <p>Use this form if you are submitting your own information.</p>
       </div>
       <div class="submission-label">Candidates</div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEoa1xE-8dRw7fUTArlWjwZWE8GFWOIu2E8m5vxg1c5r_tWQ/viewform?usp=header" class="btn btn-primary">Submit Your Profile</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEoa1xE-8dRw7fUTArlWjwZWE8GFWOIu2E8m5vxg1c5r_tWQ/viewform?usp=header" class="hero-button-primary">Submit Your Profile</a>
     </div>
-    <!-- NEW: Submission item for Find My Candidates in vertical layout -->
-    <div class="submission-item-vertical" style="margin-top: 20px;">
+
+    <!-- ZIP Lookup -->
+    <div class="submission-item-vertical mt-5">
       <div class="submission-content">
         <p>Search for candidate information by entering your ZIP code.</p>
       </div>
       <div class="submission-label">Find Candidates</div>
-      <a href="/find-my-candidates" class="btn btn-primary">Find My Candidates</a>
+      <a href="/find-my-candidates" class="hero-button-primary">Find My Candidates</a>
     </div>
   </div>
 </section>
 
-<!-- Hero Banner Section -->
+<!-- ✅ Hero Banner -->
 <div class="hero-banner-candidates">
   <h1>Welcome to Candidates</h1>
   <p>Your gateway to transparent, fact-based candidate evaluation</p>
   <div class="hero-buttons">
-    <a href="/volunteer/" class="btn btn-secondary">Become a Volunteer</a>
+    <a href="/volunteer/" class="hero-button-secondary">Become a Volunteer</a>
   </div>
 </div>
 
-<!-- What We Need to Track Section -->
+<!-- ✅ Tracking Details -->
 <section class="content-section">
   <h2>What We Need to Track</h2>
   <div class="list-container">
@@ -63,8 +65,8 @@ draft: false
   </div>
 </section>
 
-<!-- Why This Matters Section -->
-<section class="content-section" style="background: #f9f9f9;">
+<!-- ✅ Why This Matters -->
+<section class="content-section bg-light-alt">
   <h2>Why This Matters</h2>
   <div class="text-container">
     <p>
@@ -73,7 +75,7 @@ draft: false
   </div>
 </section>
 
-<!-- How We Collect Data Section -->
+<!-- ✅ How We Collect the Data -->
 <section class="content-section">
   <h2>How We Collect the Data</h2>
   <div class="list-container">
@@ -81,7 +83,7 @@ draft: false
       <li><strong>Public Data:</strong> Official records, voting histories, and campaign finance reports.</li>
       <li>
         <strong>Crowdsourced Contributions:</strong> Verified submissions from local volunteers and researchers.
-        <em> Democracy is for the people and by the people – we need your help!</em>
+        <em>Democracy is for the people and by the people – we need your help!</em>
       </li>
       <li><strong>Candidate Self-Reporting:</strong> Direct input from candidates committed to transparency.</li>
       <li><strong>AI-Assisted Analysis:</strong> Advanced tools to verify and analyze candidate information.</li>

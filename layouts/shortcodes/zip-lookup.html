@@ -1,20 +1,18 @@
-<form id="zipForm" class="extracted-style-1">
-    <input type="text" id="zipInput" placeholder="Enter ZIP Code" maxlength="5"
-        class="extracted-style-2">
-    <button type="submit" 
-        class="extracted-style-3">
-        Find Candidates
+<form id="zipForm" class="text-center">
+    <input 
+      type="text" 
+      id="zipInput" 
+      placeholder="Enter ZIP Code" 
+      maxlength="5"
+      class="px-4 py-2 border border-gray-300 rounded-md mb-2"
+    >
+    <button 
+      type="submit" 
+      class="inline-block px-4 py-2 bg-blue text-white rounded-md transition hover:bg-blue-700"
+    >
+      Find Candidates
     </button>
-</form>
-
-<script>
-    document.getElementById("zipForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        var zip = document.getElementById("zipInput").value;
-        if (zip.length === 5 && !isNaN(zip)) {
-            window.location.href = "/candidates/" + zip;
-        } else {
-            alert("Please enter a valid 5-digit ZIP code.");
-        }
-    });
-</script>
+  </form>
+  
+  <script nonce="{{ .Scratch.Get `nonce` }}" src="/js/menu-toggle.js"></script>
+  

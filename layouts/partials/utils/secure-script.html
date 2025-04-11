@@ -1,0 +1,6 @@
+{{/* layouts/partials/utils/secure-script.html */}}
+{{ $src := .src }}
+{{ $nonce := .context.Scratch.Get "nonce" }}
+{{ if $src }}
+  <script nonce="{{ $nonce }}" src="{{ $src | relURL }}"></script>
+{{ end }}

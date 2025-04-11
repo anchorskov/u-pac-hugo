@@ -2,7 +2,7 @@
 
 <!-- Render homepage content from _index.md -->
 <section class="content">
-  {{ .Content }}
+  {{ .Content | safeHTML }} <!-- ✅ Required for hero + buttons to work -->
 </section>
 
 {{ end }}

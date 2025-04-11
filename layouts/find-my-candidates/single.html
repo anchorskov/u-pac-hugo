@@ -5,6 +5,8 @@
     {{ .Content }}
   </section>
 
+  <div class="zip-top-spacer"></div>
+
   <section id="candidate-search">
     <form id="candidateForm" class="zip-form">
       <label for="zipcodeInput" class="zip-label">Enter ZIP Code:</label>
@@ -20,17 +22,17 @@
         maxlength="5"
       />
       <datalist id="zipSuggestions"></datalist>
-      <button type="submit" class="zip-button">Find Candidates</button>
+      <button type="submit" class="inline-block px-4 py-2 text-white bg-green-600 rounded-md transition hover:bg-green-700">
+        Find Candidates
+      </button> 
     </form>
 
-    <section id="geolocationSection" class="geolocation-section">
-      <button 
-        id="geolocateBtn" 
-        class="btn btn-secondary"
-        title="Most accurate for mobile users. On desktops, results may reflect your internet location instead of your home address.">
+    <section id="geolocationSection" class="geolocation-section text-center">
+      <button id="geolocateBtn" 
+        class="inline-block w-auto px-3 py-2 text-white bg-green-600 rounded-md transition hover:bg-green-700">
         Use My Device Location
       </button>
-    </section>
+    </section>      
 
     <div id="locationInfo" class="location-info extracted-style-0"></div>
 
@@ -40,7 +42,9 @@
         <input type="text" id="cityInput" placeholder="City" required>
         <input type="text" id="stateInput" placeholder="State (e.g., WY)" required maxlength="2">
         <input type="text" id="zipAddressInput" placeholder="ZIP Code" required maxlength="5">
-        <button type="submit">Enter My Address</button>
+        <button type="submit" class="inline-block px-4 py-2 text-white bg-gray rounded-md transition hover:bg-gray-700">
+          Enter My Address
+        </button>
       </form>
     </section>
   </section>
@@ -52,6 +56,6 @@
 {{ end }}
 
 {{ define "scripts" }}
-  <script nonce="abc123" src="/js/modal.js"></script>
-  <script nonce="abc123" src="/js/find-candidates.js"></script>
+  {{ partial "utils/secure-script.html" (dict "src" "/js/modal.js" "context" .) }}
+  {{ partial "utils/secure-script.html" (dict "src" "/js/find-candidates.js" "context" .) }}
 {{ end }}
