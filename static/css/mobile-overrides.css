@@ -24,7 +24,7 @@
       padding-top: 1rem;
     }
   
-    nav.menu {
+    .menu {
       position: relative;
       z-index: 999;
       margin-top: 0;
