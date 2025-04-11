@@ -10,7 +10,7 @@ toc: false
 </div>
 
 {{< rawhtml >}}
-<div style="display: flex; justify-content: center;">
+<div class="iframe-wrapper">
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScNYOYYwJeA7MtyaPDKABCOrcHVwN23SzI6SAk5e1Kuyv3KyA/viewform?embedded=true"
             width="80%" height="800px" frameborder="0" marginheight="0" marginwidth="0">
         Loading…

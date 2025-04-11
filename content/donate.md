@@ -28,7 +28,7 @@ tags: ["UPAC", "Integrity", "Transparency", "Accountability", "SupportDemocracy"
   </section>
 
   <!-- Financial Support Section -->
-  <section class="content-section" style="background: #eaeaea;">
+  <section class="content-section light-gray">
     <h2>Support U-PAC Financially</h2>
     <div class="text-container">
       <p>
@@ -48,8 +48,8 @@ tags: ["UPAC", "Integrity", "Transparency", "Accountability", "SupportDemocracy"
       </p>
     </div>
     <div class="hero-buttons">
-      <button class="btn-donate" onclick="window.location.href='https://gofund.me/7868febf'">
-        Support U-PAC Financially
+     <button id="donateBtn" class="btn-donate">
+       Support U-PAC Financially
       </button>
     </div>
   </section>

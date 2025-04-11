@@ -1,30 +1,15 @@
-<header class="header">
-  <nav class="nav">
-    <!-- ☑️ Mobile Toggle -->
-    <button id="menuToggle"
-      class="menu-toggle"
-      aria-label="Toggle Menu"
-      aria-controls="menu"
-      aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+<!-- 🔍 Hamburger Toggle Present -->
+<button id="menuToggle" class="menu-toggle" aria-label="Toggle Menu" aria-controls="menu" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
-    <!-- ☑️ Logo -->
-    <div class="logo">
-      <a href="/" accesskey="h" title="U-PAC (Alt + H)">U-PAC</a>
-    </div>
-
-    <!-- ☑️ Menu Links -->
-      <li><a href="/">Home</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/candidates/">Candidates</a></li>
-      <li><a href="/volunteer/">Volunteer</a></li>
-      <li><a href="/donate/">Support This Work</a></li>
-    </ul>
-  </nav>
-
-  <!-- ✅ Load JS securely -->
-  {{ partial "utils/secure-script.html" (dict "src" "/js/menu-toggle.js" "context" .) }}
-</header>
+<!-- 🔍 Navigation Menu Start -->
+<ul id="menu" class="menu" aria-hidden="true">
+  <li><a href="{{ "/" | relURL }}">Home</a></li>
+  <li><a href="{{ "/about/" | relURL }}">About</a></li>
+  <li><a href="{{ "/candidates/" | relURL }}">Candidates</a></li>
+  <li><a href="{{ "/volunteer/" | relURL }}">Volunteer</a></li>
+  <li><a href="{{ "/donate/" | relURL }}">Support This Work</a></li>
+</ul>
