@@ -4,9 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
     if (toggle && menu) {
       toggle.addEventListener('click', () => {
-        menu.classList.toggle('active');
-        const isOpen = menu.classList.contains('active');
+        const isOpen = menu.classList.toggle('active');
+  
+        // Remove 'hidden' so we can control visibility with media styles
+        menu.classList.remove('hidden');
+  
         toggle.setAttribute('aria-expanded', isOpen);
+        menu.setAttribute('aria-hidden', !isOpen);
       });
     }
   });
