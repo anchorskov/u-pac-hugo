@@ -79,10 +79,72 @@ We're looking for:
 ---
 
 ## 🔗 Links
-- [Live Site (Coming Soon)]()
+- [Live Site (u-pac.org)]()
 - [GitHub Repo](https://github.com/anchorskov/u-pac-hugo)
 - [Join the discussion on Issues](https://github.com/anchorskov/u-pac-hugo/issues)
 
 Let's make democracy accountable, together ✊
 
+# 🗳️ U-PAC – United Public Accountability Campaign
+
+**Empowering voters with real-time insight into public representatives.**
+
+---
+
+## 📣 What We're Building
+
+U-PAC is a public integrity project to:
+
+- Match voters with candidates & elected officials
+- Survey public sentiment on key legislation
+- Auto-summarize bills before Congress
+- Send constituent feedback to representatives
+- Measure official response using "U-Meters"
+
+Our mission: **transparent leadership + informed participation**.
+
+---
+
+## 🌎 Try It Live (Dev Mode)
+
+> 🧪 https://anchorskov.github.io/u-pac-hugo/
+
+---
+
+## 🔧 What We Need Help With
+
+We’re looking for collaborators across **tech + civic engagement**:
+
+| Area | Task |
+|------|------|
+| 🔐 User System | Add basic sign-up/login (Supabase/Auth.js) |
+| 📝 Surveys | Build reusable question/survey generator |
+| 📨 Data Collection | Connect survey results to backend |
+| 🧾 Legislation API | Summarize bills from ProPublica/Congress.gov |
+| 📣 Newsletter | Auto-generate alerts from bills & send via EmailOctopus |
+| 📬 Civic Messaging | Route user feedback to their elected officials |
+| 📊 Response Metrics | Rate and track rep replies w/ "U-Meters" |
+| 🎨 Design | Enhance UI/UX + mobile view |
+| 🌐 Translation | Make U-PAC global 🌍 |
+
+---
+
+## 🧠 Tech Stack
+
+- **Frontend:** Hugo (static site)
+- **Styling:** Modular CSS (per-page), Tailwind-inspired utilities
+- **Security:** CSP + nonce injection
+- **Data:** JSON APIs (OpenStates, ProPublica, GMaps)
+- **Hosting:** Cloudflare Pages
+- **Optional:** Supabase (auth, data), Netlify Functions, GitHub Actions
+
+---
+
+## 🤝 Want to Help?
+
+### 1. Fork & Clone
+
+```bash
+git clone https://github.com/anchorskov/u-pac-hugo.git
+cd u-pac-hugo
 
