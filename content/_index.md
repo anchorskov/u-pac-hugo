@@ -1,5 +1,6 @@
 ---
 title: "Welcome to U-PAC"
+type: "home"
 date: 2025-02-23T00:00:00
 draft: false
 markup: html

@@ -92,4 +92,7 @@
   .bg-light-alt {
     background-color: #f9f9f9;
   }
+  .hidden {
+    display: none !important;
+  }
   

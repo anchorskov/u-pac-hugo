@@ -1,6 +1,5 @@
 {{ define "main" }}
-  <div style="margin-top: 80px;"></div>
-
+<div class="mt-20"></div>
   <section class="content">
     {{ .Content }}
   </section>
@@ -22,10 +21,10 @@
         maxlength="5"
       />
       <datalist id="zipSuggestions"></datalist>
-      <button type="submit" class="inline-block px-4 py-2 text-white bg-green-600 rounded-md transition hover:bg-green-700">
+      <button type="submit" class="inline-block px-4 py-2 text-white bg-blue rounded-md shadow-md transition">
         Find Candidates
-      </button> 
-    </form>
+      </button>
+                    </form>
 
     <section id="geolocationSection" class="geolocation-section text-center">
       <button id="geolocateBtn" 

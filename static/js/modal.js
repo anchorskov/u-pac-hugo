@@ -1,4 +1,4 @@
-// ✅ modal.js
+// ✅ modal.js (Button Style Update Only)
 function showCustomModal(
   message,
   useGeoLabel = "Use My Device Location",
@@ -9,15 +9,14 @@ function showCustomModal(
       <div id="customDialog">
         <p>${message}</p>
         <div class="modal-buttons">
-          <button id="useGeoBtn">${useGeoLabel}</button>
-          <button id="enterAddressBtn">${useAddressLabel}</button>
+          <button id="useGeoBtn" class="hero-button-primary">${useGeoLabel}</button>
+          <button id="enterAddressBtn" class="hero-button-support">${useAddressLabel}</button>
         </div>
       </div>
     </div>`;
 
   document.body.insertAdjacentHTML("beforeend", modalHtml);
 
-  // Reset the display when modal is dismissed
   const backdrop = document.getElementById("customDialogBackdrop");
 
   document.getElementById("useGeoBtn").onclick = () => {

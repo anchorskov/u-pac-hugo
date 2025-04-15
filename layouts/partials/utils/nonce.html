@@ -1,3 +1,5 @@
-{{/* layouts/partials/utils/nonce.html */}}
-{{ $nonce := now.UnixNano | printf "nonce-%d" }}
-{{ .Scratch.Set "nonce" $nonce }}
+{{/* ✅ Safe nonce generator */}}
+{{ if not (.Scratch.Get "nonce") }}
+  {{ $nonce := now.UnixNano | printf "%x" }}
+  {{ .Scratch.Set "nonce" $nonce }}
+{{ end }}

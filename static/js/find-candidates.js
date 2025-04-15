@@ -20,8 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function resetCandidateDisplay() {
     document.getElementById("candidateHeader").innerHTML = "";
     document.getElementById("candidateResults").innerHTML = "";
-    document.getElementById("addressFormContainer")?.classList.add("hidden");
+    
+    const addressFormEl = document.getElementById("addressFormContainer");
+    if (addressFormEl && !addressFormEl.classList.contains("hidden")) {
+      addressFormEl.classList.add("hidden");
+    }
   }
+  
 
   // 🎂 Calculate age
   function calculateAge(birthdateStr) {
@@ -36,10 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🔁 Handle multiple districts
   function handleMultiDistrict(data) {
     resetCandidateDisplay();
+  
     const geoLabel = data.device_location_button || "Use My Device Location";
     const addressLabel = data.enter_address_button || "Enter My Address";
+  
+    // Explicitly show the address form now
+  
     showCustomModal(data.message, geoLabel, addressLabel);
   }
+  
 
   // 📡 Main fetch
   async function fetchCandidates(url, originCity = null) {
