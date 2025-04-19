@@ -1,4 +1,4 @@
-# 🗳️ U-PAC: United Platform for Accountability and Civic Engagement
+# 🗳️ U-PAC: yoUr Political Action Committee
 
 Welcome to the **U-PAC** repository! Our mission is to build a civic platform where users can transparently engage with representatives, evaluate policies, and promote integrity in public office.
 
@@ -148,3 +148,44 @@ We’re looking for collaborators across **tech + civic engagement**:
 git clone https://github.com/anchorskov/u-pac-hugo.git
 cd u-pac-hugo
 
+We are building a values-driven platform rooted in:
+- Critical thinking
+- The person vs. citizen distinction
+- Transparency and accountability
+- Compassionate civic dialogue
+- Resistance to authoritarianism
+
+---
+
+## 🛠 What We're Building
+
+U-PAC empowers communities with tools to:
+- Match voters with candidates and incumbents by ZIP code or district
+- Create and share dynamic surveys to surface community concerns
+- Auto-summarize legislative text and policy proposals
+- Route constituent feedback directly to elected officials
+- Visualize public trust and representative integrity using "U-Meters"
+
+This isn't just another dashboard. It's a **platform for principled participation**.
+
+---
+
+## 🧪 Features & Architecture
+
+- Static frontend using **Hugo** for speed and security
+- Modular styling with **CSS utilities** and **Tailwind-like components**
+- Dynamic ZIP-based candidate lookup
+- Survey creation and response collection (planned)
+- Candidate profiles with Integrity, Compassion, Accountability, Transparency scores
+- Secure integration planned with Supabase, Netlify Functions, and GitHub Pages
+## 🤝 How to Contribute
+
+We welcome developers, designers, civic researchers, and citizens of conscience.
+
+### You can help us build:
+
+- ⚙️ Transparent civic tools
+- 🧭 Critical thinking modules and survey generators
+- 📊 Public dashboards and scoring algorithms
+- ✉️ Messaging systems for contacting elected officials
+- 🔍 Legislation visualizers and voting history maps

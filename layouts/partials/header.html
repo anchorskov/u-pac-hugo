@@ -1,15 +1,23 @@
-<!-- 🔍 Hamburger Toggle Present -->
-<button id="menuToggle" class="menu-toggle" aria-label="Toggle Menu" aria-controls="menu" aria-expanded="false">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+<header class="header">
+  <div class="nav">
+    <div class="logo">
+      <a href="/" title="U-PAC">U-PAC</a>
+    </div>
 
-<!-- 🔍 Navigation Menu Start -->
-<ul id="menu" class="menu" aria-hidden="true">
-  <li><a href="{{ "/" | relURL }}">Home</a></li>
-  <li><a href="{{ "/about/" | relURL }}">About</a></li>
-  <li><a href="{{ "/candidates/" | relURL }}">Candidates</a></li>
-  <li><a href="{{ "/volunteer/" | relURL }}">Volunteer</a></li>
-  <li><a href="{{ "/donate/" | relURL }}">Support This Work</a></li>
-</ul>
+    <!-- 🍔 Hamburger button for small screens -->
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-controls="menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- 📜 Nav menu -->
+    <ul id="menu" class="menu" aria-hidden="true">
+      <li><a href="{{ "/" | relURL }}">Home</a></li>
+      <li><a href="{{ "/about/" | relURL }}">About</a></li>
+      <li><a href="{{ "/candidates/" | relURL }}">Candidates</a></li>
+      <li><a href="{{ "/volunteer/" | relURL }}">Volunteer</a></li>
+      <li><a href="{{ "/donate/" | relURL }}">Support This Work</a></li>
+    </ul>
+  </div>
+</header>

@@ -23,7 +23,6 @@
   <!-- ✅ Global Styles -->
   <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/buttons.css" | relURL }}">
-  <link rel="stylesheet" href="{{ "css/mobile-overrides.css" | relURL }}">
 
   <!-- ✅ Page-specific CSS -->
   {{ if eq .Type "home" }}
@@ -50,6 +49,9 @@
     <link rel="stylesheet" href="{{ "css/pages/tags.css" | relURL }}">
   {{ end }}
 
+   <!-- ✅ LOAD LAST -->
+<link rel="stylesheet" href="{{ "css/mobile-overrides.css" | relURL }}">
+
 </head>
 <body class="{{ .Type }}-page">
   {{ partial "header.html" . }}
@@ -63,7 +65,7 @@
   <!-- ✅ Global JS with dynamic nonce -->
   <script nonce="{{ $nonce }}" src="/js/menu-toggle.js"></script>
   <script nonce="{{ $nonce }}" src="/js/about-buttons.js"></script>
-
+  <script nonce="{{ $nonce }}" src="/js/donate.js"></script>
   <!-- ✅ Page-specific script block -->
   {{ block "scripts" . }}{{ end }}
 </body>
