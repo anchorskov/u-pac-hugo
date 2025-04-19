@@ -63,7 +63,7 @@
   {{ partial "footer.html" . }}
 
   <!-- ✅ Global JS with dynamic nonce -->
-  <script nonce="{{ $nonce }}" src="/js/menu-toggle.js"></script>
+  <script nonce="{{ $nonce }}" src="/js/menu-toggle.js" defer></script>
   <script nonce="{{ $nonce }}" src="/js/about-buttons.js"></script>
   <script nonce="{{ $nonce }}" src="/js/donate.js"></script>
   <!-- ✅ Page-specific script block -->

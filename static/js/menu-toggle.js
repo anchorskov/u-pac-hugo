@@ -2,19 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
 
-  console.log("[ToggleMenu] DOMContentLoaded fired.");
-  console.log("[ToggleMenu] Toggle Button:", toggle);
-  console.log("[ToggleMenu] Menu Element:", menu);
-
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('active');
-      console.log(`[ToggleMenu] Toggle clicked → Menu is now ${isOpen ? 'open' : 'closed'}`);
-
-      toggle.setAttribute('aria-expanded', isOpen);
-      menu.setAttribute('aria-hidden', !isOpen);
-    });
-  } else {
-    console.warn("[ToggleMenu] Toggle or menu element not found in DOM.");
+  if (!toggle) {
+    console.warn('[ToggleMenu] .menu-toggle button not found');
+    return;
   }
+  if (!menu) {
+    console.warn('[ToggleMenu] #menu not found');
+    return;
+  }
+
+  console.log('[ToggleMenu] DOM ready – Binding click listener.');
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', isOpen);
+    menu.setAttribute('aria-hidden', !isOpen);
+    console.log(`[ToggleMenu] Menu toggled: ${isOpen ? 'open' : 'closed'}`);
+  });
 });
