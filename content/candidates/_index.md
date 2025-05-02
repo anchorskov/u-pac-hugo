@@ -10,4 +10,4 @@ markup:
 ---
 
 <!-- Keep this line only if you want a visible note -->
-<!-- **Under construction ver. 1.02** -->
+**Under construction ver. 1.02**

@@ -1,4 +1,4 @@
-mysql-connector-python==9.2.0
-python-dotenv==1.0.1
-pytest==8.3.5
-PyYAML
+PyYAMLmysql-connector-python==9.2.0       # For MySQL DB connection
+python-dotenv==1.0.1                # For managing environment variables
+pytest==8.2.1                       # For running Python tests
+PyYAML==6.0.1                       # For parsing YAML (e.g., config or data files)

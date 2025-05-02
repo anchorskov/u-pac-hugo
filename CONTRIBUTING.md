@@ -1,6 +1,6 @@
 # 🤝 Contributing to U-PAC
 
-Welcome to the U-PAC Project (United Political Accountability Collective)!
+Welcome to the U-PAC Project (yoUr Political Action Committee)!
 
 We are building a transparent, accessible platform to inform and empower voters and hold public officials accountable. This is a grassroots civic tech project that thrives on community collaboration.
 
